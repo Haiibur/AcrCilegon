@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Agenda extends CI_Controller {
+class lokasi_tujuan extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->_isLogged();
@@ -14,37 +14,37 @@ class Agenda extends CI_Controller {
 	}
 
 	public function index() {
-        $data['title'] = "Agenda Kegiatan :: My Asisten";
-        $data['judul'] = 'Agenda Kegiatan';
+        $data['title'] = "lokasi_tujuan Kegiatan :: My Asisten";
+        $data['judul'] = 'lokasi_tujuan Kegiatan';
         $data['linkpage'] ='';
-		$this->template->load('home', 'agenda' ,$data);	
+		$this->template->load('home', 'lokasi_tujuan' ,$data);	
 	}
 
-	function load_agenda() {
+	function load_lokasi_tujuan() {
 		$req = [
 			'method' => 'get',
 			'select' => '*',
-			'table' => 't_agenda',
-			'order' => 'tgl_agenda DESC'
+			'table' => 't_lokasi_tujuan',
+			'order' => 'tgl_lokasi_tujuan DESC'
 		];
 		$res = $this->Modular->queryBuild($req)->result();
 		$output = array();
 		foreach ($res as $key => $value) {
-			$iddata = $value->kd_agenda.'=t_agenda=kd_agenda=agenda=0.jpg';
+			$iddata = $value->kd_lokasi_tujuan.'=t_lokasi_tujuan=kd_lokasi_tujuan=lokasi_tujuan=0.jpg';
 			$detail = '
 				<div style="overflow-x: auto; overflow-y: auto;">
-					<b>Tgl: '.$value->tgl_agenda.'</b><br>
-					<b>Jam: '.$value->jam_agenda.'</b><br>
+					<b>Tgl: '.$value->tgl_lokasi_tujuan.'</b><br>
+					<b>Jam: '.$value->jam_lokasi_tujuan.'</b><br>
 					Alamat: '.$value->alamat.'
 				</div>
 			';
 			$data = [
-				'id' => $value->kd_agenda,
+				'id' => $value->kd_lokasi_tujuan,
 				'ids' => $iddata,
-				'nama' => '<b>'.$value->nama_agenda.'</b>',
+				'nama' => '<b>'.$value->nama_lokasi_tujuan.'</b>',
 				'tamu' => '<b>'.$value->tamu_utama.'</b>',
 				'detail' => $detail,
-				'naskah' => base_url('naskah-agenda/'.$value->kd_agenda)
+				'naskah' => base_url('naskah-lokasi_tujuan/'.$value->kd_lokasi_tujuan)
 			];
 			array_push($output, $data);
 		}
@@ -52,10 +52,10 @@ class Agenda extends CI_Controller {
 	}
 
 	function buat_agd() {
-        $data['title'] = "Buat Agenda :: My Asisten";
-        $data['judul'] = 'Form Agenda Kegiatan';
+        $data['title'] = "Buat lokasi_tujuan :: My Asisten";
+        $data['judul'] = 'Form lokasi_tujuan Kegiatan';
         $data['linkpage'] ='<a href="https://chat.openai.com/chat" target="_blank" class="btn btn-success btn-sm">Buat Naskah di ChatGPT</a>';
-		$data['url'] = base_url('agenda/simpan_agd');
+		$data['url'] = base_url('lokasi_tujuan/simpan_agd');
 		$data['id'] = rand(0, 99).date('mdh');
 		$data['nama'] = '';
 		$data['tamu'] = '';
@@ -65,23 +65,23 @@ class Agenda extends CI_Controller {
 		$data['lokasi_acara'] = '';
 		$data['naskah'] = '';
 		$data['alamat'] = '';
-		$this->template->load('home', 'form_agenda' ,$data);	
+		$this->template->load('home', 'form_lokasi_tujuan' ,$data);	
 	}
 
 	function simpan_agd() {
 		$req = [
 			'method' => 'insert',
-			'table' => 't_agenda',
+			'table' => 't_lokasi_tujuan',
 			'value' => [
-				'kd_agenda' => $this->input->post('id'),
-				'nama_agenda' => $this->input->post('nama'),
+				'kd_lokasi_tujuan' => $this->input->post('id'),
+				'nama_lokasi_tujuan' => $this->input->post('nama'),
 				'tamu_utama' => $this->input->post('tamu'),
-				'tgl_agenda' => $this->input->post('tgl'),
-				'jam_agenda' => $this->input->post('jam'),
+				'tgl_lokasi_tujuan' => $this->input->post('tgl'),
+				'jam_lokasi_tujuan' => $this->input->post('jam'),
 				'jam_akhir' => $this->input->post('jam_akhir'),
 				'lokasi_acara' => $this->input->post('lokasi_acara'),
 				'naskah_pidato' => $this->input->post('naskah'),
-				'sts_agenda' => '1',
+				'sts_lokasi_tujuan' => '1',
 				'admin_ygbuat' => $this->session->userdata('kd_sesi'),
 				'tgl_buat' => date('Y-m-d H:i:s'),
 				'alamat' => $this->input->post('alamat')
@@ -94,44 +94,44 @@ class Agenda extends CI_Controller {
 		$req = [
 			'method' => 'get',
 			'select' => '*',
-			'table' => 't_agenda',
+			'table' => 't_lokasi_tujuan',
 			'where' => [
-				'kd_agenda' => $id
+				'kd_lokasi_tujuan' => $id
 			]
 		];
 		$row = $this->Modular->queryBuild($req)->row();
-        $data['title'] = "Update Agenda Kegiatan :: My Asisten";
-        $data['judul'] = 'Update Agenda Kegiatan ';
+        $data['title'] = "Update lokasi_tujuan Kegiatan :: My Asisten";
+        $data['judul'] = 'Update lokasi_tujuan Kegiatan ';
         $data['linkpage'] ='<a href="https://chat.openai.com/chat" target="_blank" class="btn btn-success btn-sm">Buat Naskah di ChatGPT</a>';
-		$data['url'] = base_url('agenda/update_agd');
+		$data['url'] = base_url('lokasi_tujuan/update_agd');
 		$data['id'] = $id;
-		$data['nama'] = $row->nama_agenda;
+		$data['nama'] = $row->nama_lokasi_tujuan;
 		$data['tamu'] = $row->tamu_utama;
-		$data['tgl'] = $row->tgl_agenda;
-		$data['jam'] = $row->jam_agenda;
+		$data['tgl'] = $row->tgl_lokasi_tujuan;
+		$data['jam'] = $row->jam_lokasi_tujuan;
 		$data['jam_akhir'] = $row->jam_akhir;
 		$data['naskah'] = $row->naskah_pidato;
 		$data['alamat'] = $row->alamat;
 		$data['lokasi_acara'] = $row->lokasi_acara;
-		$this->template->load('home', 'form_agenda' ,$data);	
+		$this->template->load('home', 'form_lokasi_tujuan' ,$data);	
 	}
 
 	function update_agd() {
 		$req = [
 			'method' => 'update',
-			'table' => 't_agenda',
+			'table' => 't_lokasi_tujuan',
 			'value' => [
-				'nama_agenda' => $this->input->post('nama'),
+				'nama_lokasi_tujuan' => $this->input->post('nama'),
 				'tamu_utama' => $this->input->post('tamu'),
-				'tgl_agenda' => $this->input->post('tgl'),
-				'jam_agenda' => $this->input->post('jam'),
+				'tgl_lokasi_tujuan' => $this->input->post('tgl'),
+				'jam_lokasi_tujuan' => $this->input->post('jam'),
 				'jam_akhir' => $this->input->post('jam_akhir'),
 				'lokasi_acara' => $this->input->post('lokasi_acara'),
 				'naskah_pidato' => $this->input->post('naskah'),
 				'admin_ygbuat' => '',
 				'alamat' => $this->input->post('alamat')
 			],
-			'where' => ['kd_agenda' => $this->input->post('id')]
+			'where' => ['kd_lokasi_tujuan' => $this->input->post('id')]
 		];
 		$this->Modular->queryBuild($req);
 	}
@@ -142,9 +142,9 @@ class Agenda extends CI_Controller {
 		$req = [
 			'method' => 'get',
 			'select' => '*',
-			'table' => 't_agenda',
+			'table' => 't_lokasi_tujuan',
 			'where' => [
-				'kd_agenda' => $id
+				'kd_lokasi_tujuan' => $id
 			] 
 		];
 		$data['row'] = $this->Modular->queryBuild($req)->row();
