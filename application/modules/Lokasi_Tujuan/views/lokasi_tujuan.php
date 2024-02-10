@@ -4,11 +4,12 @@
             <div class="card-body">
                 <div id="toolbar">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <a href="<?=base_url('buat-agenda');?>" class="btn btn-success" title="Buat Agenda">
-                            <i class="fa fa-plus"></i> Tambah Lokasi Tujuan
+                        <a href="<?=base_url('form_tambah_lokasi_tujuan');?>" class="btn btn-success"
+                            title="Form Lokasi Tujuan">
+                            <i class="fa fa-plus"></i>Tambah Lokasi Tujuan
                         </a>
-                        <a href="<?=base_url('ubah-agenda/');?>" class="btn btn-warning" id="btnRedir"
-                            title="Ubah Agenda">
+                        <a href="<?=base_url('form_ubah-lokasi_tujuan/');?>" class="btn btn-warning" id="btnRedir"
+                            title="Ubah lokasi_tujuan">
                             <i class="fa fa-edit"></i> Edit
                         </a>
                         <a href="<?=base_url('home/hapusData'); ?>" class="btn btn-danger" id="btnDestroy"
@@ -20,15 +21,15 @@
                 <div class="table-responsive">
                     <table id="table" class="table table-striped" data-toggle="table" data-toolbar="#toolbar"
                         data-pagination="true" data-search="true" data-sort-order="desc" data-id-field="id"
-                        data-page-list="[10, 25, 50, 100, all]" data-url="<?=base_url('agenda/load_agenda');?>">
+                        data-page-list="[10, 25, 50, 100, all]"
+                        data-url="<?=base_url('lokasi_tujuan/load_lokasi_tujuan');?>">
                         <thead>
                             <tr>
                                 <th data-field="state" data-checkbox="true"></th>
-                                <th data-field="nama" data-sortable="true">Nama Lokasi</th>
-                                <th data-field="tamu">Keterangan Lokasi</th>
-                                <th data-field="detail">Gambar Lokasi</th>
-                                <th data-field>Link Vidio</th>
-                                <!-- <th data-formatter="operateFormatter">Link Vidio</th> -->
+                                <th data-field="nama" data-sortable="true">Nama lokasi_tujuan</th>
+                                <th data-field="tamu">Tamu</th>
+                                <th data-field="detail">Detail</th>
+                                <th data-formatter="operateFormatter">Naskah</th>
                             </tr>
                         </thead>
                     </table>
@@ -43,6 +44,7 @@
         <div class="modal-content">
             <div class="modal-header backmodal">
                 <h4 class="modal-title">
+
                 </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -52,29 +54,23 @@
                 <div class="modal-body">
                     <input type="hidden" name="id" id="id">
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Nama Lokasi</label>
+                        <label class="col-sm-3 col-form-label">Level Admin</label>
                         <div class="col-sm-9">
-                            <select class="select2 form-control" name="nama_lokasi" id="nama_lokasi">
+                            <select class="select2 form-control" name="level" id="level">
                             </select>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Keterangan Lokasi</label>
+                        <label class="col-sm-3 col-form-label">Username</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="keterangan_lokasi" id="keterangan_lokasi"
+                            <input type="text" class="form-control" name="username" id="username"
                                 placeholder="Digunakan untuk Login">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Gambar Lokasi</label>
+                        <label class="col-sm-3 col-form-label">Password</label>
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" name="gambar_lokasi" id="gambar_lokasi">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Link Vidio</label>
-                        <div class="col-sm-9">
-                            <input type="password" class="form-control" name="link_vidio" id="link_vidio">
+                            <input type="password" class="form-control" name="password" id="password">
                         </div>
                     </div>
                 </div>

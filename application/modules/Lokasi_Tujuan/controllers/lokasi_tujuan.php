@@ -14,8 +14,8 @@ class lokasi_tujuan extends CI_Controller {
 	}
 
 	public function index() {
-        $data['title'] = "lokasi_tujuan Kegiatan :: My Asisten";
-        $data['judul'] = 'lokasi_tujuan Kegiatan';
+        $data['title'] = "Lokasi Tujuan :: My Asisten";
+        $data['judul'] = 'Lokasi Tujuan';
         $data['linkpage'] ='';
 		$this->template->load('home', 'lokasi_tujuan' ,$data);	
 	}
@@ -51,40 +51,29 @@ class lokasi_tujuan extends CI_Controller {
 		$this->output->set_content_type('application/json')->set_output(json_encode($output));
 	}
 
-	function buat_agd() {
-        $data['title'] = "Buat lokasi_tujuan :: My Asisten";
-        $data['judul'] = 'Form lokasi_tujuan Kegiatan';
-        $data['linkpage'] ='<a href="https://chat.openai.com/chat" target="_blank" class="btn btn-success btn-sm">Buat Naskah di ChatGPT</a>';
-		$data['url'] = base_url('lokasi_tujuan/simpan_agd');
-		$data['id'] = rand(0, 99).date('mdh');
-		$data['nama'] = '';
-		$data['tamu'] = '';
-		$data['tgl'] = '';
-		$data['jam'] = '';
-		$data['jam_akhir'] = '';
-		$data['lokasi_acara'] = '';
-		$data['naskah'] = '';
-		$data['alamat'] = '';
+	function form_tambah_lokasi_tujuan() {
+		$data=[
+			'title'			=> "Form Lokasi Tujuan :: My Asisten",
+			'judul'			=> "Form Lokasi Tujuan",
+			'url'			=> base_url('lokasi_tujuan/Insert_Lokasi_Tujuan'),
+			'nama_lokasi'	=> '',
+			'ket_lokasi'	=> '',
+			'gambar_lokasi' => '',
+			'link_vidio'	=> ''
+		];
+		
 		$this->template->load('home', 'form_lokasi_tujuan' ,$data);	
 	}
 
-	function simpan_agd() {
+	function Insert_Lokasi_Tujuan() {
 		$req = [
 			'method' => 'insert',
 			'table' => 't_lokasi_tujuan',
 			'value' => [
-				'kd_lokasi_tujuan' => $this->input->post('id'),
-				'nama_lokasi_tujuan' => $this->input->post('nama'),
-				'tamu_utama' => $this->input->post('tamu'),
-				'tgl_lokasi_tujuan' => $this->input->post('tgl'),
-				'jam_lokasi_tujuan' => $this->input->post('jam'),
-				'jam_akhir' => $this->input->post('jam_akhir'),
-				'lokasi_acara' => $this->input->post('lokasi_acara'),
-				'naskah_pidato' => $this->input->post('naskah'),
-				'sts_lokasi_tujuan' => '1',
-				'admin_ygbuat' => $this->session->userdata('kd_sesi'),
-				'tgl_buat' => date('Y-m-d H:i:s'),
-				'alamat' => $this->input->post('alamat')
+				'nama_lokasi' => $this->input->post('nama_lokasi'),
+				'ket_lokasi' => $this->input->post('ket_lokasi'),
+				'gambar_lokasi' => $this->input->post('gambar_lokasi'),
+				'link_vidio' => $this->input->post('link_vidio'),
 			]
 		];
 		$this->Modular->queryBuild($req);
