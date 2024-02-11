@@ -2,11 +2,13 @@
     <div class="col-12 col-md-12 mt-3">
         <div class="card">
             <div class="card-body">
-                <form id="formData" action="<?= $url; ?>" method="POST" role="<?= base_url(); ?>agenda">
+                <form id="formData" action="<?= $url; ?>" method="POST" role="<?= base_url(); ?>lokasi_tujuan">
+                    <input type="hidden" name="id" value="<?= $id; ?>">
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Nama Lokasi</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="nama" value="<?= $nama_lokasi; ?>" required>
+                            <input type="text" class="form-control" name="nama_lokasi" value="<?= $nama_lokasi; ?>"
+                                required>
                         </div>
                     </div>
 
@@ -14,8 +16,7 @@
                         <label class="col-sm-3 col-form-label">Keterangan Lokasi</label>
                         <div class="col-sm-9">
                             <div class="input-group">
-                                <textarea name="ket_lokasi" value="<?= $ket_lokasi; ?>" class="form-control" required
-                                    cols="30" rows="10"></textarea>
+                                <input name="ket_lokasi" value="<?= $ket_lokasi; ?>" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -51,30 +52,3 @@
         </div>
     </div>
 </div>
-<script>
-$(document).ready(function() {
-    CKEDITOR.replace('naskah', {
-        defaultLanguage: 'en',
-        language: 'en'
-    }).setData('<?php echo str_replace(array("\r", "\n"), '', $naskah); ?>');
-    CKEDITOR.replace('tamu', {
-        defaultLanguage: 'en',
-        language: 'en'
-    }).setData('<?php echo str_replace(array("\r", "\n"), '', $tamu); ?>');
-    $('#dates').datetimepicker({
-        locale: 'en',
-        format: 'YYYY-MM-DD',
-        defaultDate: new Date()
-    });
-    $('#hours').datetimepicker({
-        locale: 'en',
-        format: 'HH:mm',
-        defaultDate: new Date()
-    });
-    $('#hours2').datetimepicker({
-        locale: 'en',
-        format: 'HH:mm',
-        defaultDate: new Date()
-    });
-});
-</script>
