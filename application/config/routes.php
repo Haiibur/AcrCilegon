@@ -45,7 +45,9 @@ $route['Galleri']= 'Galleri';
 $route['Hotel']= 'Hotel';
 
 // Menu Lokasi Tujuan
-$route['Lokasi_Tujuan']= 'Lokasi_Tujuan';
+$route['Lokasi_Tujuan']= 'lokasi_tujuan';
+$route['form_tambah_lokasi_tujuan'] = 'lokasi_tujuan/form_tambah_lokasi_tujuan';
+$route['form_ubah_lokasi_tujuan/(:any)'] = 'lokasi_tujuan/edit_lokasi_tujuan/$1';
 
 // Menu Lokasi Vanue
 $route['Lokasi_Vanue']= 'Lokasi_Vanue';
