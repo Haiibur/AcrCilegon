@@ -120,7 +120,7 @@
         </a>
     </div>
     <div class="col-12 col-sm-6 col-xl-4 mt-3">
-        <a href="<?= base_url(); ?>Lokasi_Tujuan" style="text-decoration: none">
+        <a href="<?= base_url(); ?>lokasi_tujuan" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
                     <img src="<?=base_url('assets/img/icon/Lokasi_Tujuan.png');?>" alt="" class="float-right"
@@ -133,13 +133,13 @@
         </a>
     </div>
     <div class="col-12 col-sm-6 col-xl-4 mt-3">
-        <a href="<?= base_url(); ?>Lokasi_Vanue" style="text-decoration: none">
+        <a href="<?= base_url(); ?>lokasi_venue" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
                     <img src="<?=base_url('assets/img/icon/Lokasi_Vanue.png');?>" alt="" class="float-right"
                         width="60" />
-                    <h6 class="card-title font-weight-bold">Lokasi Vanue</h6>
-                    <h6 class="card-subtitle mb-2 text-muted text-danger">Data Lokasi Vanue</h6>
+                    <h6 class="card-title font-weight-bold">Lokasi Venue</h6>
+                    <h6 class="card-subtitle mb-2 text-muted text-danger">Data Lokasi Venue</h6>
                     <h2></h2>
                 </div>
             </div>

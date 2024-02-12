@@ -1,10 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Agenda extends CI_Controller {
+class lokasi_vanue extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->_isLogged();
+		$this->load->helper('form');
 	}
 
 	function _isLogged() {
@@ -14,140 +15,148 @@ class Agenda extends CI_Controller {
 	}
 
 	public function index() {
-        $data['title'] = "Agenda Kegiatan :: My Asisten";
-        $data['judul'] = 'Agenda Kegiatan';
+        $data['title'] = "Lokasi Venue :: My Asisten";
+        $data['judul'] = 'Lokasi Venue';
         $data['linkpage'] ='';
-		$this->template->load('home', 'agenda' ,$data);	
+		$this->template->load('home', 'lokasi_venue' ,$data);	
 	}
 
-	function load_agenda() {
+	function load_lokasi_venue() {
 		$req = [
 			'method' => 'get',
 			'select' => '*',
-			'table' => 't_agenda',
-			'order' => 'tgl_agenda DESC'
+			'table' => 't_lokasi_venue',
+			'order' => 'kd_venue DESC'
 		];
+		
 		$res = $this->Modular->queryBuild($req)->result();
 		$output = array();
+		
 		foreach ($res as $key => $value) {
-			$iddata = $value->kd_agenda.'=t_agenda=kd_agenda=agenda=0.jpg';
-			$detail = '
-				<div style="overflow-x: auto; overflow-y: auto;">
-					<b>Tgl: '.$value->tgl_agenda.'</b><br>
-					<b>Jam: '.$value->jam_agenda.'</b><br>
-					Alamat: '.$value->alamat.'
-				</div>
-			';
+			$iddata = $value->kd_venue.'=t_lokasi_venue=kd_venue=lokasi_vanue=0.jpg';
 			$data = [
-				'id' => $value->kd_agenda,
+				'id' 	=> $value->kd_venue,
 				'ids' => $iddata,
-				'nama' => '<b>'.$value->nama_agenda.'</b>',
-				'tamu' => '<b>'.$value->tamu_utama.'</b>',
-				'detail' => $detail,
-				'naskah' => base_url('naskah-agenda/'.$value->kd_agenda)
+				'nama_venue' 	=> '<b>'.$value->nama_venue.'</b>',
+				'foto_venue' 	=> base_url().'./assets/upload_file/'.$value->foto_venue,
+				'titik_lokasi'  => $value->titik_lokasi,
+				'ket_venue' 	=> $value->ket_venue,
+				'status'		=> $value->status
 			];
 			array_push($output, $data);
 		}
+		
 		$this->output->set_content_type('application/json')->set_output(json_encode($output));
 	}
 
-	function buat_agd() {
-        $data['title'] = "Buat Agenda :: My Asisten";
-        $data['judul'] = 'Form Agenda Kegiatan';
-        $data['linkpage'] ='<a href="https://chat.openai.com/chat" target="_blank" class="btn btn-success btn-sm">Buat Naskah di ChatGPT</a>';
-		$data['url'] = base_url('agenda/simpan_agd');
-		$data['id'] = rand(0, 99).date('mdh');
-		$data['nama'] = '';
-		$data['tamu'] = '';
-		$data['tgl'] = '';
-		$data['jam'] = '';
-		$data['jam_akhir'] = '';
-		$data['lokasi_acara'] = '';
-		$data['naskah'] = '';
-		$data['alamat'] = '';
-		$this->template->load('home', 'form_agenda' ,$data);	
-	}
-
-	function simpan_agd() {
-		$req = [
-			'method' => 'insert',
-			'table' => 't_agenda',
-			'value' => [
-				'kd_agenda' => $this->input->post('id'),
-				'nama_agenda' => $this->input->post('nama'),
-				'tamu_utama' => $this->input->post('tamu'),
-				'tgl_agenda' => $this->input->post('tgl'),
-				'jam_agenda' => $this->input->post('jam'),
-				'jam_akhir' => $this->input->post('jam_akhir'),
-				'lokasi_acara' => $this->input->post('lokasi_acara'),
-				'naskah_pidato' => $this->input->post('naskah'),
-				'sts_agenda' => '1',
-				'admin_ygbuat' => $this->session->userdata('kd_sesi'),
-				'tgl_buat' => date('Y-m-d H:i:s'),
-				'alamat' => $this->input->post('alamat')
-			]
+	function form_tambah_lokasi_venue() {
+		$data=[
+			'title'			=> "Form Lokasi Venue :: My Asisten",
+			'judul'			=> "Form Lokasi Venue",
+			'url'			=> base_url('lokasi_vanue/Insert_lokasi_venue'),
+			'id'			=> '',
+			'nama_venue'	=> '',
+			'foto_venue'	=> '',
+			'titik_lokasi'  => '',
+			'ket_venue'		=> '',
+			'status'		=> ''
 		];
-		$this->Modular->queryBuild($req);
+		
+		$this->template->load('home', 'form_lokasi_venue' ,$data);	
 	}
 
-	function edit_agd($id) {
+	function Insert_lokasi_venue() {
+		// Konfigurasi untuk upload gambar lokasi
+		$config['upload_path']   = './assets/upload_file';
+		$config['allowed_types'] = 'mp4|mp3|jpg|jpeg|png|gif';
+		$config['max_size']      = 200000;
+		$this->load->library('upload', $config);
+		
+		// Upload gambar lokasi
+		if ($this->upload->do_upload('foto_venue')) {
+			$data = $this->upload->data();
+			$foto_venue = $data['file_name'];
+			
+			$req = [
+				'method' => 'insert',
+				'table' => 't_lokasi_venue',
+				'value' => [
+					'nama_venue'	 => $this->input->post('nama_venue'),
+					'foto_venue' 	 => $foto_venue,
+					'titik_lokasi' 	 => $this->input->post('titik_lokasi'),
+					'ket_venue' 	 => $this->input->post('ket_venue'),
+					'status' 		 => $this->input->post('status'),
+				],
+			];
+
+			$this->Modular->queryBuild($req);
+		} else {
+			$error = $this->upload->display_errors();
+		}
+	}	
+	
+
+	function edit_lokasi_venue($id) {
 		$req = [
 			'method' => 'get',
 			'select' => '*',
-			'table' => 't_agenda',
+			'table' => 't_lokasi_venue',
 			'where' => [
-				'kd_agenda' => $id
+				'kd_venue' => $id
 			]
 		];
+		
 		$row = $this->Modular->queryBuild($req)->row();
-        $data['title'] = "Update Agenda Kegiatan :: My Asisten";
-        $data['judul'] = 'Update Agenda Kegiatan ';
-        $data['linkpage'] ='<a href="https://chat.openai.com/chat" target="_blank" class="btn btn-success btn-sm">Buat Naskah di ChatGPT</a>';
-		$data['url'] = base_url('agenda/update_agd');
-		$data['id'] = $id;
-		$data['nama'] = $row->nama_agenda;
-		$data['tamu'] = $row->tamu_utama;
-		$data['tgl'] = $row->tgl_agenda;
-		$data['jam'] = $row->jam_agenda;
-		$data['jam_akhir'] = $row->jam_akhir;
-		$data['naskah'] = $row->naskah_pidato;
-		$data['alamat'] = $row->alamat;
-		$data['lokasi_acara'] = $row->lokasi_acara;
-		$this->template->load('home', 'form_agenda' ,$data);	
+
+		$data=[
+			'title'			=> "Form Lokasi Venue :: My Asisten",
+			'judul'			=> "Form Lokasi Venue",
+			'url'			=> base_url('lokasi_vanue/update_lokasi_venue'),
+			'id'			=> $id,
+			'nama_venue'	=> $row->nama_venue,
+			'foto_venue'	=> $row->foto_venue,
+			'titik_lokasi' 	=> $row->titik_lokasi,
+			'ket_venue'		=> $row->ket_venue,
+			'status'		=> $row->status
+		];
+		$this->template->load('home', 'form_lokasi_venue' ,$data);	
 	}
 
-	function update_agd() {
-		$req = [
-			'method' => 'update',
-			'table' => 't_agenda',
-			'value' => [
-				'nama_agenda' => $this->input->post('nama'),
-				'tamu_utama' => $this->input->post('tamu'),
-				'tgl_agenda' => $this->input->post('tgl'),
-				'jam_agenda' => $this->input->post('jam'),
-				'jam_akhir' => $this->input->post('jam_akhir'),
-				'lokasi_acara' => $this->input->post('lokasi_acara'),
-				'naskah_pidato' => $this->input->post('naskah'),
-				'admin_ygbuat' => '',
-				'alamat' => $this->input->post('alamat')
-			],
-			'where' => ['kd_agenda' => $this->input->post('id')]
-		];
-		$this->Modular->queryBuild($req);
-	}
-	function detail_nsk($id) {
-        $data['title'] = "Naskah :: My Asisten";
-        $data['judul'] = 'Naskah Kegiatan';
-        $data['linkpage'] ='<a href="javascript:history.back()" class="btn btn-danger btn-sm">Kembali</a>';
-		$req = [
-			'method' => 'get',
-			'select' => '*',
-			'table' => 't_agenda',
-			'where' => [
-				'kd_agenda' => $id
-			] 
-		];
-		$data['row'] = $this->Modular->queryBuild($req)->row();
-		$this->template->load('home', 'naskah' ,$data);	
+	function update_lokasi_venue() {
+		// Konfigurasi untuk upload gambar lokasi
+		$config['upload_path']   = './assets/upload_file';
+		$config['allowed_types'] = 'jpg|jpeg|png|gif||png|mp4|mp3';
+		$config['max_size']      = 2048; // in kilobytes
+		$this->load->library('upload', $config);
+
+		// Upload gambar lokasi
+		if ($this->upload->do_upload('foto_venue')) {
+			$data = $this->upload->data();
+			$foto_venue = $data['file_name'];
+
+			// Upload vidio
+			if ($this->upload->do_upload('link_vidio')) {
+				$data = $this->upload->data();
+				$link_vidio = $data['file_name'];
+
+				$req = [
+					'method' => 'update',
+					'table' => 't_lokasi_venue',
+					'value' => [
+						'nama_venue'	 => $this->input->post('nama_venue'),
+						'foto_venue' 	 => $foto_venue,
+						'titik_lokasi' 	 => $this->input->post('titik_venue'),
+						'ket_venue' 	 => $this->input->post('ket_venue'),
+						'status' 		 => $this->input->post('status'),
+					],
+					'where' => ['kd_lokasi' => $this->input->post('id')]
+				];
+				$this->Modular->queryBuild($req);
+			} else {
+				$error = $this->upload->display_errors();
+			}
+		} else {
+			$error = $this->upload->display_errors();
+		}
 	}
 }

@@ -65,7 +65,7 @@ class lokasi_tujuan extends CI_Controller {
 	function Insert_Lokasi_Tujuan() {
 		// Konfigurasi untuk upload gambar lokasi
 		$config['upload_path']   = './assets/upload_file';
-		$config['allowed_types'] = 'mp4|mp3|jpg|jpeg|png|gif|';
+		$config['allowed_types'] = 'mp4|mp3|jpg|jpeg|png|gif';
 		$config['max_size']      = 200000;
 		$this->load->library('upload', $config);
 		
@@ -166,20 +166,5 @@ class lokasi_tujuan extends CI_Controller {
 			// Handle error jika upload gagal
 			// Misalnya: echo $error; exit();
 		}
-	}
-	function detail_nsk($id) {
-        $data['title'] = "Naskah :: My Asisten";
-        $data['judul'] = 'Naskah Kegiatan';
-        $data['linkpage'] ='<a href="javascript:history.back()" class="btn btn-danger btn-sm">Kembali</a>';
-		$req = [
-			'method' => 'get',
-			'select' => '*',
-			'table' => 't_lokasi_tujuan',
-			'where' => [
-				'kd_lokasi_tujuan' => $id
-			] 
-		];
-		$data['row'] = $this->Modular->queryBuild($req)->row();
-		$this->template->load('home', 'naskah' ,$data);	
 	}
 }

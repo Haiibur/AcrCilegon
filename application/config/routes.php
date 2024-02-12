@@ -5,9 +5,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Home';
 
 // Menu Login
-$route['login'] = 'login';
+$route['login']          = 'login';
 $route['reset-password'] = 'login/reset_password';
-$route['cek-login'] = 'login/ceklogin';
+$route['cek-login']      = 'login/ceklogin';
 
 // Menu Level Admin
 
@@ -18,13 +18,13 @@ $route['admin'] = 'admin';
 $route['profil']= 'profil';
 
 // Menu Agenda
-$route['agenda']= 'agenda';
-$route['buat-agenda'] = 'agenda/buat_agd';
-$route['ubah-agenda/(:any)'] = 'agenda/edit_agd/$1';
-$route['naskah-agenda/(:any)'] = 'agenda/detail_nsk/$1';
-$route['api/agenda-hari-ini'] = 'Api/agendaToday';
-$route['api/agenda-besok'] = 'Api/agendaTomorrow';
-$route['api/riwayat-agenda'] = 'Api/agendaRiwayat';
+$route['agenda']                = 'agenda';
+$route['buat-agenda']           = 'agenda/buat_agd';
+$route['ubah-agenda/(:any)']    = 'agenda/edit_agd/$1';
+$route['naskah-agenda/(:any)']  = 'agenda/detail_nsk/$1';
+$route['api/agenda-hari-ini']   = 'Api/agendaToday';
+$route['api/agenda-besok']      = 'Api/agendaTomorrow';
+$route['api/riwayat-agenda']    = 'Api/agendaRiwayat';
 
 // Menu Agenda Acara
 $route['Agenda_Acara']= 'Agenda_Acara';
@@ -45,12 +45,14 @@ $route['Galleri']= 'Galleri';
 $route['Hotel']= 'Hotel';
 
 // Menu Lokasi Tujuan
-$route['Lokasi_Tujuan']= 'lokasi_tujuan';
-$route['form_tambah_lokasi_tujuan'] = 'lokasi_tujuan/form_tambah_lokasi_tujuan';
+$route['lokasi_tujuan']                  = 'lokasi_tujuan';
+$route['form_tambah_lokasi_tujuan']      = 'lokasi_tujuan/form_tambah_lokasi_tujuan';
 $route['form_ubah_lokasi_tujuan/(:any)'] = 'lokasi_tujuan/edit_lokasi_tujuan/$1';
 
 // Menu Lokasi Vanue
-$route['Lokasi_Vanue']= 'Lokasi_Vanue';
+$route['lokasi_venue']                  = 'lokasi_vanue';
+$route['form_tambah_lokasi_venue']      = 'lokasi_vanue/form_tambah_lokasi_venue';
+$route['form_ubah_lokasi_venue/(:any)'] = 'lokasi_vanue/edit_lokasi_venue/$1';
 
 // Menu Wisata
 $route['Wisata']= 'Wisata';
