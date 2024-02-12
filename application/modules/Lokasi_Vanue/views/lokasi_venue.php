@@ -8,7 +8,7 @@
                             title="Buat Agenda">
                             <i class="fa fa-plus"></i> Tambah Lokasi Venue
                         </a>
-                        <a href="<?=base_url('form_udah_lokasi_vanue/');?>" class="btn btn-warning" id="btnRedir"
+                        <a href="<?=base_url('form_ubah_lokasi_venue/');?>" class="btn btn-warning" id="btnRedir"
                             title="Ubah Agenda">
                             <i class="fa fa-edit"></i> Edit
                         </a>

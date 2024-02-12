@@ -119,42 +119,36 @@ class lokasi_vanue extends CI_Controller {
 			'ket_venue'		=> $row->ket_venue,
 			'status'		=> $row->status
 		];
+		
 		$this->template->load('home', 'form_lokasi_venue' ,$data);	
 	}
 
 	function update_lokasi_venue() {
 		// Konfigurasi untuk upload gambar lokasi
 		$config['upload_path']   = './assets/upload_file';
-		$config['allowed_types'] = 'jpg|jpeg|png|gif||png|mp4|mp3';
-		$config['max_size']      = 2048; // in kilobytes
+		$config['allowed_types'] = 'mp4|mp3|jpg|jpeg|png|gif';
+		$config['max_size']      = 200000;
 		$this->load->library('upload', $config);
-
+				
 		// Upload gambar lokasi
 		if ($this->upload->do_upload('foto_venue')) {
 			$data = $this->upload->data();
 			$foto_venue = $data['file_name'];
+			
+			$req = [
+				'method' => 'update',
+				'table' => 't_lokasi_venue',
+				'value' => [
+					'nama_venue'	 => $this->input->post('nama_venue'),
+					'foto_venue' 	 => $foto_venue,
+					'titik_lokasi' 	 => $this->input->post('titik_lokasi'),
+					'ket_venue' 	 => $this->input->post('ket_venue'),
+					'status' 		 => $this->input->post('status'),
+				],
+				'where' => ['kd_venue' => $this->input->post('id')]
+			];
 
-			// Upload vidio
-			if ($this->upload->do_upload('link_vidio')) {
-				$data = $this->upload->data();
-				$link_vidio = $data['file_name'];
-
-				$req = [
-					'method' => 'update',
-					'table' => 't_lokasi_venue',
-					'value' => [
-						'nama_venue'	 => $this->input->post('nama_venue'),
-						'foto_venue' 	 => $foto_venue,
-						'titik_lokasi' 	 => $this->input->post('titik_venue'),
-						'ket_venue' 	 => $this->input->post('ket_venue'),
-						'status' 		 => $this->input->post('status'),
-					],
-					'where' => ['kd_lokasi' => $this->input->post('id')]
-				];
-				$this->Modular->queryBuild($req);
-			} else {
-				$error = $this->upload->display_errors();
-			}
+			$this->Modular->queryBuild($req);
 		} else {
 			$error = $this->upload->display_errors();
 		}
