@@ -63,23 +63,22 @@ class lokasi_tujuan extends CI_Controller {
 	}
 
 	function Insert_Lokasi_Tujuan() {
-		
 		// Konfigurasi untuk upload gambar lokasi
 		$config['upload_path']   = './assets/upload_file';
-		$config['allowed_types'] = 'jpg|jpeg|png|gif||png|mp4|mp3';
-		$config['max_size']      = 2048; // in kilobytes
+		$config['allowed_types'] = 'mp4|mp3|jpg|jpeg|png|gif|';
+		$config['max_size']      = 200000;
 		$this->load->library('upload', $config);
-
+		
 		// Upload gambar lokasi
 		if ($this->upload->do_upload('gambar_lokasi')) {
 			$data = $this->upload->data();
 			$gambar_lokasi = $data['file_name'];
-
-			// Upload vidio
+	
+			// Upload video
 			if ($this->upload->do_upload('link_vidio')) {
-				$data = $this->upload->data();
-				$link_vidio = $data['file_name'];
-
+				$data_vidio = $this->upload->data();
+				$link_vidio = $data_vidio['file_name'];
+	
 				$req = [
 					'method' => 'insert',
 					'table' => 't_lokasi_tujuan',
@@ -90,19 +89,18 @@ class lokasi_tujuan extends CI_Controller {
 						'link_vidio' => $link_vidio,
 					]
 				];
-				
+	
 				$this->Modular->queryBuild($req);
 			} else {
 				$error = $this->upload->display_errors();
-				// Handle error jika upload gagal
-				// Misalnya: echo $error; exit();
+				// Handle kesalahan upload video
 			}
 		} else {
 			$error = $this->upload->display_errors();
-			// Handle error jika upload gagal
-			// Misalnya: echo $error; exit();
+			// Handle kesalahan upload gambar
 		}
-	}
+	}	
+	
 
 	function edit_lokasi_tujuan($id) {
 		$req = [
