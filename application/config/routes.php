@@ -40,6 +40,8 @@ $route['Materi']= 'Materi';
 
 // Menu Galleri
 $route['Galleri']= 'Galleri';
+$route['form_tambah_galleri']      = 'Galleri/form_tambah_galleri';
+$route['form_ubah_galleri/(:any)'] = 'Galleri/edit_galleri/$1';
 
 // Menu Hotel
 $route['Hotel']= 'Hotel';
