@@ -5,15 +5,18 @@
                 <div id="toolbar">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                         <a href="<?=base_url('form_tambah_galleri');?>" class="btn btn-success" title="Buat Agenda">
-                            <i class="fa fa-plus"></i> Tambah Galleri
+                            <i class="fa fa-plus"></i>
+                            Tambah Galleri
                         </a>
                         <a href="<?=base_url('form_ubah_galleri/');?>" class="btn btn-warning" id="btnRedir"
                             title="Ubah Agenda">
-                            <i class="fa fa-edit"></i> Edit
+                            <i class="fa fa-edit"></i>
+                            Edit
                         </a>
                         <a href="<?=base_url('home/hapusData'); ?>" class="btn btn-danger" id="btnDestroy"
                             title="Hapus Data">
-                            <i class="far fa-trash-alt"></i> Hapus
+                            <i class="far fa-trash-alt"></i>
+                            Hapus
                         </a>
                     </div>
                 </div>

@@ -21,67 +21,67 @@
         </li>
         <li>
             <a href="<?= base_url('Admin'); ?>">
-                <i class="fas fa-grip-horizontal"></i>
+                <i class="fa-solid fa-user-tie"></i>
                 Admin
             </a>
         </li>
         <li>
             <a href="<?= base_url('Profil'); ?>">
-                <i class="fas fa-grip-horizontal"></i>
+                <i class="fa-solid fa-users"></i>
                 Profil
             </a>
         </li>
         <li>
             <a href="<?= base_url('agenda'); ?>">
-                <i class="fas fa-grip-horizontal"></i>
+                <i class="icon-notebook"></i>
                 Agenda Acara
             </a>
         </li>
         <li>
             <a href="<?= base_url('Provinsi'); ?>">
-                <i class="fas fa-grip-horizontal"></i>
+                <i class="icon-map"></i>
                 Provinsi
             </a>
         </li>
         <li>
             <a href="<?= base_url('Kabupaten'); ?>">
-                <i class="fas fa-grip-horizontal"></i>
+                <i class="icon-map"></i>
                 Kabupaten
             </a>
         </li>
         <li>
             <a href="<?= base_url('Materi'); ?>">
-                <i class="fas fa-grip-horizontal"></i>
+                <i class="icon-book-open"></i>
                 Materi
             </a>
         </li>
         <li>
             <a href="<?= base_url('Galleri'); ?>">
-                <i class="fas fa-photo-video"></i>
+                <i class="icon-picture"></i>
                 Galleri
             </a>
         </li>
         <li>
             <a href="<?= base_url('Hotel'); ?>">
-                <i class="fas fa-synagogue"></i>
+                <i class="fa-solid fa-building"></i>
                 Hotel
             </a>
         </li>
         <li>
             <a href="<?= base_url('lokasi_tujuan'); ?>">
-                <i class="fas fa-photo-video"></i>
+                <i class="icon-location-pin"></i>
                 Lokasi Tujuan
             </a>
         </li>
         <li>
             <a href="<?= base_url('lokasi_vanue'); ?>">
-                <i class="fas fa-photo-video"></i>
+                <i class="icon-location-pin"></i>
                 Lokasi Vanue
             </a>
         </li>
         <li>
             <a href="<?= base_url('Wisata'); ?>">
-                <i class="icon-tree"></i>
+                <i class="icon-plane"></i>
                 Wisata
             </a>
         </li>

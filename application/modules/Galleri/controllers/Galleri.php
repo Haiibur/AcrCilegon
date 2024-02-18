@@ -143,6 +143,7 @@ class Galleri extends CI_Controller
 				'kd_galleri' => $id
 			]
 		];
+
 		$row = $this->Modular->queryBuild($req)->row();
 		$data['title'] = "Update Galleri :: My Asisten";
 		$data['judul'] = 'Update Galleri ';
@@ -156,6 +157,7 @@ class Galleri extends CI_Controller
 		$data['foto_galleri_5'] = $row->foto_galleri_5;
 		$data['link_vidio']		= $row->link_vidio;
 		$this->template->load('home', 'form_galleri', $data);
+		
 	}
 
 	function update_galleri()
@@ -213,6 +215,7 @@ class Galleri extends CI_Controller
 				$error = $this->upload->display_errors();
 				// Handle kesalahan upload foto gambar 3
 			}
+			
 		} else {
 			$error = $this->upload->display_errors();
 			// Handle kesalahan upload foto gambar 2
