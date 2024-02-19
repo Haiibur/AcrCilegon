@@ -3,12 +3,12 @@
         class="sidebarCollapse float-right h6 dropdown-menu-right mr-2 mt-2 position-absolute d-block d-lg-none">
         <i class="icon-close"></i>
     </a>
-    <a href="<?= base_url('home'); ?>" class="sidebar-logo d-flex">
+    <a href="<?= base_url('Home'); ?>" class="sidebar-logo d-flex">
         <img src="<?= base_url('assets/img/logoasistenku.png'); ?>" alt="Asistenku" width="80" class="img-fluid mr-2" />
     </a>
     <ul id="side-menu" class="sidebar-menu">
         <li>
-            <a href="<?= base_url('home'); ?>">
+            <a href="<?= base_url('Home'); ?>">
                 <i class="icon-home"></i>
                 Beranda
             </a>

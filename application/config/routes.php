@@ -37,6 +37,8 @@ $route['Kabupaten']= 'Kabupaten';
 
 // Menu Materi
 $route['Materi']= 'Materi';
+$route['form_tambah_materi']      = 'Materi/form_tambah_materi';
+$route['form_ubah_materi/(:any)'] = 'Materi/edit_materi/$1';
 
 // Menu Galleri
 $route['Galleri']= 'Galleri';

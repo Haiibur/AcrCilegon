@@ -39,7 +39,7 @@
         <a href="<?= base_url(); ?>agenda" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
-                    <img src="<?=base_url('assets/img/icon/Agenda.png');?>" alt="" class="float-right" width="60" />
+                    <img src="<?=base_url('assets/img/icon/Agenda02.png');?>" alt="" class="float-right" width="60" />
                     <h6 class="card-title font-weight-bold">Agenda</h6>
                     <h6 class="card-subtitle mb-2 text-muted">Kegiatan Bulan Ini</h6>
                     <h2></h2>
@@ -47,7 +47,7 @@
             </div>
         </a>
     </div>
-    <div class="col-12 col-sm-6 col-xl-4 mt-3">
+    <!-- <div class="col-12 col-sm-6 col-xl-4 mt-3">
         <a href="<?= base_url(); ?>Agenda_Acara" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
@@ -58,7 +58,7 @@
                 </div>
             </div>
         </a>
-    </div>
+    </div> -->
     <div class="col-12 col-sm-6 col-xl-4 mt-3">
         <a href="<?= base_url(); ?>Provinsi" style="text-decoration: none">
             <div class="card">

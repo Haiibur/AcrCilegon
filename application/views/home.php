@@ -40,7 +40,7 @@
     <!-- END: Content-->
 
     <!-- START: Footer-->
-    <footer class="site-footer">© 2020 Bravo Solution Indonesia.</footer>
+    <footer class="site-footer">© 2024 Bravo Solution Indonesia.</footer>
     <!-- END: Footer-->
 
     <!-- START: Back to top-->
