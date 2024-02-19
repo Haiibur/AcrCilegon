@@ -61,7 +61,7 @@ class Galleri extends CI_Controller
 		$data['judul'] 			= 'Form Galleri';
 		$data['url'] 			= base_url('Galleri/Insert_galleri');
 		$data['id'] 			= rand(0, 99) . date('mdh');
-		$data['katagori'] 		= '';
+
 		$data['nama_galleri']   = '';
 		$data['foto_galleri_2'] = '';
 		$data['foto_galleri_3'] = '';

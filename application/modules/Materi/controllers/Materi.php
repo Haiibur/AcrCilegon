@@ -79,7 +79,7 @@ class Materi extends CI_Controller
 				'table' => 't_materi',
 				'value' => [
 					'nama_materi'		 => $this->input->post('nama_materi'),
-					'file_materi'		 => base_url().'./assets/upload_materi/'.$value->file_materi,
+					'file_materi'		 => $file_materi,
 				]
 			];
 			

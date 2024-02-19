@@ -38,7 +38,7 @@ class lokasi_vanue extends CI_Controller {
 				'id' 	=> $value->kd_venue,
 				'ids' => $iddata,
 				'nama_venue' 	=> '<b>'.$value->nama_venue.'</b>',
-				'foto_venue' 	=> base_url().'./assets/upload_file/'.$value->foto_venue,
+				'foto_venue' 	=> base_url().'./assets/upload_Lokasi_Vanue/'.$value->foto_venue,
 				'titik_lokasi'  => $value->titik_lokasi,
 				'ket_venue' 	=> $value->ket_venue,
 				'status'		=> $value->status
@@ -67,7 +67,7 @@ class lokasi_vanue extends CI_Controller {
 
 	function Insert_lokasi_venue() {
 		// Konfigurasi untuk upload gambar lokasi
-		$config['upload_path']   = './assets/upload_file';
+		$config['upload_path']   = './assets/upload_Lokasi_Vanue';
 		$config['allowed_types'] = 'mp4|mp3|jpg|jpeg|png|gif';
 		$config['max_size']      = 200000;
 		$this->load->library('upload', $config);
@@ -125,7 +125,7 @@ class lokasi_vanue extends CI_Controller {
 
 	function update_lokasi_venue() {
 		// Konfigurasi untuk upload gambar lokasi
-		$config['upload_path']   = './assets/upload_file';
+		$config['upload_path']   = './assets/upload_Lokasi_Vanue';
 		$config['allowed_types'] = 'mp4|mp3|jpg|jpeg|png|gif';
 		$config['max_size']      = 200000;
 		$this->load->library('upload', $config);

@@ -37,8 +37,8 @@ class lokasi_tujuan extends CI_Controller {
 				'ids' => $iddata,
 				'nama_lokasi' 	=> '<b>'.$value->nama_lokasi.'</b>',
 				'ket_lokasi' 	=> '<b>'.$value->ket_lokasi.'</b>',
-				'gambar_lokasi' => base_url().'./assets/upload_file/'.$value->gambar_lokasi,
-				'link_vidio' 	=> base_url().'./assets/upload_file/'.$value->link_vidio
+				'gambar_lokasi' => base_url().'./assets/upload_Lokasi_Tujuan/'.$value->gambar_lokasi,
+				'link_vidio' 	=> '<b>'.$value->link_vidio.'</b>',
 			];
 			array_push($output, $data);
 		}
@@ -64,7 +64,7 @@ class lokasi_tujuan extends CI_Controller {
 
 	function Insert_Lokasi_Tujuan() {
 		// Konfigurasi untuk upload gambar lokasi
-		$config['upload_path']   = './assets/upload_file';
+		$config['upload_path']   = './assets/upload_Lokasi_Tujuan';
 		$config['allowed_types'] = 'mp4|mp3|jpg|jpeg|png|gif';
 		$config['max_size']      = 200000;
 		$this->load->library('upload', $config);
@@ -73,28 +73,19 @@ class lokasi_tujuan extends CI_Controller {
 		if ($this->upload->do_upload('gambar_lokasi')) {
 			$data = $this->upload->data();
 			$gambar_lokasi = $data['file_name'];
-	
-			// Upload video
-			if ($this->upload->do_upload('link_vidio')) {
-				$data_vidio = $this->upload->data();
-				$link_vidio = $data_vidio['file_name'];
-	
-				$req = [
-					'method' => 'insert',
-					'table' => 't_lokasi_tujuan',
-					'value' => [
-						'nama_lokasi' => $this->input->post('nama_lokasi'),
-						'ket_lokasi' => $this->input->post('ket_lokasi'),
-						'gambar_lokasi' => $gambar_lokasi,
-						'link_vidio' => $link_vidio,
-					]
-				];
-	
-				$this->Modular->queryBuild($req);
-			} else {
-				$error = $this->upload->display_errors();
-				// Handle kesalahan upload video
-			}
+		
+			$req = [
+				'method' => 'insert',
+				'table' => 't_lokasi_tujuan',
+				'value' => [
+					'nama_lokasi' => $this->input->post('nama_lokasi'),
+					'ket_lokasi' => $this->input->post('ket_lokasi'),
+					'gambar_lokasi' => $gambar_lokasi,
+					'link_vidio' => $this->input->post('link_vidio'),
+				]
+			];
+
+			$this->Modular->queryBuild($req);
 		} else {
 			$error = $this->upload->display_errors();
 			// Handle kesalahan upload gambar
@@ -129,7 +120,7 @@ class lokasi_tujuan extends CI_Controller {
 
 	function update_lokasi_tujuan() {
 		// Konfigurasi untuk upload gambar lokasi
-		$config['upload_path']   = './assets/upload_file';
+		$config['upload_path']   = './assets/upload_Lokasi_Tujuan';
 		$config['allowed_types'] = 'jpg|jpeg|png|gif||png|mp4|mp3';
 		$config['max_size']      = 2048; // in kilobytes
 		$this->load->library('upload', $config);
@@ -139,28 +130,18 @@ class lokasi_tujuan extends CI_Controller {
 			$data = $this->upload->data();
 			$gambar_lokasi = $data['file_name'];
 
-			// Upload vidio
-			if ($this->upload->do_upload('link_vidio')) {
-				$data = $this->upload->data();
-				$link_vidio = $data['file_name'];
-
-				$req = [
-					'method' => 'update',
-					'table' => 't_lokasi_tujuan',
-					'value' => [
-						'nama_lokasi'	 => $this->input->post('nama_lokasi'),
-						'ket_lokasi' 	 => $this->input->post('ket_lokasi'),
-						'gambar_lokasi'  => $gambar_lokasi,
-						'link_vidio' 	 => $link_vidio,
-					],
-					'where' => ['kd_lokasi' => $this->input->post('id')]
-				];
-				$this->Modular->queryBuild($req);
-			} else {
-				$error = $this->upload->display_errors();
-				// Handle error jika upload gagal
-				// Misalnya: echo $error; exit();
-			}
+			$req = [
+				'method' => 'update',
+				'table' => 't_lokasi_tujuan',
+				'value' => [
+					'nama_lokasi'	 => $this->input->post('nama_lokasi'),
+					'ket_lokasi' 	 => $this->input->post('ket_lokasi'),
+					'gambar_lokasi'  => $gambar_lokasi,
+					'link_vidio' => $this->input->post('link_vidio'),
+				],
+				'where' => ['kd_lokasi' => $this->input->post('id')]
+			];
+			$this->Modular->queryBuild($req);
 		} else {
 			$error = $this->upload->display_errors();
 			// Handle error jika upload gagal

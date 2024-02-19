@@ -30,9 +30,9 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Upload Vidio</label>
+                        <label class="col-sm-3 col-form-label">Link Vidio</label>
                         <div class="col-sm-9">
-                            <input type="file" name="link_vidio" value="<?= $link_vidio; ?>" class="form-control"
+                            <input type="text" name="link_vidio" value="<?= $link_vidio; ?>" class="form-control"
                                 required />
                         </div>
                     </div>

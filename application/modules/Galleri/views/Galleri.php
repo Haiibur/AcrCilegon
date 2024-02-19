@@ -29,11 +29,11 @@
                                 <th data-field="state" data-checkbox="true"></th>
                                 <th data-field="katagori" data-sortable="true">Katagori</th>
                                 <th data-field="nama_galleri">Nama Galleri</th>
-                                <th data-formatter="operateFormatter2">foto Galleri</th>
-                                <th data-formatter="operateFormatter3">foto Galleri</th>
-                                <th data-formatter="operateFormatter4">foto Galleri</th>
-                                <th data-formatter="operateFormatter5">foto Galleri</th>
-                                <th data-field="link_vidio">link Vidio</th>
+                                <th data-formatter="operateFormatter2">Foto Galleri</th>
+                                <th data-formatter="operateFormatter3">Foto Galleri</th>
+                                <th data-formatter="operateFormatter4">Foto Galleri</th>
+                                <th data-formatter="operateFormatter5">Foto Galleri</th>
+                                <th data-field="link_vidio">Link Vidio</th>
                             </tr>
                         </thead>
                     </table>

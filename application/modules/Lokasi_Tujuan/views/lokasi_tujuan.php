@@ -29,7 +29,7 @@
                                 <th data-field="nama_lokasi" data-sortable="true">Nama Lokasi</th>
                                 <th data-field="ket_lokasi">Keterangan Lokasi</th>
                                 <th data-formatter="operateFormatter1">Gambar Lokasi</th>
-                                <th data-formatter="operateFormatter2">Link Vidio</th>
+                                <th data-field="link_vidio">Link Vidio</th>
                             </tr>
                         </thead>
                     </table>

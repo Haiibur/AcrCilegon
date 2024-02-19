@@ -7,15 +7,18 @@
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Katagori</label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" name="katagori" value="<?= $katagori; ?>"
-                                required>
+                            <select name="katagori" class="form-control">
+                                <option disable selected>-- Pilih Katagori --</option>
+                                <option value="1">Prestasi</option>
+                                <option value="2">Event</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Nama Galleri</label>
                         <div class="col-sm-6">
                             <div class="input-group">
-                                <input type="text" name="nama_galleri" value="<?=$nama_galleri;?>" class="form-control "
+                                <input type="text" name="nama_galleri" value="<?=$nama_galleri;?>" class="form-control"
                                     required />
                             </div>
                         </div>
