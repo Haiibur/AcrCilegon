@@ -41,11 +41,11 @@ class Hotel extends CI_Controller
 				'id' => $value->kd_hotel,
 				'ids' => $iddata,
 				'nama_hotel'			 => '<b>' . $value->nama_hotel . '</b>',
-				'foto_1'				 => base_url().'./assets/upload_Hotel/'.$value->foto_1,
-				'foto_2' 				 => base_url().'./assets/upload_Hotel/'.$value->foto_2,
-				'foto_3' 				 => base_url().'./assets/upload_Hotel/'.$value->foto_3,
-				'foto_4' 				 => base_url().'./assets/upload_Hotel/'.$value->foto_4,
-				'foto_5' 				 => base_url().'./assets/upload_Hotel/'.$value->foto_5,
+				'foto_1'				 => base_url().'./assets/upload_hotel/'.$value->foto_1,
+				'foto_2' 				 => base_url().'./assets/upload_hotel/'.$value->foto_2,
+				'foto_3' 				 => base_url().'./assets/upload_hotel/'.$value->foto_3,
+				'foto_4' 				 => base_url().'./assets/upload_hotel/'.$value->foto_4,
+				'foto_5' 				 => base_url().'./assets/upload_hotel/'.$value->foto_5,
 				'titik_lokasi'	 		 => $value->titik_lokasi,
 				'ket_hotel'	 			 => $value->ket_hotel,
 				'harga'	 		 		 => $value->harga,
@@ -83,7 +83,7 @@ class Hotel extends CI_Controller
 		// Konfigurasi untuk upload gambar lokasi
 		$config['upload_path']   = './assets/upload_hotel';
 		$config['allowed_types'] = 'mp4|mp3|jpg|jpeg|png|gif';
-		$config['max_size']      = 200000;
+		$config['max_size']      = 6048;
 		$this->load->library('upload', $config);
 
 		// Upload Hotel 1
@@ -173,8 +173,9 @@ class Hotel extends CI_Controller
 		$data['titik_lokasi']	= $row->titik_lokasi;
 		$data['ket_hotel']		= $row->ket_hotel;
 		$data['harga']			= $row->harga;
-		$data['no_tlp']		= $row->no_tlp;
-		$this->template->load('home', 'form_Hotel', $data);
+		$data['no_tlp']			= $row->no_tlp;
+
+		$this->template->load('home', 'form_hotel', $data);
 		
 	}
 
