@@ -18,7 +18,7 @@ class Lokasi_Vanue extends CI_Controller {
         $data['title'] = "Lokasi Venue :: My Asisten";
         $data['judul'] = 'Lokasi Venue';
         $data['linkpage'] ='';
-		$this->template->load('home', 'Lokasi_Vanue' ,$data);	
+		$this->template->load('home', 'lokasi_venue' ,$data);	
 	}
 
 	function load_lokasi_venue() {

@@ -68,13 +68,13 @@
             </a>
         </li>
         <li>
-            <a href="<?= base_url('lokasi_tujuan'); ?>">
+            <a href="<?= base_url('Lokasi_Tujuan'); ?>">
                 <i class="icon-location-pin"></i>
                 Lokasi Tujuan
             </a>
         </li>
         <li>
-            <a href="<?= base_url('lokasi_vanue'); ?>">
+            <a href="<?= base_url('Lokasi_Vanue'); ?>">
                 <i class="icon-location-pin"></i>
                 Lokasi Vanue
             </a>
