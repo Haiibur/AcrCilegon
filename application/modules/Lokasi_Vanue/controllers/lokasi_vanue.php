@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class lokasi_vanue extends CI_Controller {
+class Lokasi_Vanue extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->_isLogged();
@@ -18,7 +18,7 @@ class lokasi_vanue extends CI_Controller {
         $data['title'] = "Lokasi Venue :: My Asisten";
         $data['judul'] = 'Lokasi Venue';
         $data['linkpage'] ='';
-		$this->template->load('home', 'lokasi_venue' ,$data);	
+		$this->template->load('home', 'Lokasi_Vanue' ,$data);	
 	}
 
 	function load_lokasi_venue() {

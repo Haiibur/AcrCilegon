@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
                 <form id="formData" action="<?= $url; ?>" method="POST" enctype="multipart/form-data"
-                    role="<?= base_url(); ?>lokasi_tujuan">
+                    role="<?= base_url(); ?>Lokasi_Tujuan">
                     <input type="hidden" name="id" value="<?= $id; ?>">
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Nama Lokasi</label>

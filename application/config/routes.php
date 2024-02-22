@@ -49,14 +49,14 @@ $route['form_ubah_galleri/(:any)'] = 'Galleri/edit_galleri/$1';
 $route['Hotel']= 'Hotel';
 
 // Menu Lokasi Tujuan
-$route['lokasi_tujuan']                  = 'lokasi_tujuan';
-$route['form_tambah_lokasi_tujuan']      = 'lokasi_tujuan/form_tambah_lokasi_tujuan';
-$route['form_ubah_lokasi_tujuan/(:any)'] = 'lokasi_tujuan/edit_lokasi_tujuan/$1';
+$route['Lokasi_Tujuan']                  = 'Lokasi_Tujuan';
+$route['form_tambah_lokasi_tujuan']      = 'Lokasi_Tujuan/form_tambah_lokasi_tujuan';
+$route['form_ubah_lokasi_tujuan/(:any)'] = 'Lokasi_Tujuan/edit_lokasi_tujuan/$1';
 
 // Menu Lokasi Vanue
-$route['lokasi_venue']                  = 'lokasi_vanue';
-$route['form_tambah_lokasi_venue']      = 'lokasi_vanue/form_tambah_lokasi_venue';
-$route['form_ubah_lokasi_venue/(:any)'] = 'lokasi_vanue/edit_lokasi_venue/$1';
+$route['Lokasi_Vanue']                  = 'Lokasi_Vanue';
+$route['form_tambah_lokasi_venue']      = 'Lokasi_Vanue/form_tambah_lokasi_venue';
+$route['form_ubah_lokasi_venue/(:any)'] = 'Lokasi_Vanue/edit_lokasi_venue/$1';
 
 // Menu Wisata
 $route['Wisata']= 'Wisata';

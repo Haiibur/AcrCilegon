@@ -22,7 +22,7 @@
                     <table id="table" class="table table-striped" data-toggle="table" data-toolbar="#toolbar"
                         data-pagination="true" data-search="true" data-sort-order="desc" data-id-field="id"
                         data-page-list="[10, 25, 50, 100, all]"
-                        data-url="<?=base_url('lokasi_tujuan/load_lokasi_tujuan');?>">
+                        data-url="<?=base_url('Lokasi_Tujuan/load_lokasi_tujuan');?>">
                         <thead>
                             <tr style="text-align: center;">
                                 <th data-field="state" data-checkbox="true"></th>
