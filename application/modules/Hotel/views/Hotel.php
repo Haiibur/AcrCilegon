@@ -28,11 +28,11 @@
                             <tr style="text-align:center;">
                                 <th data-field="state" data-checkbox="true"></th>
                                 <th data-formatter="operateFormatter2">Foto Hotel</th>
-                                <th data-field="nama_hotel" data-sortable="true">nNama Hotel</th>
+                                <th data-field="nama_hotel" data-sortable="true">Nama Hotel</th>
                                 <th data-field="titik_lokasi">Titik Lokasi</th>
                                 <th data-field="ket_hotel">Keterangan</th>
                                 <th data-field="harga">Harga</th>
-                                <th data-field="no_telp">Nomer Telphone</th>
+                                <th data-field="no_tlp">Nomer Telphone</th>
                             </tr>
                         </thead>
                     </table>
@@ -91,7 +91,7 @@ var $table = $('#table')
 
 function operateFormatter2(value, row, index) {
     return [
-        '<img src="' + row.foto_galleri_2 +
+        '<img src="' + row.foto_1 +
         '" alt="" style="display: block; width: 100px; margin-left: auto; margin-right: auto; height: 50%;">',
     ].join('')
 }
