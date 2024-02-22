@@ -199,7 +199,8 @@ class Galleri extends CI_Controller
 									'foto_galleri_4' => $foto_galleri_4,
 									'foto_galleri_5' => $foto_galleri_5,
 									'link_vidio' 	 => $this->input->post('link_vidio')
-								]
+								],
+								'where' => ['kd_galleri' => $this->input->post('id')]
 							];
 							
 							$this->Modular->queryBuild($req);
