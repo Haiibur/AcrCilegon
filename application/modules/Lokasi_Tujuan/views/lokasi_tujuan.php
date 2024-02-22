@@ -24,11 +24,11 @@
                         data-page-list="[10, 25, 50, 100, all]"
                         data-url="<?=base_url('lokasi_tujuan/load_lokasi_tujuan');?>">
                         <thead>
-                            <tr>
+                            <tr style="text-align: center;">
                                 <th data-field="state" data-checkbox="true"></th>
+                                <th data-formatter="operateFormatter1">Gambar Lokasi</th>
                                 <th data-field="nama_lokasi" data-sortable="true">Nama Lokasi</th>
                                 <th data-field="ket_lokasi">Keterangan Lokasi</th>
-                                <th data-formatter="operateFormatter1">Gambar Lokasi</th>
                                 <th data-field="link_vidio">Link Vidio</th>
                             </tr>
                         </thead>
@@ -88,9 +88,8 @@ var $table = $('#table')
 
 function operateFormatter1(value, row, index) {
     return [
-        '<a href="' + row.gambar_lokasi + '" class="btn btn-primary">',
-        'Lihat',
-        '</a'
+        '<img src="' + row.gambar_lokasi +
+        '" alt="" style="display: block; width: 100px; margin-left: auto; margin-right: auto; height: 50%;">',
     ].join('')
 }
 

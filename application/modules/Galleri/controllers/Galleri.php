@@ -36,7 +36,7 @@ class Galleri extends CI_Controller
 		$res = $this->Modular->queryBuild($req)->result();
 		$output = array();
 		foreach ($res as $key => $value) {
-			$iddata = $value->kd_galleri . '=t_galleri=kd_galleri=Galleri=0.jpg';
+			$iddata = $value->kd_galleri . '=t_galleri=kd_galleri=Galleri=0.jpg';			
 			$data = [
 				'id' => $value->kd_galleri,
 				'ids' => $iddata,

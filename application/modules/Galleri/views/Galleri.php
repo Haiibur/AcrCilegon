@@ -25,14 +25,14 @@
                         data-pagination="true" data-search="true" data-sort-order="desc" data-id-field="id"
                         data-page-list="[10, 25, 50, 100, all]" data-url="<?=base_url('Galleri/load_Galleri');?>">
                         <thead>
-                            <tr>
+                            <tr style="text-align:center;">
                                 <th data-field="state" data-checkbox="true"></th>
+                                <th data-formatter="operateFormatter2">Foto Galleri</th>
                                 <th data-field="katagori" data-sortable="true">Katagori</th>
                                 <th data-field="nama_galleri">Nama Galleri</th>
-                                <th data-formatter="operateFormatter2">Foto Galleri</th>
-                                <th data-formatter="operateFormatter3">Foto Galleri</th>
+                                <!-- <th data-formatter="operateFormatter3">Foto Galleri</th>
                                 <th data-formatter="operateFormatter4">Foto Galleri</th>
-                                <th data-formatter="operateFormatter5">Foto Galleri</th>
+                                <th data-formatter="operateFormatter5">Foto Galleri</th> -->
                                 <th data-field="link_vidio">Link Vidio</th>
                             </tr>
                         </thead>
@@ -92,33 +92,32 @@ var $table = $('#table')
 
 function operateFormatter2(value, row, index) {
     return [
-        '<a href="' + row.foto_galleri_2 + '" class="btn btn-primary">',
-        'Lihat',
-        '</a'
+        '<img src="' + row.foto_galleri_2 +
+        '" alt="" style="display: block; width: 100px; margin-left: auto; margin-right: auto; height: 50%;">',
     ].join('')
 }
 
-function operateFormatter3(value, row, index) {
-    return [
-        '<a href="' + row.foto_galleri_3 + '" class="btn btn-primary">',
-        'Lihat',
-        '</a'
-    ].join('')
-}
+// function operateFormatter3(value, row, index) {
+//     return [
+//         '<a href="' + row.foto_galleri_3 + '" class="btn btn-primary">',
+//         'Lihat',
+//         '</a'
+//     ].join('')
+// }
 
-function operateFormatter4(value, row, index) {
-    return [
-        '<a href="' + row.foto_galleri_4 + '" class="btn btn-primary">',
-        'Lihat',
-        '</a'
-    ].join('')
-}
+// function operateFormatter4(value, row, index) {
+//     return [
+//         '<a href="' + row.foto_galleri_4 + '" class="btn btn-primary">',
+//         'Lihat',
+//         '</a'
+//     ].join('')
+// }
 
-function operateFormatter5(value, row, index) {
-    return [
-        '<a href="' + row.foto_galleri_5 + '" class="btn btn-primary">',
-        'Lihat',
-        '</a'
-    ].join('')
-}
+// function operateFormatter5(value, row, index) {
+//     return [
+//         '<a href="' + row.foto_galleri_5 + '" class="btn btn-primary">',
+//         'Lihat',
+//         '</a'
+//     ].join('')
+// }
 </script>

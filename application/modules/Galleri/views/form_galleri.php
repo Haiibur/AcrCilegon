@@ -9,8 +9,8 @@
                         <div class="col-sm-9">
                             <select name="katagori" class="form-control">
                                 <option disable selected>-- Pilih Katagori --</option>
-                                <option value="1">Prestasi</option>
-                                <option value="2">Event</option>
+                                <option value="Prestasi">Prestasi</option>
+                                <option value="Event">Event</option>
                             </select>
                         </div>
                     </div>
