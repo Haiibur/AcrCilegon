@@ -59,7 +59,7 @@ class Wisata extends CI_Controller
 	{
 		$data['title'] 			= "Wisata :: My Asisten";
 		$data['judul'] 			= 'Form Wisata';
-		$data['url'] 			= base_url('Wisata/Insert_wisata');
+		$data['url'] 			= base_url('Wisata/Insert_Wisata');
 		$data['id'] 			= rand(0, 99) . date('mdh');
 
 		$data['nama_wisata']   		= '';
@@ -74,7 +74,7 @@ class Wisata extends CI_Controller
 		$this->template->load('home', 'form_wisata', $data);
 	}
 
-	function Insert_wisata()
+	function Insert_Wisata()
 	{
 		// Konfigurasi untuk upload gambar lokasi
 		$config['upload_path']   = './assets/upload_wisata';
