@@ -62,6 +62,8 @@ $route['form_ubah_lokasi_venue/(:any)'] = 'Lokasi_Vanue/edit_lokasi_venue/$1';
 
 // Menu Wisata
 $route['Wisata']= 'Wisata';
+$route['form_tambah_wisata']      = 'Wisata/form_tambah_wisata';
+$route['form_ubah_wisata/(:any)'] = 'Wisata/edit_wisata/$1';
 
 // Menu Level Peserta
 $route['Level_Peserta']= 'Level_Peserta';
