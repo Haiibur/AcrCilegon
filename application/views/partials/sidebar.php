@@ -86,13 +86,13 @@
             </a>
         </li>
         <li>
-            <a href="<?= base_url('wisata'); ?>">
+            <a href="<?= base_url('Level_Peserta'); ?>">
                 <i class="fas fa-photo-video"></i>
                 Level Peserta
             </a>
         </li>
         <li>
-            <a href="<?= base_url('Umdangan'); ?>">
+            <a href="<?= base_url('Undangan'); ?>">
                 <i class="fas fa-grip-horizontal"></i>
                 Undangan
             </a>
@@ -104,7 +104,7 @@
             </a>
         </li>
         <li>
-            <a href="<?= base_url('Kehadiran'); ?>">
+            <a href="<?= base_url('Absen_Kehadiran'); ?>">
                 <i class="fas fa-grip-horizontal"></i>
                 Kehadiran
             </a>

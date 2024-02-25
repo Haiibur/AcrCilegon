@@ -36,5 +36,51 @@
       }
     }
   }
+
+  function get_provinsi()
+  {
+    $query = "SELECT * FROM t_provinsi";
+    return $this->db->query($query);
+  }
+
+  function level_peserta()
+  {
+    $query = "SELECT * FROM t_peserta_level";
+    return $this->db->query($query);
+  }
+
+  function get_kabupaten($id)
+  {
+    $query = "SELECT * FROM t_kabupaten where prov_kd='$id'";
+    return $this->db->query($query);
+  }
+  
+  function Kabupaten()
+  {
+    $query = "SELECT * FROM t_kabupaten INNER JOIN t_provinsi ON t_provinsi.kd_provinsi= t_kabupaten.prov_kd";
+    return $this->db->query($query);
+  }
+
+  function Undangan()
+  {
+    $query = "SELECT * FROM t_undangan 
+    INNER JOIN t_provinsi ON t_provinsi.kd_provinsi= t_undangan.prov_kd 
+    INNER JOIN t_kabupaten ON t_kabupaten.kd_kabupaten=t_undangan.kab_kd";
+    return $this->db->query($query);
+  }
+
+  function Pendaftaran()
+  {
+    $query = "SELECT * FROM t_pendaftaran 
+    INNER JOIN t_undangan ON t_undangan.kode_undangan= t_pendaftaran.undangan_kd 
+    INNER JOIN t_peserta_level ON t_peserta_level.kd_level_peserta=t_pendaftaran.level_peserta";
+    return $this->db->query($query);
+  }
+
+  public function getMax($table = null, $field = null)
+	{
+		$this->db->select_max($field);
+		return $this->db->get($table)->row_array()[$field];
+	}
 } 
 ?>

@@ -26,14 +26,15 @@ $route['api/agenda-hari-ini']   = 'Api/agendaToday';
 $route['api/agenda-besok']      = 'Api/agendaTomorrow';
 $route['api/riwayat-agenda']    = 'Api/agendaRiwayat';
 
-// Menu Agenda Acara
-$route['Agenda_Acara']= 'Agenda_Acara';
-
 // Menu Provinsi
 $route['Provinsi']= 'Provinsi';
+$route['form_tambah_provinsi']      = 'Provinsi/form_tambah_provinsi';
+$route['form_ubah_provinsi/(:any)'] = 'Provinsi/edit_provinsi/$1';
 
 // Menu Kabupaten
 $route['Kabupaten']= 'Kabupaten';
+$route['form_tambah_kabupaten']      = 'Kabupaten/form_tambah_kabupaten';
+$route['form_ubah_kabupaten/(:any)'] = 'Kabupaten/edit_kabupaten/$1';
 
 // Menu Materi
 $route['Materi']= 'Materi';
@@ -67,15 +68,23 @@ $route['form_ubah_wisata/(:any)'] = 'Wisata/edit_wisata/$1';
 
 // Menu Level Peserta
 $route['Level_Peserta']= 'Level_Peserta';
+$route['form_tambah_level_peserta']      = 'Level_Peserta/form_tambah_level_peserta';
+$route['form_ubah_level_peserta/(:any)'] = 'Level_Peserta/edit_level_peserta/$1';
 
 // Menu Undangan
 $route['Undangan']= 'Undangan';
+$route['form_tambah_undangan']      = 'Undangan/form_tambah_undangan';
+$route['form_ubah_undangan/(:any)'] = 'Undangan/edit_undangan/$1';
 
 // Menu Pendaftaran
 $route['Pendaftaran']= 'Pendaftaran';
+$route['form_tambah_pendaftaran']      = 'Pendaftaran/form_tambah_pendaftaran';
+$route['form_ubah_pendaftaran/(:any)'] = 'Pendaftaran/edit_pendaftaran/$1';
 
 // Menu Absen Kehadiran
 $route['Absen_Kehadiran']= 'Absen_Kehadiran';
+$route['form_tambah_absen_kehadiran']      = 'Absen_Kehadiran/form_tambah_absen_kehadiran';
+$route['form_ubah_absen_kehadiran/(:any)'] = 'Absen_Kehadiran/edit_absen_kehadiran/$1';
 
 // Notfound
 $route['404_override'] = '';
