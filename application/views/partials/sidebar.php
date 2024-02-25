@@ -14,27 +14,21 @@
             </a>
         </li>
         <li>
-            <a href="<?= base_url('level_admin'); ?>">
+            <a href="<?= base_url('admin'); ?>">
                 <i class="fas fa-grip-horizontal"></i>
-                Level Admin
-            </a>
-        </li>
-        <li>
-            <a href="<?= base_url('Admin'); ?>">
-                <i class="fa-solid fa-user-tie"></i>
-                Admin
+                Administrator
             </a>
         </li>
         <li>
             <a href="<?= base_url('Profil'); ?>">
-                <i class="fa-solid fa-users"></i>
+                <i class="fa-solid fa-user-tie"></i>
                 Profil
             </a>
         </li>
         <li>
             <a href="<?= base_url('agenda'); ?>">
                 <i class="icon-notebook"></i>
-                Agenda Acara
+                Agenda
             </a>
         </li>
         <li>
@@ -87,7 +81,7 @@
         </li>
         <li>
             <a href="<?= base_url('Level_Peserta'); ?>">
-                <i class="fas fa-photo-video"></i>
+                <i class="fa-solid fa-users"></i>
                 Level Peserta
             </a>
         </li>
@@ -108,27 +102,6 @@
                 <i class="fas fa-grip-horizontal"></i>
                 Kehadiran
             </a>
-        </li>
-        <li class="dropdown">
-            <a href="#"><i class="icon-settings"></i>
-                Pengaturan
-            </a>
-            <div>
-                <ul>
-                    <li>
-                        <a href="<?= base_url('admin'); ?>">
-                            <i class="icon-user"></i>
-                            Administrator
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url('profil'); ?>">
-                            <i class="fas fa-grip-horizontal"></i>
-                            Profil Sistem
-                        </a>
-                    </li>
-                </ul>
-            </div>
         </li>
     </ul>
 </div>

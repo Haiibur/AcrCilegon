@@ -12,18 +12,6 @@
         </a>
     </div>
     <div class="col-12 col-sm-6 col-xl-4 mt-3">
-        <a href="<?= base_url(); ?>Admin" style="text-decoration: none">
-            <div class="card">
-                <div class="card-body">
-                    <img src="<?=base_url('assets/img/icon/ikm.png');?>" alt="" class="float-right" width="60" />
-                    <h6 class="card-title font-weight-bold">Admin</h6>
-                    <h6 class="card-subtitle mb-2 text-muted text-danger">Data Admin</h6>
-                    <h2></h2>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-12 col-sm-6 col-xl-4 mt-3">
         <a href="<?= base_url(); ?>profil" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
@@ -96,18 +84,6 @@
         </a>
     </div>
     <div class="col-12 col-sm-6 col-xl-4 mt-3">
-        <a href="<?= base_url(); ?>Hotel" style="text-decoration: none">
-            <div class="card">
-                <div class="card-body">
-                    <img src="<?=base_url('assets/img/icon/Hotel.png');?>" alt="" class="float-right" width="60" />
-                    <h6 class="card-title font-weight-bold">Hotel</h6>
-                    <h6 class="card-subtitle mb-2 text-muted text-danger">Data Hotel</h6>
-                    <h2></h2>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-12 col-sm-6 col-xl-4 mt-3">
         <a href="<?= base_url(); ?>Lokasi_Tujuan" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
@@ -128,6 +104,18 @@
                         width="60" />
                     <h6 class="card-title font-weight-bold">Lokasi Venue</h6>
                     <h6 class="card-subtitle mb-2 text-muted text-danger">Data Lokasi Venue</h6>
+                    <h2></h2>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-12 col-sm-6 col-xl-4 mt-3">
+        <a href="<?= base_url(); ?>Hotel" style="text-decoration: none">
+            <div class="card">
+                <div class="card-body">
+                    <img src="<?=base_url('assets/img/icon/Hotel.png');?>" alt="" class="float-right" width="60" />
+                    <h6 class="card-title font-weight-bold">Hotel</h6>
+                    <h6 class="card-subtitle mb-2 text-muted text-danger">Data Hotel</h6>
                     <h2></h2>
                 </div>
             </div>
