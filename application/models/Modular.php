@@ -43,6 +43,12 @@
     return $this->db->query($query);
   }
 
+  function Agenda()
+  {
+    $query = "SELECT * FROM t_agenda";
+    return $this->db->query($query);
+  }
+
   function level_peserta()
   {
     $query = "SELECT * FROM t_peserta_level";
@@ -74,6 +80,16 @@
     $query = "SELECT * FROM t_pendaftaran 
     INNER JOIN t_undangan ON t_undangan.kode_undangan= t_pendaftaran.undangan_kd 
     INNER JOIN t_peserta_level ON t_peserta_level.kd_level_peserta=t_pendaftaran.level_peserta";
+    return $this->db->query($query);
+  }
+
+  function Absen_Kehadiran()
+  {
+    $query = "SELECT * FROM t_absen_kehadiran 
+    INNER JOIN t_agenda ON t_agenda.kd_agenda= t_absen_kehadiran.agenda_kd 
+    INNER JOIN t_provinsi ON t_provinsi.kd_provinsi= t_absen_kehadiran.prov_kd 
+    INNER JOIN t_kabupaten ON t_kabupaten.kd_kabupaten= t_absen_kehadiran.kab_kd 
+    INNER JOIN t_peserta_level ON t_peserta_level.kd_level_peserta=t_absen_kehadiran.peserta_kd";
     return $this->db->query($query);
   }
 
