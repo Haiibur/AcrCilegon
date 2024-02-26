@@ -15,7 +15,7 @@ $route['cek-login']      = 'login/ceklogin';
 $route['admin'] = 'admin';
 
 // Menu Profil
-$route['profil']= 'profil';
+$route['profil']= 'Profil';
 
 // Menu Agenda
 $route['agenda']                = 'agenda';

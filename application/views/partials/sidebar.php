@@ -20,7 +20,7 @@
             </a>
         </li>
         <li>
-            <a href="<?= base_url('Profil'); ?>">
+            <a href="<?= base_url('profil'); ?>">
                 <i class="fa-solid fa-user-tie"></i>
                 Profil
             </a>

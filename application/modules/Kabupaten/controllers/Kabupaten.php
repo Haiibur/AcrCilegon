@@ -53,7 +53,7 @@ class Kabupaten extends CI_Controller
 		$data['provinsi']		= $this->Modular->get_provinsi()->result();
 		$data['nama_kabupaten']	= '';
 		
-		$this->template->load('home', 'form_Kabupaten', $data);
+		$this->template->load('home', 'form_kabupaten', $data);
 	}
 
 	function Insert_kabupaten()
@@ -84,15 +84,15 @@ class Kabupaten extends CI_Controller
 		$row = $this->Modular->queryBuild($req)->row();
 		$data['title'] = "Update Kabupaten :: My Asisten";
 		$data['judul'] = 'Update Kabupaten ';
-		$data['url'] = base_url('Kabupaten/update_Kabupaten');
+		$data['url'] = base_url('Kabupaten/update_kabupaten');
 		$data['id'] = $id;
 		$data['provinsi']		= $this->Modular->get_provinsi()->result();
 		$data['nama_kabupaten'] 	= $row->nama_kabupaten;
-		$this->template->load('home', 'form_Kabupaten', $data);
+		$this->template->load('home', 'form_kabupaten', $data);
 		
 	}
 
-	function update_Kabupaten()
+	function update_kabupaten()
 	{
 		$req = [
 			'method' => 'update',
