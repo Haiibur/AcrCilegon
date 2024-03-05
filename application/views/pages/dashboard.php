@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-body">
                     <img src="<?=base_url('assets/img/icon/Admin.png');?>" alt="" class="float-right" width="60" />
-                    <h6 class="card-title font-weight-bold">Administrator Level</h6>
+                    <h6 class="card-title font-weight-bold">Administrator</h6>
                     <h6 class="card-subtitle mb-2 text-muted">Data Level Admin</h6>
                     <h2></h2>
                 </div>
@@ -27,33 +27,9 @@
         <a href="<?= base_url(); ?>agenda" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
-                    <img src="<?=base_url('assets/img/icon/Agenda02.png');?>" alt="" class="float-right" width="60" />
-                    <h6 class="card-title font-weight-bold">Agenda</h6>
+                    <img src="<?=base_url('assets/img/icon/Agenda.png');?>" alt="" class="float-right" width="60" />
+                    <h6 class="card-title font-weight-bold">Agenda Kegiatan</h6>
                     <h6 class="card-subtitle mb-2 text-muted">Kegiatan Bulan Ini</h6>
-                    <h2></h2>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-12 col-sm-6 col-xl-4 mt-3">
-        <a href="<?= base_url(); ?>Provinsi" style="text-decoration: none">
-            <div class="card">
-                <div class="card-body">
-                    <img src="<?=base_url('assets/img/icon/Provinsi.png');?>" alt="" class="float-right" width="60" />
-                    <h6 class="card-title font-weight-bold">Provinsi</h6>
-                    <h6 class="card-subtitle mb-2 text-muted text-danger">Data Provinsi</h6>
-                    <h2></h2>
-                </div>
-            </div>
-        </a>
-    </div>
-    <div class="col-12 col-sm-6 col-xl-4 mt-3">
-        <a href="<?= base_url(); ?>Kabupaten" style="text-decoration: none">
-            <div class="card">
-                <div class="card-body">
-                    <img src="<?=base_url('assets/img/icon/Kabupaten.png');?>" alt="" class="float-right" width="60" />
-                    <h6 class="card-title font-weight-bold">Kabupaten</h6>
-                    <h6 class="card-subtitle mb-2 text-muted text-danger">Data Kabupaten</h6>
                     <h2></h2>
                 </div>
             </div>

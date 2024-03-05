@@ -25,9 +25,9 @@
                             <tr>
                                 <th data-field="state" data-checkbox="true"></th>
                                 <th data-field="nama" data-sortable="true">Nama Agenda</th>
-                                <th data-field="tamu">Tamu</th>
-                                <th data-field="detail">Detail</th>
-                                <th data-formatter="operateFormatter">Naskah</th>
+                                <th data-field="kd_venue">Lokasi Acara</th>
+                                <th data-field="jumlah_peserta">Jumlah Peserta</th>
+                                <th data-field="detail">Tanggal Waktu Acara</th>
                             </tr>
                         </thead>
                     </table>
@@ -81,7 +81,7 @@
     </div>
 </div>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 var $table = $('#table')
 
 function operateFormatter(value, row, index) {
@@ -91,4 +91,4 @@ function operateFormatter(value, row, index) {
         '</a'
     ].join('')
 }
-</script>
+</script> -->

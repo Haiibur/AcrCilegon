@@ -35,9 +35,9 @@ class Lokasi_Vanue extends CI_Controller {
 		foreach ($res as $key => $value) {
 			$iddata = $value->kd_venue.'=t_lokasi_venue=kd_venue=lokasi_vanue=0.jpg';
 			$data = [
-				'id' 	=> $value->kd_venue,
-				'ids' => $iddata,
-				'nama_venue' 	=> '<b>'.$value->nama_venue.'</b>',
+				'id' 			=> $value->kd_venue,
+				'ids' 			=> $iddata,
+				'nama_venue' 	=> $value->nama_venue,
 				'foto_venue' 	=> base_url().'./assets/upload_Lokasi_Vanue/'.$value->foto_venue,
 				'titik_lokasi'  => $value->titik_lokasi,
 				'ket_venue' 	=> $value->ket_venue,

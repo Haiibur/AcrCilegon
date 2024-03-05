@@ -40,8 +40,8 @@ class Galleri extends CI_Controller
 			$data = [
 				'id' => $value->kd_galleri,
 				'ids' => $iddata,
-				'katagori'		 => '<b>' . $value->katagori . '</b>',
-				'nama_galleri'	 => '<b>' . $value->nama_galleri . '</b>',
+				'katagori'		 => $value->katagori,
+				'nama_galleri'	 => $value->nama_galleri,
 				'foto_galleri_2' => base_url().'./assets/upload_galleri/'.$value->foto_galleri_2,
 				'foto_galleri_3' => base_url().'./assets/upload_galleri/'.$value->foto_galleri_3,
 				'foto_galleri_4' => base_url().'./assets/upload_galleri/'.$value->foto_galleri_4,

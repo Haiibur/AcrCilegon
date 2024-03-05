@@ -49,6 +49,12 @@
     return $this->db->query($query);
   }
 
+  function Venue()
+  {
+    $query = "SELECT * FROM t_lokasi_venue";
+    return $this->db->query($query);
+  }
+
   function level_peserta()
   {
     $query = "SELECT * FROM t_peserta_level";

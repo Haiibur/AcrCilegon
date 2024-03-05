@@ -18,7 +18,7 @@
                         <div class="col-sm-9">
                             <div class="input-group">
                                 <input type="text" name="kode_undangan" value="<?= $kode_undangan ?>"
-                                    class="form-control" readonly>
+                                    class="form-control">
                             </div>
                         </div>
                     </div>

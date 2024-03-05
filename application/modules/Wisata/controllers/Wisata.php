@@ -40,7 +40,7 @@ class Wisata extends CI_Controller
 			$data = [
 				'id' 					 => $value->kd_wisata,
 				'ids' 					 => $iddata,
-				'nama_wisata'			 => '<b>' . $value->nama_wisata . '</b>',
+				'nama_wisata'			 => $value->nama_wisata,
 				'foto_1'				 => base_url().'./assets/upload_wisata/'.$value->foto_1,
 				'foto_2' 				 => base_url().'./assets/upload_wisata/'.$value->foto_2,
 				'foto_3' 				 => base_url().'./assets/upload_wisata/'.$value->foto_3,

@@ -40,7 +40,7 @@ class Hotel extends CI_Controller
 			$data = [
 				'id' => $value->kd_hotel,
 				'ids' => $iddata,
-				'nama_hotel'			 => '<b>' . $value->nama_hotel . '</b>',
+				'nama_hotel'			 => $value->nama_hotel,
 				'foto_1'				 => base_url().'./assets/upload_hotel/'.$value->foto_1,
 				'foto_2' 				 => base_url().'./assets/upload_hotel/'.$value->foto_2,
 				'foto_3' 				 => base_url().'./assets/upload_hotel/'.$value->foto_3,

@@ -54,8 +54,8 @@
                         <label class="col-sm-3 col-form-label">Keterangan</label>
                         <div class="col-sm-6">
                             <div class="input-group">
-                                <input type="text" name="ket_hotel" value="<?= $ket_hotel; ?>" class="form-control"
-                                    required />
+                                <textarea class="form-control" type="text" name="ket_venue" value="<?= $ket_hotel; ?>">
+                            </textarea>
                             </div>
                         </div>
                     </div>

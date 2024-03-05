@@ -12,16 +12,6 @@
                                 required>
                         </div>
                     </div>
-
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Keterangan Lokasi</label>
-                        <div class="col-sm-9">
-                            <div class="input-group">
-                                <input name="ket_lokasi" value="<?= $ket_lokasi; ?>" class="form-control" required>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Upload Gambar Lokasi</label>
                         <div class="col-sm-9">
@@ -34,6 +24,15 @@
                         <div class="col-sm-9">
                             <input type="text" name="link_vidio" value="<?= $link_vidio; ?>" class="form-control"
                                 required />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label">Keterangan Lokasi</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <textarea class="form-control" type="text" name="ket_venue" value="<?= $ket_lokasi; ?>">
+                            </textarea>
+                            </div>
                         </div>
                     </div>
                     <div class="row mb-3">

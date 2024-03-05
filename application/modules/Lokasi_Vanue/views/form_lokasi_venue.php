@@ -14,7 +14,7 @@
                     </div>
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Foto Venue</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-9">
                             <div class="input-group">
                                 <input type="file" name="foto_venue" value="<?=$foto_venue;?>" class="form-control"
                                     required />
@@ -30,13 +30,27 @@
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Keterangan Venue</label>
                         <div class="col-sm-9">
-                            <input class="form-control" type="text" name="ket_venue" value="<?= $ket_venue; ?>">
+                            <textarea class="form-control" type="text" name="ket_venue" value="<?= $ket_venue; ?>">
+                            </textarea>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Status</label>
                         <div class="col-sm-9">
-                            <input class="form-control" type="number" name="status" value<?= $status ?>>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" value="<?= 'Aktif' ?>"
+                                    id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Aktif
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" value="<?= 'Non-Aktif' ?>"
+                                    id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Non-Aktif
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="row mb-3">

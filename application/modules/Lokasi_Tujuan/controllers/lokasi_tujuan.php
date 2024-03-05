@@ -35,10 +35,10 @@ class Lokasi_Tujuan extends CI_Controller {
 			$data = [
 				'id' 	=> $value->kd_lokasi,
 				'ids' => $iddata,
-				'nama_lokasi' 	=> '<b>'.$value->nama_lokasi.'</b>',
-				'ket_lokasi' 	=> '<b>'.$value->ket_lokasi.'</b>',
+				'nama_lokasi' 	=> $value->nama_lokasi,
+				'ket_lokasi' 	=> $value->ket_lokasi,
 				'gambar_lokasi' => base_url().'./assets/upload_Lokasi_Tujuan/'.$value->gambar_lokasi,
-				'link_vidio' 	=> '<b>'.$value->link_vidio.'</b>',
+				'link_vidio' 	=> $value->link_vidio,
 			];
 			array_push($output, $data);
 		}

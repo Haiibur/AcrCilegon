@@ -39,10 +39,10 @@ class Level_Peserta extends CI_Controller
 		foreach ($res as $key => $value) {
 			$iddata = $value->kd_level_peserta . '=t_peserta_level=kd_level_peserta=Level_Peserta=0.jpg';
 			$data = [
-				'id' => $value->kd_level_peserta,
-				'ids' => $iddata,
-				'nama_level_peserta'		 => '<b>' . $value->nama_level_peserta . '</b>',
-				'warna_level'		 => $value->warna_level,
+				'id' 					=> $value->kd_level_peserta,
+				'ids' 					=> $iddata,
+				'nama_level_peserta'	=> $value->nama_level_peserta,
+				'warna_level'		 	=> $value->warna_level,
 			];
 			array_push($output, $data);
 		}

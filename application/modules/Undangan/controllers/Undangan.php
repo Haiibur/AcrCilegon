@@ -69,16 +69,16 @@ class Undangan extends CI_Controller
 		///// END ID UNDANGAN /////
 
 		///// KODE UNDANGAN /////
-		$table2       	= 't_undangan';
-		$field2       	= 'kode_undangan';
+		// $table2       	= 't_undangan';
+		// $field2       	= 'kode_undangan';
 
-		$lastKode2    	= $this->Modular->getMax($table2, $field2);
+		// $lastKode2    	= $this->Modular->getMax($table2, $field2);
 
-		$noUrut2      	= (int) substr($lastKode2, -4, 4);
-		$noUrut2++;
+		// $noUrut2      	= (int) substr($lastKode2, -4, 4);
+		// $noUrut2++;
 
-		$str2         	= 'ACR';
-		$kode_undangan  = $str2 . sprintf('%04s', $noUrut2);
+		// $str2         	= 'ACR';
+		// $kode_undangan  = $str2 . sprintf('%04s', $noUrut2);
 		///// END KODE UNDANGAN /////
 
 		$data['title'] 			= "Undangan :: My Asisten";
@@ -87,7 +87,7 @@ class Undangan extends CI_Controller
 		$data['id'] 			= rand(0, 99) . date('mdh');
 
 		$data['id_undangan']		= $id_undangan;
-		$data['kode_undangan']		= $kode_undangan;
+		$data['kode_undangan']		= '';
 		$data['provinsi']		= $this->Modular->get_provinsi()->result();
 		$data['nama_undangan']	= '';
 		

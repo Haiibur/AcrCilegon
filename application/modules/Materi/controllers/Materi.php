@@ -41,7 +41,7 @@ class Materi extends CI_Controller
 			$data = [
 				'id' => $value->kd_materi,
 				'ids' => $iddata,
-				'nama_materi'		 => '<b>' . $value->nama_materi . '</b>',
+				'nama_materi'		 => $value->nama_materi,
 				'file_materi'		 => base_url().'./assets/upload_materi/'.$value->file_materi,
 			];
 			array_push($output, $data);

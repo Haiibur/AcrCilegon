@@ -45,8 +45,8 @@
                         <label class="col-sm-3 col-form-label">Keterangan</label>
                         <div class="col-sm-6">
                             <div class="input-group">
-                                <input type="text" name="ket_wisata" value="<?= $ket_wisata; ?>" class="form-control"
-                                    required />
+                                <textarea class="form-control" type="text" name="ket_venue" value="<?= $ket_wisata; ?>">
+                            </textarea>
                             </div>
                         </div>
                     </div>

@@ -36,7 +36,7 @@ class Absen_Kehadiran extends CI_Controller
 				'ids'				 => $iddata,
 				'kd_hadir'			 => $value->kd_hadir,
 				'peserta_kd'		 => $value->nama_level_peserta,
-				'agenda_kd'		 => $value->nama_agenda,
+				'agenda_kd'			 => $value->nama_agenda,
 				'tgl_absen'			 => date("d M Y H:i:s", strtotime($value->tgl_absen)),
 				'nama_provinsi'		 => $value->nama_provinsi,
 				'nama_kabupaten'	 => $value->nama_kabupaten,

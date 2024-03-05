@@ -39,12 +39,12 @@ class Agenda extends CI_Controller {
 				</div>
 			';
 			$data = [
-				'id' => $value->kd_agenda,
-				'ids' => $iddata,
-				'nama' => '<b>'.$value->nama_agenda.'</b>',
-				'tamu' => '<b>'.$value->tamu_utama.'</b>',
-				'detail' => $detail,
-				'naskah' => base_url('naskah-agenda/'.$value->kd_agenda)
+				'id' 				=> $value->kd_agenda,
+				'ids' 				=> $iddata,
+				'nama' 				=> $value->nama_agenda,
+				'kd_venue' 			=> $value->tamu_utama,
+				'detail' 			=> $detail,
+				'jumlah_peserta' 	=> $value->jumlah_peserta
 			];
 			array_push($output, $data);
 		}
@@ -62,9 +62,10 @@ class Agenda extends CI_Controller {
 		$data['tgl'] = '';
 		$data['jam'] = '';
 		$data['jam_akhir'] = '';
-		$data['lokasi_acara'] = '';
-		$data['naskah'] = '';
-		$data['alamat'] = '';
+		
+		$data['kd_venue'] = $this->Modular->Venue()->result();
+		$data['jumlah_peserta'] = '';
+		$data['keterangan'] = '';
 		$this->template->load('home', 'form_agenda' ,$data);	
 	}
 
@@ -75,16 +76,16 @@ class Agenda extends CI_Controller {
 			'value' => [
 				'kd_agenda' => $this->input->post('id'),
 				'nama_agenda' => $this->input->post('nama'),
-				'tamu_utama' => $this->input->post('tamu'),
 				'tgl_agenda' => $this->input->post('tgl'),
 				'jam_agenda' => $this->input->post('jam'),
 				'jam_akhir' => $this->input->post('jam_akhir'),
-				'lokasi_acara' => $this->input->post('lokasi_acara'),
 				'naskah_pidato' => $this->input->post('naskah'),
 				'sts_agenda' => '1',
 				'admin_ygbuat' => $this->session->userdata('kd_sesi'),
 				'tgl_buat' => date('Y-m-d H:i:s'),
-				'alamat' => $this->input->post('alamat')
+				'kd_venue' => $this->input->post('kd_venue'),
+				'jumlah_peserta' => $this->input->post('jumlah_peserta'),
+				'keterangan' => $this->input->post('keterangan')
 			]
 		];
 		$this->Modular->queryBuild($req);
@@ -110,9 +111,10 @@ class Agenda extends CI_Controller {
 		$data['tgl'] = $row->tgl_agenda;
 		$data['jam'] = $row->jam_agenda;
 		$data['jam_akhir'] = $row->jam_akhir;
-		$data['naskah'] = $row->naskah_pidato;
-		$data['alamat'] = $row->alamat;
-		$data['lokasi_acara'] = $row->lokasi_acara;
+		
+		$data['kd_venue'] = $this->Modular->Venue()->result();
+		$data['jumlah_peserta'] = $row->jumlah_peserta;
+		$data['keterangan'] = $row->keterangan;
 		$this->template->load('home', 'form_agenda' ,$data);	
 	}
 
@@ -129,7 +131,10 @@ class Agenda extends CI_Controller {
 				'lokasi_acara' => $this->input->post('lokasi_acara'),
 				'naskah_pidato' => $this->input->post('naskah'),
 				'admin_ygbuat' => '',
-				'alamat' => $this->input->post('alamat')
+
+				'kd_venue' => $this->input->post('kd_venue'),
+				'jumlah_venue' => $this->input->post('jumlah_peserta'),
+				'keterangan' => $this->input->post('keterangan')
 			],
 			'where' => ['kd_agenda' => $this->input->post('id')]
 		];
