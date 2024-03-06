@@ -4,33 +4,31 @@
             <div class="card-body">
                 <div id="toolbar">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <a href="<?=base_url('form_tambah_lokasi_venue');?>" class="btn btn-success"
-                            title="Buat Agenda">
-                            <i class="fa fa-plus"></i> Tambah Lokasi Venue
+                        <a href="<?=base_url('form_tambah_materi');?>" class="btn btn-success" title="Buat Agenda">
+                            <i class="fa fa-plus"></i>
+                            Tambah Materi
                         </a>
-                        <a href="<?=base_url('form_ubah_lokasi_venue/');?>" class="btn btn-warning" id="btnRedir"
+                        <a href="<?=base_url('form_ubah_materi/');?>" class="btn btn-warning" id="btnRedir"
                             title="Ubah Agenda">
-                            <i class="fa fa-edit"></i> Edit
+                            <i class="fa fa-edit"></i>
+                            Edit
                         </a>
                         <a href="<?=base_url('home/hapusData'); ?>" class="btn btn-danger" id="btnDestroy"
                             title="Hapus Data">
-                            <i class="far fa-trash-alt"></i> Hapus
+                            <i class="far fa-trash-alt"></i>
+                            Hapus
                         </a>
                     </div>
                 </div>
                 <div class="table-responsive">
                     <table id="table" class="table table-striped" data-toggle="table" data-toolbar="#toolbar"
                         data-pagination="true" data-search="true" data-sort-order="desc" data-id-field="id"
-                        data-page-list="[10, 25, 50, 100, all]"
-                        data-url="<?=base_url('Lokasi_Vanue/load_lokasi_venue');?>">
+                        data-page-list="[10, 25, 50, 100, all]" data-url="<?=base_url('Materi/load_Materi');?>">
                         <thead>
-                            <tr style="text-align: center;">
+                            <tr>
                                 <th data-field="state" data-checkbox="true"></th>
-                                <th data-formatter="operateFormatter" data-width="100">Foto Venue</th>
-                                <th data-field="nama_venue" data-sortable="true">Nama Venue</th>
-                                <th data-field="titik_lokasi">Titik lokasi</th>
-                                <th data-field="ket_venue">Keterangan Venue</th>
-                                <th data-field="status">Status</th>
+                                <th data-field="nama_materi">Nama Materi</th>
+                                <th data-formatter="operateFormatter">File Materi</th>
                             </tr>
                         </thead>
                     </table>
@@ -45,6 +43,7 @@
         <div class="modal-content">
             <div class="modal-header backmodal">
                 <h4 class="modal-title">
+
                 </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -88,8 +87,9 @@ var $table = $('#table')
 
 function operateFormatter(value, row, index) {
     return [
-        '<img src="' + row.foto_venue +
-        '" alt="" style="display: block; width: 80px; margin-left: auto; margin-right: auto; height: 80%;">',
+        '<a href="' + row.file_materi + '" class="btn btn-primary">',
+        'Lihat',
+        '</a'
     ].join('')
 }
 </script>

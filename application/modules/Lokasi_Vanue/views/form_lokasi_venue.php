@@ -28,9 +28,11 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Keterangan Venue</label>
+                        <label class="col-sm-3 ">Keterangan Venue</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" type="text" name="ket_venue" value="<?= $ket_venue; ?>">
+                            <textarea class="form-control" type="text" name="ket_venue" id="ket_venue"
+                                onclick="cleanSpacesOnFocus()">
+                                <?= $ket_venue; ?>    
                             </textarea>
                         </div>
                     </div>
@@ -70,3 +72,15 @@
         </div>
     </div>
 </div>
+
+<script>
+function cleanSpacesOnFocus() {
+    // Mendapatkan nilai dari textarea
+    var textarea = document.getElementById('ket_venue');
+
+    // Membersihkan spasi di awal dan akhir saat textarea mendapatkan fokus
+    textarea.addEventListener('focus', function() {
+        textarea.value = textarea.value.trim();
+    });
+}
+</script>
