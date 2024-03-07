@@ -27,7 +27,7 @@
                         <thead>
                             <tr style="text-align:center;">
                                 <th data-field="state" data-checkbox="true"></th>
-                                <th data-formatter="operateFormatter2">Foto Galleri</th>
+                                <th data-formatter="operateFormatter2" data-width="100">Foto Galleri</th>
                                 <th data-field="katagori" data-sortable="true">Katagori</th>
                                 <th data-field="nama_galleri">Nama Galleri</th>
                                 <!-- <th data-formatter="operateFormatter3">Foto Galleri</th>

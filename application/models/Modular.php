@@ -43,6 +43,12 @@
     return $this->db->query($query);
   }
 
+  function produk_kat()
+  {
+    $query = "SELECT * FROM t_produk_kat";
+    return $this->db->query($query);
+  }
+
   function Agenda()
   {
     $query = "SELECT * FROM t_agenda";
@@ -70,6 +76,12 @@
   function Kabupaten()
   {
     $query = "SELECT * FROM t_kabupaten INNER JOIN t_provinsi ON t_provinsi.kd_provinsi= t_kabupaten.prov_kd";
+    return $this->db->query($query);
+  }
+
+  function Produk()
+  {
+    $query = "SELECT * FROM t_produk INNER JOIN t_produk_kat ON t_produk.katagori_produk= t_produk_kat.kd_kat";
     return $this->db->query($query);
   }
 

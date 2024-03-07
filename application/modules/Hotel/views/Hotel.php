@@ -27,7 +27,7 @@
                         <thead>
                             <tr style="text-align:center;">
                                 <th data-field="state" data-checkbox="true"></th>
-                                <th data-formatter="operateFormatter2">Foto Hotel</th>
+                                <th data-formatter="operateFormatter2" data-width="100">Foto Hotel</th>
                                 <th data-field="nama_hotel" data-sortable="true">Nama Hotel</th>
                                 <th data-field="titik_lokasi">Titik Lokasi</th>
                                 <th data-field="ket_hotel">Keterangan</th>

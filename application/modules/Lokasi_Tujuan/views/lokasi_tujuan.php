@@ -26,7 +26,7 @@
                         <thead>
                             <tr style="text-align: center;">
                                 <th data-field="state" data-checkbox="true"></th>
-                                <th data-formatter="operateFormatter1">Gambar Lokasi</th>
+                                <th data-formatter="operateFormatter1" data-width="100">Gambar Lokasi</th>
                                 <th data-field="nama_lokasi" data-sortable="true">Nama Lokasi</th>
                                 <th data-field="ket_lokasi">Keterangan Lokasi</th>
                                 <th data-field="link_vidio">Link Vidio</th>

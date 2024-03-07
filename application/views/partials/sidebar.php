@@ -77,6 +77,12 @@
                             Galleri
                         </a>
                     </li>
+                    <li>
+                        <a href="<?= base_url('FAQ'); ?>">
+                            <i class="icon-picture"></i>
+                            FAQ
+                        </a>
+                    </li>
                 </ul>
             </div>
         </li>
@@ -362,27 +368,35 @@
         </li>
         <!-- End Website -->
 
-        <!-- Informasi -->
+        <!-- Peserta -->
         <li class="dropdown">
-            <a href="#"> <i class="fas fa-grip-horizontal"></i>Informasi</a>
+            <a href="#">
+                <i class="fas fa-grip-horizontal"></i>Peserta
+            </a>
             <div>
                 <ul>
                     <li>
-                        <a href="<?= base_url('#'); ?>">
-                            <i class="icon-picture"></i>
-                            Berita Terbaru
+                        <a href="<?= base_url('Undangan'); ?>">
+                            <i class="fas fa-grip-horizontal"></i>
+                            Undangan
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('Materi'); ?>">
-                            <i class="icon-book-open"></i>
-                            Materi
+                        <a href="<?= base_url('Pendaftaran'); ?>">
+                            <i class="fas fa-grip-horizontal"></i>
+                            Pendaftaran
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('Absen_Kehadiran'); ?>">
+                            <i class="fas fa-grip-horizontal"></i>
+                            Absensi
                         </a>
                     </li>
                 </ul>
             </div>
         </li>
-        <!-- End Informasi -->
+        <!-- End Peserta -->
 
         <?php }elseif ($userdata->nama_level=="Pariwisata") {?>
         <!-- Hotel -->

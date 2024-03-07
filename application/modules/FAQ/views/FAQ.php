@@ -4,11 +4,11 @@
             <div class="card-body">
                 <div id="toolbar">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <a href="<?=base_url('form_tambah_produk');?>" class="btn btn-success">
+                        <a href="<?=base_url('form_tambah_faq');?>" class="btn btn-success" title="Buat Agenda">
                             <i class="fa fa-plus"></i>
-                            Tambah Produk
+                            Tambah
                         </a>
-                        <a href="<?=base_url('form_ubah_produk/');?>" class="btn btn-warning" id="btnRedir"
+                        <a href="<?=base_url('form_ubah_faq/');?>" class="btn btn-warning" id="btnRedir"
                             title="Ubah Agenda">
                             <i class="fa fa-edit"></i>
                             Edit
@@ -23,17 +23,12 @@
                 <div class="table-responsive">
                     <table id="table" class="table table-striped" data-toggle="table" data-toolbar="#toolbar"
                         data-pagination="true" data-search="true" data-sort-order="desc" data-id-field="id"
-                        data-page-list="[10, 25, 50, 100, all]" data-url="<?=base_url('Produk/load_produk');?>">
+                        data-page-list="[10, 25, 50, 100, all]" data-url="<?=base_url('FAQ/load_faq');?>">
                         <thead>
                             <tr>
                                 <th data-field="state" data-checkbox="true"></th>
-                                <th data-formatter="operateFormatter2" data-width="100">Gambar Produk</th>
-                                <th data-field="katagori_produk">Katagori Produk</th>
-                                <th data-field="nama_produk">Nama Produk</th>
-                                <th data-field="satuan_produk">Satuan Produk</th>
-                                <th data-field="harga">Harga Produk</th>
-                                <th data-formatter="operateFormatter1">Status Produk</th>
-                                <th data-field="ket_produk">Keterangan Produk</th>
+                                <th data-field="pertanyaan">Pertanyaan</th>
+                                <th data-field="jawaban">Jawaban</th>
                             </tr>
                         </thead>
                     </table>
@@ -90,16 +85,11 @@
 <script type="text/javascript">
 var $table = $('#table')
 
-function operateFormatter2(value, row, index) {
+function operateFormatter(value, row, index) {
     return [
-        '<img src="' + row.gambar_1 +
-        '" alt="" style="display: block; width: 100px; margin-left: auto; margin-right: auto; height: 50%;">',
+        '<a href="' + row.file_materi + '" class="btn btn-primary">',
+        'Lihat',
+        '</a'
     ].join('')
-}
-
-function operateFormatter1(value, row, index) {
-    return [
-        (row.status_produk === 1) ? 'tersedia' : 'habis',
-    ].join('');
 }
 </script>

@@ -86,6 +86,21 @@ $route['Absen_Kehadiran']= 'Absen_Kehadiran';
 $route['form_tambah_absen_kehadiran']      = 'Absen_Kehadiran/form_tambah_absen_kehadiran';
 $route['form_ubah_absen_kehadiran/(:any)'] = 'Absen_Kehadiran/edit_absen_kehadiran/$1';
 
+// Menu Produk
+$route['Produk']= 'Produk';
+$route['form_tambah_produk']      = 'Produk/form_tambah_produk';
+$route['form_ubah_produk/(:any)'] = 'Produk/edit_produk/$1';
+
+// Menu Transaksi Order
+$route['Transaksi_order']= 'Transaksi_order';
+$route['form_tambah_transaksi_order']      = 'Transaksi_order/form_tambah_transaksi_order';
+$route['form_ubah_transaksi_order/(:any)'] = 'Transaksi_order/edit_transaksi_order/$1';
+
+// Menu FAQ
+$route['FAQ']= 'FAQ';
+$route['form_tambah_faq']      = 'FAQ/form_tambah_faq';
+$route['form_ubah_faq/(:any)'] = 'FAQ/edit_faq/$1';
+
 // Notfound
 $route['404_override'] = '';
 

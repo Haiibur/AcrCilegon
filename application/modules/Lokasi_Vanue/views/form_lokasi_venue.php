@@ -72,15 +72,3 @@
         </div>
     </div>
 </div>
-
-<script>
-function cleanSpacesOnFocus() {
-    // Mendapatkan nilai dari textarea
-    var textarea = document.getElementById('ket_venue');
-
-    // Membersihkan spasi di awal dan akhir saat textarea mendapatkan fokus
-    textarea.addEventListener('focus', function() {
-        textarea.value = textarea.value.trim();
-    });
-}
-</script>
