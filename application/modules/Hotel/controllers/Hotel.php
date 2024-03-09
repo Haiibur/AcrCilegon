@@ -18,9 +18,9 @@ class Hotel extends CI_Controller
 
 	public function index()
 	{
-		$data['title'] = "Hotel :: My Asisten";
-		$data['judul'] = 'Hotel';
-		$data['linkpage'] = '';
+		$data['title'] 		= "Hotel :: My Asisten";
+		$data['judul'] 		= 'Hotel';
+		$data['linkpage'] 	= '';
 		$this->template->load('home', 'Hotel', $data);
 	}
 
@@ -42,14 +42,12 @@ class Hotel extends CI_Controller
 				'ids' => $iddata,
 				'nama_hotel'			 => $value->nama_hotel,
 				'foto_1'				 => base_url().'./assets/upload_hotel/'.$value->foto_1,
-				'foto_2' 				 => base_url().'./assets/upload_hotel/'.$value->foto_2,
-				'foto_3' 				 => base_url().'./assets/upload_hotel/'.$value->foto_3,
-				'foto_4' 				 => base_url().'./assets/upload_hotel/'.$value->foto_4,
-				'foto_5' 				 => base_url().'./assets/upload_hotel/'.$value->foto_5,
-				'titik_lokasi'	 		 => $value->titik_lokasi,
-				'ket_hotel'	 			 => $value->ket_hotel,
+				'lat'	 		 		 => $value->lat,
+				'longg'	 		 		 => $value->longg,
 				'harga'	 		 		 => $value->harga,
-				'no_tlp'	 			 => $value->no_tlp
+				'no_tlp'	 			 => $value->no_tlp,
+				'link_website'	 		 => $value->link_website,
+				'ket_hotel'	 			 => $value->ket_hotel,
 			];
 
 			array_push($output, $data);
@@ -70,10 +68,12 @@ class Hotel extends CI_Controller
 		$data['foto_3'] 			= '';
 		$data['foto_4'] 			= '';
 		$data['foto_5'] 			= '';
-		$data['titik_lokasi']		= '';
+		$data['lat']				= '';
+		$data['longg']				= '';
 		$data['ket_hotel']			= '';
 		$data['harga']				= '';
 		$data['no_tlp']				= '';
+		$data['link_website']		= '';
 		
 		$this->template->load('home', 'form_hotel', $data);
 	}
@@ -85,68 +85,53 @@ class Hotel extends CI_Controller
 		$config['allowed_types'] = 'mp4|mp3|jpg|jpeg|png|gif';
 		$config['max_size']      = 6048;
 		$this->load->library('upload', $config);
-
-		// Upload Hotel 1
-		if ($this->upload->do_upload('foto_1')) {
-			$data_gambar_1 = $this->upload->data();
-			$foto_1 = $data_gambar_1['file_name'];
-
-			// Upload Hotel 2
-			if ($this->upload->do_upload('foto_2')) {
-				$data_gambar_2 = $this->upload->data();
-				$foto_2 = $data_gambar_2['file_name'];
-
-				// Upload Hotel 3
-				if ($this->upload->do_upload('foto_3')) {
-					$data_gambar_3 = $this->upload->data();
-					$foto_3 = $data_gambar_3['file_name'];
-
-					// Upload Hotel 4
-					if ($this->upload->do_upload('foto_4')) {
-						$data_gambar_4 = $this->upload->data();
-						$foto_4 = $data_gambar_4['file_name'];
-
-						// Upload Hotel 5
-						if ($this->upload->do_upload('foto_5')) {
-							$data_gambar_5 = $this->upload->data();
-							$foto_5 = $data_gambar_5['file_name'];
-
-							$req = [
-								'method' => 'insert',
-								'table' => 't_hotel',
-								'value' => [
-									'nama_hotel' 	 => $this->input->post('nama_hotel'),
-									'foto_1' 		 => $foto_1,
-									'foto_2' 		 => $foto_2,
-									'foto_3' 		 => $foto_3,
-									'foto_4' 		 => $foto_4,
-									'foto_5' 		 => $foto_5,
-									'titik_lokasi' 	 => $this->input->post('titik_lokasi'),
-									'ket_hotel' 	 => $this->input->post('ket_hotel'),
-									'harga' 	 	 => $this->input->post('harga'),
-									'no_tlp' 		 => $this->input->post('no_tlp')
-								]
-							];
-							
-							$this->Modular->queryBuild($req);
-							
-						} else {
-							$error = $this->upload->display_errors();
-						}
-					} else {
-						$error = $this->upload->display_errors();
-					}
-				} else {
-					$error = $this->upload->display_errors();
-				}
-
+	
+		$upload_errors = array();
+	
+		// Loop untuk mengupload gambar 1-5
+		for ($i = 1; $i <= 5; $i++) {
+			$field_name = 'foto_' . $i;
+	
+			// Lakukan upload
+			if ($this->upload->do_upload($field_name)) {
+				$data_gambar = $this->upload->data();
+				${'foto_' . $i} = $data_gambar['file_name'];
 			} else {
-				$error = $this->upload->display_errors();
+				// Jika terjadi error, simpan pesan error
+				$upload_errors[] = $this->upload->display_errors();
 			}
+		}
+	
+		// Jika tidak ada error, lakukan insert data
+		if (empty($upload_errors)) {
+			$req = [
+				'method' => 'insert',
+				'table'  => 't_hotel',
+				'value'  => [
+					'nama_hotel'    => $this->input->post('nama_hotel'),
+					'foto_1'        => $foto_1,
+					'foto_2'        => $foto_2,
+					'foto_3'        => $foto_3,
+					'foto_4'        => $foto_4,
+					'foto_5'        => $foto_5,
+					'lat'           => $this->input->post('lat'),
+					'longg'          => $this->input->post('longg'),
+					'ket_hotel'     => $this->input->post('ket_hotel'),
+					'harga'         => $this->input->post('harga'),
+					'no_tlp'        => $this->input->post('no_tlp'),
+					'link_website'  => $this->input->post('link_website')
+				]
+			];
+	
+			$this->Modular->queryBuild($req);
 		} else {
-			$error = $this->upload->display_errors();
+			// Jika terdapat error pada upload, tangani error sesuai kebutuhan aplikasi
+			foreach ($upload_errors as $error) {
+				// Handle error (misalnya, log error, tampilkan pesan kepada pengguna, dll.)
+			}
 		}
 	}
+	
 
 	function edit_hotel($id)
 	{
@@ -170,10 +155,12 @@ class Hotel extends CI_Controller
 		$data['foto_3'] 	 	= $row->foto_3;
 		$data['foto_4'] 		= $row->foto_4;
 		$data['foto_5'] 		= $row->foto_5;
-		$data['titik_lokasi']	= $row->titik_lokasi;
+		$data['lat']			= $row->lat;
+		$data['longg']			= $row->longg;
 		$data['ket_hotel']		= $row->ket_hotel;
 		$data['harga']			= $row->harga;
 		$data['no_tlp']			= $row->no_tlp;
+		$data['link_website']	= $row->link_website;
 
 		$this->template->load('home', 'form_hotel', $data);
 		
@@ -184,67 +171,53 @@ class Hotel extends CI_Controller
 		// Konfigurasi untuk upload gambar lokasi
 		$config['upload_path']   = './assets/upload_hotel';
 		$config['allowed_types'] = 'mp4|mp3|jpg|jpeg|png|gif';
-		$config['max_size']      = 200000;
+		$config['max_size']      = 6048;
 		$this->load->library('upload', $config);
-
-		// Upload Hotel 1
-		if ($this->upload->do_upload('foto_1')) {
-			$data_gambar_1 = $this->upload->data();
-			$foto_1 = $data_gambar_1['file_name'];
-		} else {
-			$error = $this->upload->display_errors();
+	
+		$upload_errors = array();
+	
+		// Loop untuk mengupload gambar 1-5
+		for ($i = 1; $i <= 5; $i++) {
+			$field_name = 'foto_' . $i;
+	
+			// Lakukan upload
+			if ($this->upload->do_upload($field_name)) {
+				$data_gambar = $this->upload->data();
+				${'foto_' . $i} = $data_gambar['file_name'];
+			} else {
+				// Jika terjadi error, simpan pesan error
+				$upload_errors[] = $this->upload->display_errors();
+			}
 		}
-
-		// Upload Hotel 2
-		if ($this->upload->do_upload('foto_2')) {
-			$data_gambar_2 = $this->upload->data();
-			$foto_2 = $data_gambar_2['file_name'];
+	
+		// Jika tidak ada error, lakukan insert data
+		if (empty($upload_errors)) {
+			$req = [
+				'method' => 'update',
+				'table'  => 't_hotel',
+				'value'  => [
+					'nama_hotel'    => $this->input->post('nama_hotel'),
+					'foto_1'        => $foto_1,
+					'foto_2'        => $foto_2,
+					'foto_3'        => $foto_3,
+					'foto_4'        => $foto_4,
+					'foto_5'        => $foto_5,
+					'lat'           => $this->input->post('lat'),
+					'longg'          => $this->input->post('longg'),
+					'ket_hotel'     => $this->input->post('ket_hotel'),
+					'harga'         => $this->input->post('harga'),
+					'no_tlp'        => $this->input->post('no_tlp'),
+					'link_website'  => $this->input->post('link_website')
+				],
+				'where' => ['kd_hotel' => $this->input->post('id')]
+			];
+	
+			$this->Modular->queryBuild($req);
 		} else {
-			$error = $this->upload->display_errors();
+			// Jika terdapat error pada upload, tangani error sesuai kebutuhan aplikasi
+			foreach ($upload_errors as $error) {
+				// Handle error (misalnya, log error, tampilkan pesan kepada pengguna, dll.)
+			}
 		}
-
-		// Upload Hotel 3
-		if ($this->upload->do_upload('foto_3')) {
-			$data_gambar_3 = $this->upload->data();
-			$foto_3 = $data_gambar_3['file_name'];
-		} else {
-			$error = $this->upload->display_errors();
-		}
-
-		// Upload Hotel 4
-		if ($this->upload->do_upload('foto_4')) {
-			$data_gambar_4 = $this->upload->data();
-			$foto_4 = $data_gambar_4['file_name'];
-		} else {
-			$error = $this->upload->display_errors();
-		}
-
-		// Upload Hotel 5
-		if ($this->upload->do_upload('foto_5')) {
-			$data_gambar_5 = $this->upload->data();
-			$foto_5 = $data_gambar_5['file_name'];
-		} else {
-			$error = $this->upload->display_errors();
-		}
-
-		$req = [
-			'method' => 'update',
-			'table' => 't_hotel',
-			'value' => [
-				'nama_hotel' 	 => $this->input->post('nama_hotel'),
-				'foto_1' 		 => $foto_1,
-				'foto_2' 		 => $foto_2,
-				'foto_3' 		 => $foto_3,
-				'foto_4' 		 => $foto_4,
-				'foto_5' 		 => $foto_5,
-				'titik_lokasi' 	 => $this->input->post('titik_lokasi'),
-				'ket_hotel' 	 => $this->input->post('ket_hotel'),
-				'harga' 	 	 => $this->input->post('harga'),
-				'no_tlp' 		 => $this->input->post('no_tlp')
-			],
-			'where' => ['kd_hotel' => $this->input->post('id')]
-		];
-		
-		$this->Modular->queryBuild($req);
 	}
 }

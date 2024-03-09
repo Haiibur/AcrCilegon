@@ -22,7 +22,7 @@
                     <table id="table" class="table table-striped" data-toggle="table" data-toolbar="#toolbar"
                         data-pagination="true" data-search="true" data-sort-order="desc" data-id-field="id"
                         data-page-list="[10, 25, 50, 100, all]"
-                        data-url="<?=base_url('Lokasi_Vanue/load_lokasi_venue');?>">
+                        data-url="<?=base_url('Lokasi_Venue/load_lokasi_venue');?>">
                         <thead>
                             <tr style="text-align: center;">
                                 <th data-field="state" data-checkbox="true"></th>
@@ -30,7 +30,7 @@
                                 <th data-field="nama_venue" data-sortable="true">Nama Venue</th>
                                 <th data-field="titik_lokasi">Titik lokasi</th>
                                 <th data-field="ket_venue">Keterangan Venue</th>
-                                <th data-field="status">Status</th>
+                                <th data-formatter="operateFormatter1">Status</th>
                             </tr>
                         </thead>
                     </table>
@@ -91,5 +91,11 @@ function operateFormatter(value, row, index) {
         '<img src="' + row.foto_venue +
         '" alt="" style="display: block; width: 80px; margin-left: auto; margin-right: auto; height: 80%;">',
     ].join('')
+}
+
+function operateFormatter1(value, row, index) {
+    return [
+        (row.status == 1) ? 'Aktif' : 'Non-Aktif',
+    ].join('');
 }
 </script>

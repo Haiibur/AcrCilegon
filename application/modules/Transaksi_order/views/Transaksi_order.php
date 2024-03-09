@@ -4,11 +4,12 @@
             <div class="card-body">
                 <div id="toolbar">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <a href="<?=base_url('form_tambah_materi');?>" class="btn btn-success" title="Buat Agenda">
+                        <a href="<?=base_url('form_tambah_transaksi_order');?>" class="btn btn-success"
+                            title="Buat Agenda">
                             <i class="fa fa-plus"></i>
                             Tambah Materi
                         </a>
-                        <a href="<?=base_url('form_ubah_materi/');?>" class="btn btn-warning" id="btnRedir"
+                        <a href="<?=base_url('form_ubah_transaksi_order/');?>" class="btn btn-warning" id="btnRedir"
                             title="Ubah Agenda">
                             <i class="fa fa-edit"></i>
                             Edit
@@ -23,12 +24,21 @@
                 <div class="table-responsive">
                     <table id="table" class="table table-striped" data-toggle="table" data-toolbar="#toolbar"
                         data-pagination="true" data-search="true" data-sort-order="desc" data-id-field="id"
-                        data-page-list="[10, 25, 50, 100, all]" data-url="<?=base_url('Materi/load_Materi');?>">
+                        data-page-list="[10, 25, 50, 100, all]"
+                        data-url="<?=base_url('Transaksi_order/load_transaksi_order');?>">
                         <thead>
                             <tr>
                                 <th data-field="state" data-checkbox="true"></th>
-                                <th data-field="nama_materi">Nama Materi</th>
-                                <th data-formatter="operateFormatter">File Materi</th>
+                                <th data-field="tgl_order">Tanggal Order</th>
+                                <th data-formatter="nama_produk">Produk</th>
+                                <th data-field="qty_order">Quantity Order</th>
+                                <th data-formatter="satuan_produk">Satuan Produk</th>
+                                <th data-field="nama_level_peserta">Jabatan</th>
+                                <th data-formatter="nama_kabupaten">Kabupaten</th>
+                                <th data-field="nama_peserta">Nama </th>
+                                <th data-formatter="alamat_kirim">Alamat Kirim</th>
+                                <th data-field="jumlah_bayar">Jumlah Bayar</th>
+                                <th data-formatter="status_bayar">Status Bayar</th>
                             </tr>
                         </thead>
                     </table>

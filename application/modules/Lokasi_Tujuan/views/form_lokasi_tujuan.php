@@ -30,7 +30,8 @@
                         <label class="col-sm-3 col-form-label">Keterangan Lokasi</label>
                         <div class="col-sm-9">
                             <div class="input-group">
-                                <textarea class="form-control" type="text" name="ket_venue" value="<?= $ket_lokasi; ?>">
+                                <textarea class="form-control" type="text" name="ket_lokasi"
+                                    value="<?= $ket_lokasi; ?>">
                             </textarea>
                             </div>
                         </div>
@@ -52,3 +53,11 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+    CKEDITOR.replace('ket_lokasi', {
+        defaultLanguage: 'en',
+        language: 'en'
+    }).setData('<?php echo str_replace(array("\r", "\n"), '', $ket_lokasi); ?>');
+});
+</script>

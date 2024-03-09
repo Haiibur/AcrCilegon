@@ -40,14 +40,12 @@ class Galleri extends CI_Controller
 			$data = [
 				'id' => $value->kd_galleri,
 				'ids' => $iddata,
-				'katagori'		 => $value->katagori,
-				'nama_galleri'	 => $value->nama_galleri,
-				'foto_galleri_2' => base_url().'./assets/upload_galleri/'.$value->foto_galleri_2,
-				'foto_galleri_3' => base_url().'./assets/upload_galleri/'.$value->foto_galleri_3,
-				'foto_galleri_4' => base_url().'./assets/upload_galleri/'.$value->foto_galleri_4,
-				'foto_galleri_5' => base_url().'./assets/upload_galleri/'.$value->foto_galleri_5,
-				'link_vidio'	 => $value->link_vidio
 
+				'nama_galleri'	 => $value->nama_galleri,
+				'foto_galleri_1' => base_url().'./assets/upload_galleri/'.$value->foto_galleri_1,
+				'tgl_post'		 => date("d M Y H:i:s", strtotime($value->tgl_post)),
+				'link_vidio'	 => $value->link_vidio,
+				'ket_galleri'	 => $value->ket_galleri
 			];
 
 			array_push($output, $data);
@@ -62,12 +60,14 @@ class Galleri extends CI_Controller
 		$data['url'] 			= base_url('Galleri/Insert_galleri');
 		$data['id'] 			= rand(0, 99) . date('mdh');
 
-		$data['nama_galleri']   = '';
+		$data['nama_galleri']    = '';
+		$data['foto_galleri_1'] = '';
 		$data['foto_galleri_2'] = '';
 		$data['foto_galleri_3'] = '';
 		$data['foto_galleri_4'] = '';
 		$data['foto_galleri_5'] = '';
 		$data['link_vidio']		= '';
+		$data['ket_galleri']	= '';
 		
 		$this->template->load('home', 'form_galleri', $data);
 	}
@@ -80,56 +80,47 @@ class Galleri extends CI_Controller
 		$config['max_size']      = 200000;
 		$this->load->library('upload', $config);
 
-		// Upload galleri 2
-		if ($this->upload->do_upload('foto_galleri_2')) {
-			$data_gambar_2 = $this->upload->data();
-			$foto_galleri_2 = $data_gambar_2['file_name'];
-
-			// Upload galleri 3
-			if ($this->upload->do_upload('foto_galleri_3')) {
-				$data_gambar_3 = $this->upload->data();
-				$foto_galleri_3 = $data_gambar_3['file_name'];
-
-				// Upload galleri 4
-				if ($this->upload->do_upload('foto_galleri_4')) {
-					$data_gambar_4 = $this->upload->data();
-					$foto_galleri_4 = $data_gambar_4['file_name'];
-
-					// Upload galleri 5
-					if ($this->upload->do_upload('foto_galleri_5')) {
-						$data_gambar_5 = $this->upload->data();
-						$foto_galleri_5 = $data_gambar_5['file_name'];
-
-							$req = [
-								'method' => 'insert',
-								'table' => 't_galleri',
-								'value' => [
-									'katagori' 	 	 => $this->input->post('katagori'),
-									'nama_Galleri' 	 => $this->input->post('nama_galleri'),
-									'foto_galleri_2' => $foto_galleri_2,
-									'foto_galleri_3' => $foto_galleri_3,
-									'foto_galleri_4' => $foto_galleri_4,
-									'foto_galleri_5' => $foto_galleri_5,
-									'link_vidio' 	 => $this->input->post('link_vidio')
-								]
-							];
-							
-							$this->Modular->queryBuild($req);
-					} else {
-						$error = $this->upload->display_errors();
-						// Handle kesalahan upload foto gambar 5
-					}
-				} else {
-					$error = $this->upload->display_errors();
-					// Handle kesalahan upload foto gambar 4
-				}
+		$upload_errors = array();
+	
+		// Loop untuk mengupload gambar 1-5
+		for ($i = 1; $i <= 5; $i++) {
+			$field_name = 'foto_galleri_' . $i;
+	
+			// Lakukan upload
+			if ($this->upload->do_upload($field_name)) {
+				$data_gambar = $this->upload->data();
+				${'foto_galleri_' . $i} = $data_gambar['file_name'];
 			} else {
-				$error = $this->upload->display_errors();
-				// Handle kesalahan upload foto gambar 3
+				// Jika terjadi error, simpan pesan error
+				$upload_errors[] = $this->upload->display_errors();
 			}
+		}
+
+		date_default_timezone_set('Asia/Jakarta');
+		// Jika tidak ada error, lakukan insert data
+		if (empty($upload_errors)) {
+			$req = [
+				'method' => 'insert',
+				'table' => 't_galleri',
+				'value' => [
+					'nama_galleri' 	 => $this->input->post('nama_galleri'),
+					'foto_galleri_1' => $foto_galleri_1,
+					'foto_galleri_2' => $foto_galleri_2,
+					'foto_galleri_3' => $foto_galleri_3,
+					'foto_galleri_4' => $foto_galleri_4,
+					'foto_galleri_5' => $foto_galleri_5,
+					'link_vidio' 	 => $this->input->post('link_vidio'),
+					'tgl_post' 	 	 => date("Y-m-d H:i:s"),
+					'ket_galleri' 	 => $this->input->post('ket_galleri')
+				]
+			];
+			
+			$this->Modular->queryBuild($req);
 		} else {
-			$error = $this->upload->display_errors();
-			// Handle kesalahan upload foto gambar 2
+			// Jika terdapat error pada upload, tangani error sesuai kebutuhan aplikasi
+			foreach ($upload_errors as $error) {
+				// Handle error (misalnya, log error, tampilkan pesan kepada pengguna, dll.)
+			}
 		}
 	}
 
@@ -149,13 +140,16 @@ class Galleri extends CI_Controller
 		$data['judul'] = 'Update Galleri ';
 		$data['url'] = base_url('Galleri/update_galleri');
 		$data['id'] = $id;
-		$data['katagori'] 		= $row->katagori;
+
 		$data['nama_galleri'] 	= $row->nama_galleri;
+		$data['foto_galleri_1'] = $row->foto_galleri_1;
 		$data['foto_galleri_2'] = $row->foto_galleri_2;
 		$data['foto_galleri_3'] = $row->foto_galleri_3;
 		$data['foto_galleri_4'] = $row->foto_galleri_4;
 		$data['foto_galleri_5'] = $row->foto_galleri_5;
 		$data['link_vidio']		= $row->link_vidio;
+		$data['ket_galleri'] 	= $row->ket_galleri;
+		
 		$this->template->load('home', 'form_galleri', $data);
 		
 	}
@@ -168,58 +162,49 @@ class Galleri extends CI_Controller
 		$config['max_size']      = 200000;
 		$this->load->library('upload', $config);
 
-		// Upload galleri 2
-		if ($this->upload->do_upload('foto_galleri_2')) {
-			$data_gambar_2 = $this->upload->data();
-			$foto_galleri_2 = $data_gambar_2['file_name'];
-
-			// Upload galleri 3
-			if ($this->upload->do_upload('foto_galleri_3')) {
-				$data_gambar_3 = $this->upload->data();
-				$foto_galleri_3 = $data_gambar_3['file_name'];
-
-				// Upload galleri 4
-				if ($this->upload->do_upload('foto_galleri_4')) {
-					$data_gambar_4 = $this->upload->data();
-					$foto_galleri_4 = $data_gambar_4['file_name'];
-
-					// Upload galleri 5
-					if ($this->upload->do_upload('foto_galleri_5')) {
-						$data_gambar_5 = $this->upload->data();
-						$foto_galleri_5 = $data_gambar_5['file_name'];
-
-							$req = [
-								'method' => 'update',
-								'table' => 't_galleri',
-								'value' => [
-									'katagori' 	 	 => $this->input->post('katagori'),
-									'nama_Galleri' 	 => $this->input->post('nama_galleri'),
-									'foto_galleri_2' => $foto_galleri_2,
-									'foto_galleri_3' => $foto_galleri_3,
-									'foto_galleri_4' => $foto_galleri_4,
-									'foto_galleri_5' => $foto_galleri_5,
-									'link_vidio' 	 => $this->input->post('link_vidio')
-								],
-								'where' => ['kd_galleri' => $this->input->post('id')]
-							];
-							
-							$this->Modular->queryBuild($req);
-					} else {
-						$error = $this->upload->display_errors();
-						// Handle kesalahan upload foto gambar 5
-					}
-				} else {
-					$error = $this->upload->display_errors();
-					// Handle kesalahan upload foto gambar 4
-				}
+		$upload_errors = array();
+	
+		// Loop untuk mengupload gambar 1-5
+		for ($i = 1; $i <= 5; $i++) {
+			$field_name = 'foto_galleri_' . $i;
+	
+			// Lakukan upload
+			if ($this->upload->do_upload($field_name)) {
+				$data_gambar = $this->upload->data();
+				${'foto_galleri_' . $i} = $data_gambar['file_name'];
 			} else {
-				$error = $this->upload->display_errors();
-				// Handle kesalahan upload foto gambar 3
+				// Jika terjadi error, simpan pesan error
+				$upload_errors[] = $this->upload->display_errors();
 			}
+		}
+
+		date_default_timezone_set('Asia/Jakarta');
+	
+		// Jika tidak ada error, lakukan insert data
+		if (empty($upload_errors)) {
+			$req = [
+				'method' => 'update',
+				'table' => 't_galleri',
+				'value' => [
+					'nama_galleri' 	 => $this->input->post('nama_galleri'),
+					'foto_galleri_1' => $foto_galleri_1,
+					'foto_galleri_2' => $foto_galleri_2,
+					'foto_galleri_3' => $foto_galleri_3,
+					'foto_galleri_4' => $foto_galleri_4,
+					'foto_galleri_5' => $foto_galleri_5,
+					'link_vidio' 	 => $this->input->post('link_vidio'),
+					'tgl_post' 	 	 => date("Y-m-d H:i:s"),
+					'ket_galleri' 	 => $this->input->post('ket_galleri')
+				],
+				'where' => ['kd_galleri' => $this->input->post('id')]
+			];
 			
+			$this->Modular->queryBuild($req);
 		} else {
-			$error = $this->upload->display_errors();
-			// Handle kesalahan upload foto gambar 2
+			// Jika terdapat error pada upload, tangani error sesuai kebutuhan aplikasi
+			foreach ($upload_errors as $error) {
+				// Handle error (misalnya, log error, tampilkan pesan kepada pengguna, dll.)
+			}
 		}
 	}
 }

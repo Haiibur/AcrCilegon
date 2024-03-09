@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Lokasi_Vanue extends CI_Controller {
+class Lokasi_Venue extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->_isLogged();
@@ -18,7 +18,7 @@ class Lokasi_Vanue extends CI_Controller {
         $data['title'] = "Lokasi Venue :: My Asisten";
         $data['judul'] = 'Lokasi Venue';
         $data['linkpage'] ='';
-		$this->template->load('home', 'lokasi_venue' ,$data);	
+		$this->template->load('home', 'Lokasi_Venue' ,$data);	
 	}
 
 	function load_lokasi_venue() {
@@ -33,13 +33,14 @@ class Lokasi_Vanue extends CI_Controller {
 		$output = array();
 		
 		foreach ($res as $key => $value) {
-			$iddata = $value->kd_venue.'=t_lokasi_venue=kd_venue=lokasi_vanue=0.jpg';
+			$iddata = $value->kd_venue.'=t_lokasi_venue=kd_venue=Lokasi_Venue=0.jpg';
 			$data = [
 				'id' 			=> $value->kd_venue,
 				'ids' 			=> $iddata,
 				'nama_venue' 	=> $value->nama_venue,
 				'foto_venue' 	=> base_url().'./assets/upload_Lokasi_Vanue/'.$value->foto_venue,
-				'titik_lokasi'  => $value->titik_lokasi,
+				'lat'		    => $value->lat,
+				'longg'		    => $value->longg,
 				'ket_venue' 	=> $value->ket_venue,
 				'status'		=> $value->status
 			];
@@ -53,11 +54,12 @@ class Lokasi_Vanue extends CI_Controller {
 		$data=[
 			'title'			=> "Form Lokasi Venue :: My Asisten",
 			'judul'			=> "Form Lokasi Venue",
-			'url'			=> base_url('lokasi_vanue/Insert_lokasi_venue'),
+			'url'			=> base_url('Lokasi_Venue/Insert_lokasi_venue'),
 			'id'			=> '',
 			'nama_venue'	=> '',
 			'foto_venue'	=> '',
-			'titik_lokasi'  => '',
+			'lat' 			=> '',
+			'longg' 		=> '',
 			'ket_venue'		=> '',
 			'status'		=> ''
 		];
@@ -83,7 +85,8 @@ class Lokasi_Vanue extends CI_Controller {
 				'value' => [
 					'nama_venue'	 => $this->input->post('nama_venue'),
 					'foto_venue' 	 => $foto_venue,
-					'titik_lokasi' 	 => $this->input->post('titik_lokasi'),
+					'lat' 	 		 => $this->input->post('lat'),
+					'longg' 	 	 => $this->input->post('longg'),
 					'ket_venue' 	 => $this->input->post('ket_venue'),
 					'status' 		 => $this->input->post('status'),
 				],
@@ -111,11 +114,12 @@ class Lokasi_Vanue extends CI_Controller {
 		$data=[
 			'title'			=> "Form Lokasi Venue :: My Asisten",
 			'judul'			=> "Form Lokasi Venue",
-			'url'			=> base_url('lokasi_vanue/update_lokasi_venue'),
+			'url'			=> base_url('Lokasi_Venue/update_lokasi_venue'),
 			'id'			=> $id,
 			'nama_venue'	=> $row->nama_venue,
 			'foto_venue'	=> $row->foto_venue,
-			'titik_lokasi' 	=> $row->titik_lokasi,
+			'lat' 	 		=> $row->lat,
+			'longg' 	 	=> $row->longg,
 			'ket_venue'		=> $row->ket_venue,
 			'status'		=> $row->status
 		];
@@ -141,7 +145,8 @@ class Lokasi_Vanue extends CI_Controller {
 				'value' => [
 					'nama_venue'	 => $this->input->post('nama_venue'),
 					'foto_venue' 	 => $foto_venue,
-					'titik_lokasi' 	 => $this->input->post('titik_lokasi'),
+					'lat' 	 		 => $this->input->post('lat'),
+					'longg' 	 	 => $this->input->post('longg'),
 					'ket_venue' 	 => $this->input->post('ket_venue'),
 					'status' 		 => $this->input->post('status'),
 				],

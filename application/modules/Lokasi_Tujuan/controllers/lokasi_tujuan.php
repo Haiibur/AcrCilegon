@@ -51,7 +51,7 @@ class Lokasi_Tujuan extends CI_Controller {
 		$data=[
 			'title'			=> "Form Lokasi Tujuan :: My Asisten",
 			'judul'			=> "Form Lokasi Tujuan",
-			'url'			=> base_url('lokasi_tujuan/Insert_Lokasi_Tujuan'),
+			'url'			=> base_url('Lokasi_Tujuan/Insert_Lokasi_Tujuan'),
 			'id'			=> '',
 			'nama_lokasi'	=> '',
 			'ket_lokasi'	=> '',

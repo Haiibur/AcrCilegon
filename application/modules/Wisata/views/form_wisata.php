@@ -42,20 +42,21 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Keterangan</label>
-                        <div class="col-sm-6">
-                            <div class="input-group">
-                                <textarea class="form-control" type="text" name="ket_venue" value="<?= $ket_wisata; ?>">
-                            </textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">No Telphone</label>
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <input type="number" name="no_tlp" value="<?= $no_tlp; ?>" class="form-control"
                                     required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label">Keterangan</label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <textarea class="form-control" type="text" name="ket_wisata"
+                                    value="<?= $ket_wisata; ?>">
+                            </textarea>
                             </div>
                         </div>
                     </div>
@@ -76,3 +77,11 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+    CKEDITOR.replace('ket_wisata', {
+        defaultLanguage: 'en',
+        language: 'en'
+    }).setData('<?php echo str_replace(array("\r", "\n"), '', $ket_wisata); ?>');
+});
+</script>

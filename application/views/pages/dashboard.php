@@ -17,7 +17,7 @@
     <?php if($userdata->nama_level=="Super Admin"){?>
     <!-- Website -->
     <div class="col-12 col-sm-6 col-xl-4 mt-3">
-        <a href="<?= base_url(); ?>Lokasi_Vanue" style="text-decoration: none">
+        <a href="<?= base_url(); ?>Lokasi_Venue" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
                     <img src="<?=base_url('assets/img/icon/Lokasi_Vanue.png');?>" alt="" class="float-right"
@@ -43,7 +43,7 @@
         </a>
     </div>
     <div class="col-12 col-sm-6 col-xl-4 mt-3">
-        <a href="<?= base_url(); ?>agenda" style="text-decoration: none">
+        <a href="<?= base_url(); ?>Agenda" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
                     <img src="<?=base_url('assets/img/icon/Agenda.png');?>" alt="" class="float-right" width="60" />
@@ -106,12 +106,12 @@
 
     <!-- Informasi -->
     <div class="col-12 col-sm-6 col-xl-4 mt-3">
-        <a href="<?= base_url(); ?>Materi" style="text-decoration: none">
+        <a href="<?= base_url(); ?>Informasi" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
                     <img src="<?=base_url('assets/img/icon/News2.png');?>" alt="" class="float-right" width="60" />
                     <h6 class="card-title font-weight-bold">Berita Terbaru</h6>
-                    <h6 class="card-subtitle mb-2 text-muted text-danger">Data Materi</h6>
+                    <h6 class="card-subtitle mb-2 text-muted text-danger">Data Berita</h6>
                     <h2></h2>
                 </div>
             </div>
@@ -229,7 +229,7 @@
     <?php }elseif ($userdata->nama_level=="Admin") {?>
     <!-- Website -->
     <div class="col-12 col-sm-6 col-xl-4 mt-3">
-        <a href="<?= base_url(); ?>Lokasi_Vanue" style="text-decoration: none">
+        <a href="<?= base_url(); ?>Lokasi_Venue" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
                     <img src="<?=base_url('assets/img/icon/Lokasi_Vanue.png');?>" alt="" class="float-right"
@@ -255,7 +255,7 @@
         </a>
     </div>
     <div class="col-12 col-sm-6 col-xl-4 mt-3">
-        <a href="<?= base_url(); ?>agenda" style="text-decoration: none">
+        <a href="<?= base_url(); ?>Agenda" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
                     <img src="<?=base_url('assets/img/icon/Agenda.png');?>" alt="" class="float-right" width="60" />
@@ -402,7 +402,7 @@
     <?php }elseif ($userdata->nama_level=="Bapalitbang" || $userdata->nama_level=="Bag.Pemerintahan") {?>
     <!-- Website -->
     <div class="col-12 col-sm-6 col-xl-4 mt-3">
-        <a href="<?= base_url(); ?>Lokasi_Vanue" style="text-decoration: none">
+        <a href="<?= base_url(); ?>Lokasi_Venue" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
                     <img src="<?=base_url('assets/img/icon/Lokasi_Vanue.png');?>" alt="" class="float-right"
@@ -428,7 +428,7 @@
         </a>
     </div>
     <div class="col-12 col-sm-6 col-xl-4 mt-3">
-        <a href="<?= base_url(); ?>agenda" style="text-decoration: none">
+        <a href="<?= base_url(); ?>Agenda" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
                     <img src="<?=base_url('assets/img/icon/Agenda.png');?>" alt="" class="float-right" width="60" />

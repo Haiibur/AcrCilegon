@@ -67,6 +67,12 @@
     return $this->db->query($query);
   }
 
+  function Jumlahdownload($id)
+  {
+    $query = "SELECT jumlah_download FROM t_materi where kd_materi='$id'";
+    return $this->db->query($query);
+  }
+
   function get_kabupaten($id)
   {
     $query = "SELECT * FROM t_kabupaten where prov_kd='$id'";
@@ -82,6 +88,20 @@
   function Produk()
   {
     $query = "SELECT * FROM t_produk INNER JOIN t_produk_kat ON t_produk.katagori_produk= t_produk_kat.kd_kat";
+    return $this->db->query($query);
+  }
+
+  function Transaksi_order()
+  {
+    $query = "SELECT po.tgl_order, pr.nama_produk, pod.qty_order, pod.satuan_order, pl.nama_level_peserta, tk.nama_kabupaten, tp.nama_peserta, po.alamat_kirim, po.jumlah_bayar, po.status_bayar
+    FROM t_kabupaten tk 
+    INNER JOIN t_undangan tu ON tu.kab_kd = tk.kd_kabupaten 
+    INNER JOIN t_pendaftaran tp ON tp.undangan_kd = tu.id_undangan 
+    INNER JOIN t_peserta_level pl ON pl.kd_level_peserta = tp.level_peserta 
+    INNER JOIN produk_order po ON po.pendaftar_kd = tp.kd_daftar 
+    INNER JOIN produk_order_detail pod ON pod.order_kd=po.kd_order 
+    INNER JOIN t_produk pr ON pr.kd_produk = pod.produk_id 
+    INNER JOIN t_produk_kat pk ON pk.kd_kat=pr.katagori_produk";
     return $this->db->query($query);
   }
 

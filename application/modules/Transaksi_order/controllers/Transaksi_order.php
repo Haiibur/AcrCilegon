@@ -26,14 +26,9 @@ class Transaksi_order extends CI_Controller
 
 	function load_transaksi_order()
 	{
-		$req = [
-			'method' => 'get',
-			'select' => '*',
-			'table' => 't_transaksi_order',
-			'order' => 'kd_transaksi_order DESC'
-		];
+		// tanggal_order, nama_produk, qty_order, satuan_produk, level_peserta, kab_kd, nama_peserta, alamat_kirim, jumlah_bayar, status_bayar
 
-		$res = $this->Modular->queryBuild($req)->result();
+		$res = $this->Modular->Transaksi_order()->result();
 		$output = array();
 		
 		foreach ($res as $key => $value) {
@@ -41,8 +36,16 @@ class Transaksi_order extends CI_Controller
 			$data = [
 				'id' => $value->kd_transaksi_order,
 				'ids' => $iddata,
-				'nama_transaksi_order'		 => $value->nama_transaksi_order,
-				'file_transaksi_order'		 => base_url().'./assets/upload_transaksi_order/'.$value->file_transaksi_order,
+				'tgl_order'				 => $value->tgl_order,
+				'nama_produk'	 		 => $value->nama_produk,
+				'qty_order'		 		 => $value->qty_order,
+				'satuan_produk'	 		 => $value->satuan_produk,
+				'nama_level_peserta'	 => $value->nama_level_peserta,
+				'nama_kabupaten'		 => $value->nama_kabupaten,
+				'nama_peserta'	 		 => $value->nama_peserta,
+				'alamat_kirim'		 	 => $value->alamat_kirim,
+				'jumlah_bayar'	 	 	 => $value->jumlah_bayar,
+				'status_bayar'	 	 	 => $value->status_bayar,
 			];
 			array_push($output, $data);
 		}

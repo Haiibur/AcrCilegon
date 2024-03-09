@@ -2,14 +2,33 @@
     <div class="col-12 col-md-12 mt-3">
         <div class="card">
             <div class="card-body">
-                <form id="formData" action="<?= $url; ?>" method="POST" role="<?= base_url(); ?>Materi">
+                <form id="formData" action="<?= $url; ?>" method="POST" role="<?= base_url(); ?>Transaksi_order">
                     <input type="hidden" name="id" value="<?= $id; ?>">
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Nama Materi</label>
-                        <div class="col-sm-6">
+                        <label class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-9">
                             <div class="input-group">
-                                <input type="text" name="nama_materi" value="<?=$nama_materi;?>" class="form-control "
-                                    required />
+                                <select name="katagori_produk" class="form-control">
+                                    <option disabled selected>--- Pilih Peserta ---</option>
+                                    <?php
+                                        foreach ($Peserta as $value) { ?>
+                                    <option value=<?= $value->kd_kat ?>><?= $value->nama_kat ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <select name="katagori_produk" class="form-control">
+                                    <option disabled selected>--- Pilih Katagori Produk ---</option>
+                                    <?php
+                                        foreach ($katagori_produk as $value) { ?>
+                                    <option value=<?= $value->kd_kat ?>><?= $value->nama_kat ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
                     </div>

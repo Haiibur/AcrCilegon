@@ -2,38 +2,32 @@
     <div class="col-12 col-md-12 mt-3">
         <div class="card">
             <div class="card-body">
-                <form id="formData" action="<?= $url; ?>" method="POST" role="<?= base_url(); ?>agenda">
+                <form id="formData" action="<?= $url; ?>" method="POST" role="<?= base_url(); ?>Agenda">
                     <input type="hidden" name="id" value="<?= $id; ?>">
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Nama Agenda</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="nama" value="<?= $nama; ?>" required>
+                            <input type="text" class="form-control" name="nama_agenda" value="<?= $nama_agenda; ?>"
+                                required>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Tanggal, Jam Mulai & Akhir</label>
-                        <div class="col-sm-4">
+                        <label class="col-sm-3 col-form-label">Tanggal</label>
+                        <div class="col-sm-6">
                             <div class="input-group date" id="dates" data-target-input="nearest">
-                                <input type="text" name="tgl" id="date" value="<?= $tgl; ?>"
+                                <input type="text" name="tgl_agenda" id="date" value="<?= $tgl_agenda; ?>"
                                     class="form-control datetimepicker-input" required data-target="#dates" />
                                 <div class="input-group-append" data-target="#dates" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
                             </div>
                         </div>
+                        <label class="col-sm-3 col-form-label" style="display: contents;">Jam</label>
                         <div class="col-sm-2">
                             <div class="input-group">
-                                <input type="time" name="jam" id="date" value="<?= $jam; ?>" class="form-control"
+                                <input type="text" name="jam_agenda" value="<?= $jam_agenda; ?>" class="form-control"
                                     required />
-
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="input-group">
-                                <input type="time" name="jam_akhir" id="date" value="<?= $jam_akhir; ?>"
-                                    class="form-control" required />
-
                             </div>
                         </div>
                     </div>
@@ -56,7 +50,8 @@
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Jumlah Peserta</label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" name="jumlah_peserta">
+                            <input type="number" class="form-control" name="jumlah_peserta"
+                                value="<?= $jumlah_peserta; ?>">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -85,6 +80,12 @@
 </div>
 <script>
 $(document).ready(function() {
+    $(document).ready(function() {
+        CKEDITOR.replace('keterangan', {
+            defaultLanguage: 'en',
+            language: 'en'
+        }).setData('<?php echo str_replace(array("\r", "\n"), '', $keterangan); ?>');
+    });
     $('#dates').datetimepicker({
         locale: 'en',
         format: 'YYYY-MM-DD',

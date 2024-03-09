@@ -42,7 +42,7 @@
             <div>
                 <ul>
                     <li>
-                        <a href="<?= base_url('Lokasi_Vanue'); ?>">
+                        <a href="<?= base_url('Lokasi_Venue'); ?>">
                             <i class="icon-location-pin"></i>
                             Lokasi Vanue
                         </a>
@@ -54,7 +54,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('agenda'); ?>">
+                        <a href="<?= base_url('Agenda'); ?>">
                             <i class="icon-notebook"></i>
                             Agenda
                         </a>
@@ -202,7 +202,7 @@
             <div>
                 <ul>
                     <li>
-                        <a href="<?= base_url('Lokasi_Vanue'); ?>">
+                        <a href="<?= base_url('Lokasi_Venue'); ?>">
                             <i class="icon-location-pin"></i>
                             Lokasi Vanue
                         </a>
@@ -214,7 +214,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('agenda'); ?>">
+                        <a href="<?= base_url('Agenda'); ?>">
                             <i class="icon-notebook"></i>
                             Agenda
                         </a>
@@ -328,7 +328,7 @@
             <div>
                 <ul>
                     <li>
-                        <a href="<?= base_url('Lokasi_Vanue'); ?>">
+                        <a href="<?= base_url('Lokasi_Venue'); ?>">
                             <i class="icon-location-pin"></i>
                             Lokasi Vanue
                         </a>
@@ -340,7 +340,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('agenda'); ?>">
+                        <a href="<?= base_url('Agenda'); ?>">
                             <i class="icon-notebook"></i>
                             Agenda
                         </a>

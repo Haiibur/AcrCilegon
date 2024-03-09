@@ -4,11 +4,12 @@
             <div class="card-body">
                 <div id="toolbar">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <a href="<?=base_url('form_tambah_galleri');?>" class="btn btn-success" title="Buat Agenda">
+                        <a href="<?=base_url('form_tambah_informasi');?>" class="btn btn-success"
+                            title="Buat Informasi">
                             <i class="fa fa-plus"></i>
-                            Tambah Galleri
+                            Tambah Berita
                         </a>
-                        <a href="<?=base_url('form_ubah_galleri/');?>" class="btn btn-warning" id="btnRedir"
+                        <a href="<?=base_url('form_ubah_informasi/');?>" class="btn btn-warning" id="btnRedir"
                             title="Ubah Agenda">
                             <i class="fa fa-edit"></i>
                             Edit
@@ -23,15 +24,15 @@
                 <div class="table-responsive">
                     <table id="table" class="table table-striped" data-toggle="table" data-toolbar="#toolbar"
                         data-pagination="true" data-search="true" data-sort-order="desc" data-id-field="id"
-                        data-page-list="[10, 25, 50, 100, all]" data-url="<?=base_url('Galleri/load_Galleri');?>">
+                        data-page-list="[10, 25, 50, 100, all]" data-url="<?=base_url('Informasi/load_informasi');?>">
                         <thead>
-                            <tr style="text-align:center;">
+                            <tr>
                                 <th data-field="state" data-checkbox="true"></th>
-                                <th data-formatter="operateFormatter1" data-width="100">Foto Galleri</th>
+                                <th data-formatter="operateFormatter" data-width="100">Foto Informasi</th>
                                 <th data-field="tgl_post">Tanggal Posting</th>
-                                <th data-field="nama_galleri">Nama Galleri</th>
+                                <th data-field="judul_informasi">Judul Berita</th>
                                 <th data-formatter="operateFormatter2">Link Vidio</th>
-                                <th data-field="ket_galleri">Keterangan</th>
+                                <th data-field="ket_informasi">Keterangan Informasi</th>
                             </tr>
                         </thead>
                     </table>
@@ -88,16 +89,16 @@
 <script type="text/javascript">
 var $table = $('#table')
 
-function operateFormatter1(value, row, index) {
+function operateFormatter(value, row, index) {
     return [
-        '<img src="' + row.foto_galleri_1 +
+        '<img src="' + row.gambar_informasi +
         '" alt="" style="display: block; width: 100px; margin-left: auto; margin-right: auto; height: 50%;">',
     ].join('')
 }
 
 function operateFormatter2(value, row, index) {
     return [
-        '<a href="' + row.link_vidio + '">' + row.link_vidio + '</a>'
+        '<a href="' + row.link_youtube + '">' + row.link_youtube + '</a>'
     ].join('')
 }
 </script>

@@ -38,7 +38,7 @@
                                 <th data-field="level_peserta">Level Peserta</th>
                                 <th data-field="username">Username</th>
                                 <th data-field="password">Password</th>
-                                <th data-field="status_peserta">Status Peserta</th>
+                                <th data-formatter="operateFormatter1">Status Peserta</th>
                             </tr>
                         </thead>
                     </table>
@@ -47,3 +47,13 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+var $table = $('#table')
+
+function operateFormatter1(value, row, index) {
+    return [
+        (row.status_produk === 1) ? 'Aktif' : 'Non-Aktif',
+    ].join('');
+}
+</script>

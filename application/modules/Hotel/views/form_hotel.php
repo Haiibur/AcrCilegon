@@ -42,26 +42,24 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Titik Lokasi</label>
-                        <div class="col-sm-6">
+                        <label class="col-sm-3 col-form-label">Lat</label>
+                        <div class="col-sm-9">
                             <div class="input-group">
-                                <input type="text" name="titik_lokasi" value="<?= $titik_lokasi; ?>"
-                                    class="form-control" required />
+                                <input type="text" name="lat" value="<?= $lat; ?>" class="form-control" required />
                             </div>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Keterangan</label>
-                        <div class="col-sm-6">
+                        <label class="col-sm-3 col-form-label">Longg</label>
+                        <div class="col-sm-9">
                             <div class="input-group">
-                                <textarea class="form-control" type="text" name="ket_venue" value="<?= $ket_hotel; ?>">
-                            </textarea>
+                                <input type="text" name="longg" value="<?= $longg; ?>" class="form-control" required />
                             </div>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Harga</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-9">
                             <div class="input-group">
                                 <input type="number" name="harga" value="<?= $harga; ?>" class="form-control"
                                     required />
@@ -70,10 +68,28 @@
                     </div>
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">No Telphone</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-9">
                             <div class="input-group">
                                 <input type="number" name="no_tlp" value="<?= $no_tlp; ?>" class="form-control"
                                     required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label">Link Website</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input type="text" name="link_website" value="<?= $link_website; ?>"
+                                    class="form-control" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-3 col-form-label">Keterangan</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <textarea class="form-control" type="text" name="ket_hotel" value="<?= $ket_hotel; ?>">
+                                </textarea>
                             </div>
                         </div>
                     </div>
@@ -94,3 +110,11 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+    CKEDITOR.replace('ket_hotel', {
+        defaultLanguage: 'en',
+        language: 'en'
+    }).setData('<?php echo str_replace(array("\r", "\n"), '', $ket_hotel); ?>');
+});
+</script>

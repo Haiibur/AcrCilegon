@@ -38,11 +38,23 @@ class Materi extends CI_Controller
 		
 		foreach ($res as $key => $value) {
 			$iddata = $value->kd_materi . '=t_materi=kd_materi=Materi=0.jpg';
+
+			$detail = 
+			'<div style="display: flex; justify-content: space-evenly;">
+				<a href="' . base_url() . './assets/upload_materi/' . $value->file_materi . '" class="btn btn-primary">
+					<i class="fa-solid fa-eye"></i>
+				</a>
+				<a href="'. base_url().'Materi/downloadFile/'. $value->kd_materi. '/' .$value->file_materi . '" class="btn btn-primary">
+					<i class="fa-solid fa-download"></i>
+				</a>
+			</div>';
+					
 			$data = [
 				'id' => $value->kd_materi,
 				'ids' => $iddata,
 				'nama_materi'		 => $value->nama_materi,
-				'file_materi'		 => base_url().'./assets/upload_materi/'.$value->file_materi,
+				'file_materi'		 => $detail,
+				'jumlah_download'	 => $value->jumlah_download
 			];
 			array_push($output, $data);
 		}
@@ -143,4 +155,35 @@ class Materi extends CI_Controller
 			// Handle kesalahan upload foto gambar 2
 		}
 	}
+
+	public function downloadFile($kd_materi, $file_name) {
+        $file_path = FCPATH . './assets/upload_materi/' . $file_name;
+
+        if (file_exists($file_path)) {
+
+			$Jumlah = $this->Modular->Jumlahdownload($kd_materi)->row()->jumlah_download;
+
+			// Increment Jumlah
+			$Jumlah++;
+
+			$req = [
+				'method' => 'update',
+				'table' => 't_materi',
+				'value' => [
+					'jumlah_download' 	 => $Jumlah,
+				],
+				
+				'where' => ['kd_materi' => $kd_materi]
+			];
+			
+			$this->Modular->queryBuild($req);
+			
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename="' . basename($file_path) . '"');
+            readfile($file_path);
+            exit;
+        } else {
+            echo "File not found";
+        }
+    }
 }

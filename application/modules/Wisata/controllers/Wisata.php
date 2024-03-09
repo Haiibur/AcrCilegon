@@ -82,62 +82,45 @@ class Wisata extends CI_Controller
 		$config['max_size']      = 6048;
 		$this->load->library('upload', $config);
 
-		// Upload Wisata 1
-		if ($this->upload->do_upload('foto_1')) {
-			$data_gambar_1 = $this->upload->data();
-			$foto_1 = $data_gambar_1['file_name'];
-
-			// Upload Wisata 2
-			if ($this->upload->do_upload('foto_2')) {
-				$data_gambar_2 = $this->upload->data();
-				$foto_2 = $data_gambar_2['file_name'];
-
-				// Upload Wisata 3
-				if ($this->upload->do_upload('foto_3')) {
-					$data_gambar_3 = $this->upload->data();
-					$foto_3 = $data_gambar_3['file_name'];
-
-					// Upload Wisata 4
-					if ($this->upload->do_upload('foto_4')) {
-						$data_gambar_4 = $this->upload->data();
-						$foto_4 = $data_gambar_4['file_name'];
-
-						// Upload Wisata 5
-						if ($this->upload->do_upload('foto_5')) {
-							$data_gambar_5 = $this->upload->data();
-							$foto_5 = $data_gambar_5['file_name'];
-
-							$req = [
-								'method' => 'insert',
-								'table' => 't_wisata',
-								'value' => [
-									'nama_wisata' 	 => $this->input->post('nama_wisata'),
-									'foto_1' 		 => $foto_1,
-									'foto_2' 		 => $foto_2,
-									'foto_3' 		 => $foto_3,
-									'foto_4' 		 => $foto_4,
-									'foto_5' 		 => $foto_5,
-									'ket_wisata' 	 => $this->input->post('ket_wisata'),
-									'no_tlp' 		 => $this->input->post('no_tlp')
-								]
-							];
-							
-							$this->Modular->queryBuild($req);
-							
-						} else {
-							$error = $this->upload->display_errors();
-						}
-					} else {
-						$error = $this->upload->display_errors();
-					}
-				} else {
-					$error = $this->upload->display_errors();
-				}
+		$upload_errors = array();
+	
+		// Loop untuk mengupload gambar 1-5
+		for ($i = 1; $i <= 5; $i++) {
+			$field_name = 'foto_' . $i;
+	
+			// Lakukan upload
+			if ($this->upload->do_upload($field_name)) {
+				$data_gambar = $this->upload->data();
+				${'foto_' . $i} = $data_gambar['file_name'];
 			} else {
-				$error = $this->upload->display_errors();
+				// Jika terjadi error, simpan pesan error
+				$upload_errors[] = $this->upload->display_errors();
 			}
+		}
+	
+		// Jika tidak ada error, lakukan insert data
+		if (empty($upload_errors)) {
+			$req = [
+				'method' => 'insert',
+				'table' => 't_wisata',
+				'value' => [
+					'nama_wisata' 	 => $this->input->post('nama_wisata'),
+					'foto_1' 		 => $foto_1,
+					'foto_2' 		 => $foto_2,
+					'foto_3' 		 => $foto_3,
+					'foto_4' 		 => $foto_4,
+					'foto_5' 		 => $foto_5,
+					'ket_wisata' 	 => $this->input->post('ket_wisata'),
+					'no_tlp' 		 => $this->input->post('no_tlp')
+				]
+			];
+			
+			$this->Modular->queryBuild($req);
 		} else {
-			$error = $this->upload->display_errors();
+			// Jika terdapat error pada upload, tangani error sesuai kebutuhan aplikasi
+			foreach ($upload_errors as $error) {
+				// Handle error (misalnya, log error, tampilkan pesan kepada pengguna, dll.)
+			}
 		}
 	}
 
@@ -178,62 +161,47 @@ class Wisata extends CI_Controller
 		$config['max_size']      = 200000;
 		$this->load->library('upload', $config);
 
-		// Upload Wisata 1
-		if ($this->upload->do_upload('foto_1')) {
-			$data_gambar_1 = $this->upload->data();
-			$foto_1 = $data_gambar_1['file_name'];
-		} else {
-			$error = $this->upload->display_errors();
+		$upload_errors = array();
+	
+		// Loop untuk mengupload gambar 1-5
+		for ($i = 1; $i <= 5; $i++) {
+			$field_name = 'foto_' . $i;
+	
+			// Lakukan upload
+			if ($this->upload->do_upload($field_name)) {
+				$data_gambar = $this->upload->data();
+				${'foto_' . $i} = $data_gambar['file_name'];
+			} else {
+				// Jika terjadi error, simpan pesan error
+				$upload_errors[] = $this->upload->display_errors();
+			}
 		}
-
-		// Upload Wisata 2
-		if ($this->upload->do_upload('foto_2')) {
-			$data_gambar_2 = $this->upload->data();
-			$foto_2 = $data_gambar_2['file_name'];
-		} else {
-			$error = $this->upload->display_errors();
-		}
-
-		// Upload Wisata 3
-		if ($this->upload->do_upload('foto_3')) {
-			$data_gambar_3 = $this->upload->data();
-			$foto_3 = $data_gambar_3['file_name'];
-		} else {
-			$error = $this->upload->display_errors();
-		}
-
-		// Upload Wisata 4
-		if ($this->upload->do_upload('foto_4')) {
-			$data_gambar_4 = $this->upload->data();
-			$foto_4 = $data_gambar_4['file_name'];
-		} else {
-			$error = $this->upload->display_errors();
-		}
-
-		// Upload Wisata 5
-		if ($this->upload->do_upload('foto_5')) {
-			$data_gambar_5 = $this->upload->data();
-			$foto_5 = $data_gambar_5['file_name'];
-		} else {
-			$error = $this->upload->display_errors();
-		}
-
-		$req = [
-			'method' => 'update',
-			'table' => 't_wisata',
-			'value' => [
-				'nama_wisata' 	 => $this->input->post('nama_wisata'),
-				'foto_1' 		 => $foto_1,
-				'foto_2' 		 => $foto_2,
-				'foto_3' 		 => $foto_3,
-				'foto_4' 		 => $foto_4,
-				'foto_5' 		 => $foto_5,
-				'ket_wisata' 	 => $this->input->post('ket_wisata'),
-				'no_tlp' 		 => $this->input->post('no_tlp')
-			],
-			'where' => ['kd_wisata' => $this->input->post('id')]
-		];
+	
+		// Jika tidak ada error, lakukan insert data
+		if (empty($upload_errors)) {
+			$req = [
+				'method' => 'update',
+				'table' => 't_wisata',
+				'value' => [
+					'nama_wisata' 	 => $this->input->post('nama_wisata'),
+					'foto_1' 		 => $foto_1,
+					'foto_2' 		 => $foto_2,
+					'foto_3' 		 => $foto_3,
+					'foto_4' 		 => $foto_4,
+					'foto_5' 		 => $foto_5,
+					'ket_wisata' 	 => $this->input->post('ket_wisata'),
+					'no_tlp' 		 => $this->input->post('no_tlp')
+				],
+				'where' => ['kd_wisata' => $this->input->post('id')]
+			];
+			
+			$this->Modular->queryBuild($req);
 		
-		$this->Modular->queryBuild($req);
+		} else {
+			// Jika terdapat error pada upload, tangani error sesuai kebutuhan aplikasi
+			foreach ($upload_errors as $error) {
+				// Handle error (misalnya, log error, tampilkan pesan kepada pengguna, dll.)
+			}
+		}
 	}
-}
+}	

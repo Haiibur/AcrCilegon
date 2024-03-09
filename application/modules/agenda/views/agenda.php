@@ -4,10 +4,10 @@
             <div class="card-body">
                 <div id="toolbar">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <a href="<?=base_url('buat-agenda');?>" class="btn btn-success" title="Buat Agenda">
+                        <a href="<?=base_url('buat_agenda');?>" class="btn btn-success" title="Buat Agenda">
                             <i class="fa fa-plus"></i> Agenda Baru
                         </a>
-                        <a href="<?=base_url('ubah-agenda/');?>" class="btn btn-warning" id="btnRedir"
+                        <a href="<?=base_url('ubah_agenda/');?>" class="btn btn-warning" id="btnRedir"
                             title="Ubah Agenda">
                             <i class="fa fa-edit"></i> Edit
                         </a>
@@ -20,11 +20,11 @@
                 <div class="table-responsive">
                     <table id="table" class="table table-striped" data-toggle="table" data-toolbar="#toolbar"
                         data-pagination="true" data-search="true" data-sort-order="desc" data-id-field="id"
-                        data-page-list="[10, 25, 50, 100, all]" data-url="<?=base_url('agenda/load_agenda');?>">
+                        data-page-list="[10, 25, 50, 100, all]" data-url="<?=base_url('Agenda/load_agenda');?>">
                         <thead>
                             <tr>
                                 <th data-field="state" data-checkbox="true"></th>
-                                <th data-field="nama" data-sortable="true">Nama Agenda</th>
+                                <th data-field="nama_agenda" data-sortable="true">Nama Agenda</th>
                                 <th data-field="kd_venue">Lokasi Acara</th>
                                 <th data-field="jumlah_peserta">Jumlah Peserta</th>
                                 <th data-field="detail">Tanggal Waktu Acara</th>

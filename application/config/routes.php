@@ -18,10 +18,9 @@ $route['admin'] = 'admin';
 $route['profil']= 'Profil';
 
 // Menu Agenda
-$route['agenda']                = 'agenda';
-$route['buat-agenda']           = 'agenda/buat_agd';
-$route['ubah-agenda/(:any)']    = 'agenda/edit_agd/$1';
-$route['naskah-agenda/(:any)']  = 'agenda/detail_nsk/$1';
+$route['agenda']                = 'Agenda';
+$route['buat_agenda']           = 'Agenda/buat_agd';
+$route['ubah_agenda/(:any)']    = 'Agenda/edit_agd/$1';
 $route['api/agenda-hari-ini']   = 'Api/agendaToday';
 $route['api/agenda-besok']      = 'Api/agendaTomorrow';
 $route['api/riwayat-agenda']    = 'Api/agendaRiwayat';
@@ -57,9 +56,9 @@ $route['form_tambah_lokasi_tujuan']      = 'Lokasi_Tujuan/form_tambah_lokasi_tuj
 $route['form_ubah_lokasi_tujuan/(:any)'] = 'Lokasi_Tujuan/edit_lokasi_tujuan/$1';
 
 // Menu Lokasi Vanue
-$route['Lokasi_Vanue']                  = 'Lokasi_Vanue';
-$route['form_tambah_lokasi_venue']      = 'Lokasi_Vanue/form_tambah_lokasi_venue';
-$route['form_ubah_lokasi_venue/(:any)'] = 'Lokasi_Vanue/edit_lokasi_venue/$1';
+$route['Lokasi_Venue']                  = 'Lokasi_Venue';
+$route['form_tambah_lokasi_venue']      = 'Lokasi_Venue/form_tambah_lokasi_venue';
+$route['form_ubah_lokasi_venue/(:any)'] = 'Lokasi_Venue/edit_lokasi_venue/$1';
 
 // Menu Wisata
 $route['Wisata']= 'Wisata';
@@ -100,6 +99,11 @@ $route['form_ubah_transaksi_order/(:any)'] = 'Transaksi_order/edit_transaksi_ord
 $route['FAQ']= 'FAQ';
 $route['form_tambah_faq']      = 'FAQ/form_tambah_faq';
 $route['form_ubah_faq/(:any)'] = 'FAQ/edit_faq/$1';
+
+// Menu Informasi
+$route['Informasi']= 'Informasi';
+$route['form_tambah_informasi']      = 'Informasi/form_tambah_informasi';
+$route['form_ubah_informasi/(:any)'] = 'Informasi/edit_informasi/$1';
 
 // Notfound
 $route['404_override'] = '';

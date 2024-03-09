@@ -28,7 +28,9 @@
                             <tr>
                                 <th data-field="state" data-checkbox="true"></th>
                                 <th data-field="nama_materi">Nama Materi</th>
-                                <th data-formatter="operateFormatter">File Materi</th>
+                                <th data-field="file_materi">File Materi</th>
+                                <th data-field="jumlah_download">Jumlah Download</th>
+                                <!-- <th data-formatter="operateFormatter">File Materi</th> -->
                             </tr>
                         </thead>
                     </table>
@@ -82,14 +84,14 @@
     </div>
 </div>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 var $table = $('#table')
 
 function operateFormatter(value, row, index) {
     return [
         '<a href="' + row.file_materi + '" class="btn btn-primary">',
-        'Lihat',
+        '<i class="fa-solid fa-download"></i>',
         '</a'
     ].join('')
 }
-</script>
+</script> -->
