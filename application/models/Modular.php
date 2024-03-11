@@ -55,9 +55,63 @@
     return $this->db->query($query);
   }
 
+  function All_agenda()
+  {
+    $query = "SELECT * FROM t_agenda ta INNER JOIN t_lokasi_venue tlv ON ta.kd_venue= tlv.kd_venue";
+    return $this->db->query($query);
+  }
+
   function Venue()
   {
     $query = "SELECT * FROM t_lokasi_venue";
+    return $this->db->query($query);
+  }
+
+  function Seleksi_foto_hotel()
+  {
+    $query = "SELECT *, 
+    CONCAT( 
+      COALESCE(
+        NULLIF(foto_1, 'NULL'), 
+        NULLIF(foto_2, 'NULL'), 
+        NULLIF(foto_3, 'NULL'), 
+        NULLIF(foto_4, 'NULL'), 
+        NULLIF(foto_5, 'NULL') 
+      ) 
+    ) AS foto_ke 
+    FROM t_hotel WHERE foto_1 IS NOT NULL OR foto_2 IS NOT NULL OR foto_3 IS NOT NULL OR foto_4 IS NOT NULL OR foto_5 IS NOT NULL";
+    return $this->db->query($query);
+  }
+
+  function Seleksi_foto_wisata()
+  {
+    $query = "SELECT *, 
+    CONCAT( 
+      COALESCE(
+        NULLIF(foto_1, 'NULL'), 
+        NULLIF(foto_2, 'NULL'), 
+        NULLIF(foto_3, 'NULL'), 
+        NULLIF(foto_4, 'NULL'), 
+        NULLIF(foto_5, 'NULL') 
+      ) 
+    ) AS foto_ke 
+    FROM t_wisata WHERE foto_1 IS NOT NULL OR foto_2 IS NOT NULL OR foto_3 IS NOT NULL OR foto_4 IS NOT NULL OR foto_5 IS NOT NULL";
+    return $this->db->query($query);
+  }
+
+  function Seleksi_foto_galleri()
+  {
+    $query = "SELECT *, 
+    CONCAT( 
+      COALESCE(
+        NULLIF(foto_1, 'NULL'), 
+        NULLIF(foto_2, 'NULL'), 
+        NULLIF(foto_3, 'NULL'), 
+        NULLIF(foto_4, 'NULL'), 
+        NULLIF(foto_5, 'NULL') 
+      ) 
+    ) AS foto_ke 
+    FROM t_hotel WHERE foto_1 IS NOT NULL OR foto_2 IS NOT NULL OR foto_3 IS NOT NULL OR foto_4 IS NOT NULL OR foto_5 IS NOT NULL";
     return $this->db->query($query);
   }
 

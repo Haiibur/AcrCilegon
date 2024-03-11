@@ -27,6 +27,8 @@ class Profil extends CI_Controller {
         ];
         $res = $this->Modular->queryBuild($req)->row();
         $data['nama'] = $res->nama_profil_sistem;
+		$data['ket_profil'] = $res->ket_profil;
+		$data['ket_tentang_css'] = $res->ket_tentang_css;
         $data['logo'] = $res->logo;
         $data['versi']= $res->versi;
 		$this->template->load('home', 'profil' ,$data);	

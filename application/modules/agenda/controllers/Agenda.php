@@ -14,20 +14,14 @@ class Agenda extends CI_Controller {
 	}
 
 	public function index() {
-        $data['title'] = "Agenda Kegiatan :: My Asisten";
-        $data['judul'] = 'Agenda Kegiatan';
+        $data['title'] = "Agenda :: My Asisten";
+        $data['judul'] = 'Agenda';
         $data['linkpage'] ='';
 		$this->template->load('home', 'agenda' ,$data);	
 	}
 
 	function load_agenda() {
-		$req = [
-			'method' => 'get',
-			'select' => '*',
-			'table' => 't_agenda',
-			'order' => 'kd_agenda DESC'
-		];
-		$res = $this->Modular->queryBuild($req)->result();
+		$res = $this->Modular->All_agenda()->result();
 		$output = array();
 		foreach ($res as $key => $value) {
 			$iddata = $value->kd_agenda.'=t_agenda=kd_agenda=agenda=0.jpg';
@@ -41,7 +35,7 @@ class Agenda extends CI_Controller {
 				'ids' 				=> $iddata,
 				
 				'nama_agenda' 		=> $value->nama_agenda,
-				'kd_venue' 			=> $value->kd_venue,
+				'nama_venue' 		=> $value->nama_venue,
 				'detail'			=> $detail,
 				'jumlah_peserta' 	=> $value->jumlah_peserta
 			];
@@ -52,7 +46,7 @@ class Agenda extends CI_Controller {
 
 	function buat_agd() {
         $data['title'] 		= "Buat Agenda :: My Asisten";
-        $data['judul'] 		= 'Form Agenda Kegiatan';
+        $data['judul'] 		= 'Form Agenda';
         $data['linkpage'] 	='<a href="https://chat.openai.com/chat" target="_blank" class="btn btn-success btn-sm">Buat Naskah di ChatGPT</a>';
 		$data['url'] 		= base_url('Agenda/simpan_agd');
 		$data['id'] 		= rand(0, 99).date('mdh');
@@ -93,8 +87,8 @@ class Agenda extends CI_Controller {
 			]
 		];
 		$row = $this->Modular->queryBuild($req)->row();
-        $data['title'] 		= "Update Agenda Kegiatan :: My Asisten";
-        $data['judul'] 		= 'Update Agenda Kegiatan ';
+        $data['title'] 		= "Update Agenda :: My Asisten";
+        $data['judul'] 		= 'Update Agenda ';
         $data['linkpage'] 	='<a href="https://chat.openai.com/chat" target="_blank" class="btn btn-success btn-sm">Buat Naskah di ChatGPT</a>';
 		$data['url'] 		= base_url('Agenda/update_agd');
 		$data['id']			= $id;

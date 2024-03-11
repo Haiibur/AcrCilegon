@@ -99,7 +99,7 @@ function operateFormatter2(value, row, index) {
 
 function operateFormatter1(value, row, index) {
     return [
-        (row.status_produk === 1) ? 'tersedia' : 'habis',
+        (row.status_produk == 1) ? 'tersedia' : 'habis',
     ].join('');
 }
 </script>

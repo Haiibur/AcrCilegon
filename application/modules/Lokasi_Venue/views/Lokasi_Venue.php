@@ -5,16 +5,16 @@
                 <div id="toolbar">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                         <a href="<?=base_url('form_tambah_lokasi_venue');?>" class="btn btn-success"
-                            title="Buat Agenda">
-                            <i class="fa fa-plus"></i> Tambah Lokasi Venue
+                            title="Tambah Data">
+                            <i class="fa fa-plus" style="margin-right: 5px;"></i>Tambah
                         </a>
                         <a href="<?=base_url('form_ubah_lokasi_venue/');?>" class="btn btn-warning" id="btnRedir"
-                            title="Ubah Agenda">
-                            <i class="fa fa-edit"></i> Edit
+                            title="Ubah Data">
+                            <i class="fa fa-edit" style="margin-right: 5px;"></i> Edit
                         </a>
                         <a href="<?=base_url('home/hapusData'); ?>" class="btn btn-danger" id="btnDestroy"
                             title="Hapus Data">
-                            <i class="far fa-trash-alt"></i> Hapus
+                            <i class="far fa-trash-alt" style="margin-right: 5px;"></i> Hapus
                         </a>
                     </div>
                 </div>
@@ -26,11 +26,11 @@
                         <thead>
                             <tr style="text-align: center;">
                                 <th data-field="state" data-checkbox="true"></th>
-                                <th data-formatter="operateFormatter" data-width="100">Foto Venue</th>
-                                <th data-field="nama_venue" data-sortable="true">Nama Venue</th>
+                                <th data-formatter="operateFormatter" data-width="100">Foto</th>
+                                <th data-field="nama_venue" data-sortable="true">Nama</th>
                                 <th data-field="titik_lokasi">Titik lokasi</th>
-                                <th data-field="ket_venue">Keterangan Venue</th>
                                 <th data-formatter="operateFormatter1">Status</th>
+                                <th data-field="ket_venue">Keterangan</th>
                             </tr>
                         </thead>
                     </table>

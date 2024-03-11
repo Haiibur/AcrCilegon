@@ -5,61 +5,73 @@
                 <form id="formData" action="<?= $url; ?>" method="POST" role="<?= base_url(); ?>Galleri">
                     <input type="hidden" name="id" value="<?= $id; ?>">
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Nama Galleri</label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2 col-form-label">Nama Galleri</label>
+                        <div class="col-sm-4">
                             <div class="input-group">
                                 <input type="text" name="nama_galleri" value="<?=$nama_galleri;?>" class="form-control"
                                     required />
                             </div>
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Foto Galleri </label>
-                        <div class="col-sm-9">
-                            <input type="file" name="foto_galleri_1" value="<?=$foto_galleri_1;?>" class="form-control "
-                                required />
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Foto Galleri 2</label>
-                        <div class="col-sm-9">
-                            <input type="file" name="foto_galleri_2" value="<?=$foto_galleri_2;?>" class="form-control "
-                                required />
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Foto Galleri 3</label>
-                        <div class="col-sm-9">
-                            <input type="file" name="foto_galleri_3" value="<?=$foto_galleri_3;?>" class="form-control "
-                                required />
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Foto Galleri 4</label>
-                        <div class="col-sm-9">
-                            <input type="file" name="foto_galleri_4" value="<?=$foto_galleri_4;?>" class="form-control "
-                                required />
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Foto Galleri 5</label>
-                        <div class="col-sm-9">
-                            <input type="file" name="foto_galleri_5" value="<?=$foto_galleri_5;?>" class="form-control "
-                                required />
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Link Vidio</label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2 col-form-label" style="display: flex; flex-direction: row-reverse;">
+                            Link Youtube
+                        </label>
+                        <div class="col-sm-4">
                             <input type="text" name="link_vidio" value="<?=$link_vidio;?>" class="form-control "
                                 required />
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Keterangan</label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2 col-form-label">Keterangan</label>
+                        <div class="col-sm-10">
                             <textarea class="form-control" type="text" name="ket_galleri" value="<?= $ket_galleri; ?>">
                             </textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Upload</label>
+                        <div class="col-sm-2">
+                            <input type="file" class="form-control" name="foto_1" onchange="pratinjau1(event)" required>
+                            <img id="imgPratinjau1" width="50%" height="50%" src="<?php if($foto_1 != '' && file_exists($img1 = 'assets/upload_hotel/'.$foto_1)) {
+                                echo base_url($img1);
+                            } else {
+                                echo base_url(). "assets/img/Upload-pana.png";
+                            } ?>">
+                        </div>
+
+                        <div class="col-sm-2">
+                            <input type="file" class="form-control" name="foto_2" onchange="pratinjau2(event)">
+                            <img id="imgPratinjau2" width="50%" height="50%" src="<?php if($foto_2 != '' && file_exists($img2 = 'assets/upload_hotel/'.$foto_2)) {
+                                echo base_url($img2);
+                            } else {
+                                echo base_url(). "assets/img/Upload-pana.png";
+                            } ?>">
+                        </div>
+
+                        <div class="col-sm-2">
+                            <input type="file" class="form-control" name="foto_3" onchange="pratinjau3(event)">
+                            <img id="imgPratinjau3" width="50%" height="50%" src="<?php if($foto_3 != '' && file_exists($img3 = 'assets/upload_hotel/'.$foto_3)) {
+                                echo base_url($img3);
+                            } else {
+                                echo base_url(). "assets/img/Upload-pana.png";
+                            } ?>">
+                        </div>
+
+                        <div class="col-sm-2">
+                            <input type="file" class="form-control" name="foto_4" onchange="pratinjau4(event)">
+                            <img id="imgPratinjau4" width="50%" height="50%" src="<?php if($foto_4 != '' && file_exists($img4 = 'assets/upload_hotel/'.$foto_4)) {
+                                echo base_url($img4);
+                            } else {
+                                echo base_url()."assets/img/Upload-pana.png";
+                            } ?>">
+                        </div>
+
+                        <div class="col-sm-2">
+                            <input type="file" class="form-control" name="foto_5" onchange="pratinjau5(event)">
+                            <img id="imgPratinjau5" width="50%" height="50%" src="<?php if($foto_5 != '' && file_exists($img5 = 'assets/upload_hotel/'.$foto_5)) {
+                                echo base_url($img5);
+                            } else {
+                                echo base_url()."assets/img/Upload-pana.png";
+                            } ?>">
                         </div>
                     </div>
                     <div class="row mb-3">

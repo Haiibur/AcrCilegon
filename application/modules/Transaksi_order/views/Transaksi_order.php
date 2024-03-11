@@ -5,9 +5,9 @@
                 <div id="toolbar">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                         <a href="<?=base_url('form_tambah_transaksi_order');?>" class="btn btn-success"
-                            title="Buat Agenda">
+                            title="Lihat Detail">
                             <i class="fa fa-plus"></i>
-                            Tambah Materi
+                            Lihat Detail
                         </a>
                         <a href="<?=base_url('form_ubah_transaksi_order/');?>" class="btn btn-warning" id="btnRedir"
                             title="Ubah Agenda">
@@ -29,16 +29,15 @@
                         <thead>
                             <tr>
                                 <th data-field="state" data-checkbox="true"></th>
-                                <th data-field="tgl_order">Tanggal Order</th>
-                                <th data-formatter="nama_produk">Produk</th>
-                                <th data-field="qty_order">Quantity Order</th>
-                                <th data-formatter="satuan_produk">Satuan Produk</th>
-                                <th data-field="nama_level_peserta">Jabatan</th>
-                                <th data-formatter="nama_kabupaten">Kabupaten</th>
-                                <th data-field="nama_peserta">Nama </th>
-                                <th data-formatter="alamat_kirim">Alamat Kirim</th>
-                                <th data-field="jumlah_bayar">Jumlah Bayar</th>
-                                <th data-formatter="status_bayar">Status Bayar</th>
+                                <th data-field="tgl_order">Nomer </th>
+                                <th data-formatter="nama_produk">Tanggal</th>
+                                <th data-formatter="satuan_produk">Nama Custumer</th>
+                                <th data-field="nama_level_peserta">Nomer Telphone</th>
+                                <th data-formatter="nama_kabupaten">Total Item</th>
+                                <th data-field="nama_peserta">Total Harga </th>
+                                <th data-formatter="alamat_kirim">Status Bayar</th>
+                                <th data-field="jumlah_bayar"> Status Order </th>
+                                <th data-formatter="status_bayar">Alamat Kirim</th>
                             </tr>
                         </thead>
                     </table>

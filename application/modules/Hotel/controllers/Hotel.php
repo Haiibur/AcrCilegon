@@ -26,34 +26,30 @@ class Hotel extends CI_Controller
 
 	function load_hotel()
 	{
-		$req = [
-			'method' => 'get',
-			'select' => '*',
-			'table' => 't_hotel',
-			'order' => 'kd_hotel DESC'
-		];
+		$res = $this->Modular->Seleksi_foto_hotel()->result();
 
-		$res = $this->Modular->queryBuild($req)->result();
 		$output = array();
 		foreach ($res as $key => $value) {
-			$iddata = $value->kd_hotel . '=t_hotel=kd_hotel=Hotel=0.jpg';			
-			$data = [
-				'id' => $value->kd_hotel,
-				'ids' => $iddata,
-				'nama_hotel'			 => $value->nama_hotel,
-				'foto_1'				 => base_url().'./assets/upload_hotel/'.$value->foto_1,
-				'lat'	 		 		 => $value->lat,
-				'longg'	 		 		 => $value->longg,
-				'harga'	 		 		 => $value->harga,
-				'no_tlp'	 			 => $value->no_tlp,
-				'link_website'	 		 => $value->link_website,
-				'ket_hotel'	 			 => $value->ket_hotel,
-			];
+				$iddata = $value->kd_hotel . '=t_hotel=kd_hotel=Hotel=0.jpg';
+				$data = [
+					'id' 			=> $value->kd_hotel,
+					'ids' 			=> $iddata,
+					'nama_hotel' 	=> $value->nama_hotel,
+					'foto' 			=> base_url() . './assets/upload_hotel/' . $value->foto_ke,
+					'titik_lokasi' 	=> $value->lat . ' ' . $value->longg,
+					'harga' 		=> $value->harga,
+					'no_tlp' 		=> $value->no_tlp,
+					'link_website' 	=> $value->link_website,
+					'ket_hotel' 	=> $value->ket_hotel,
+				];
 
-			array_push($output, $data);
-		}
+				array_push($output, $data);
+			}
 		$this->output->set_content_type('application/json')->set_output(json_encode($output));
+		// Add the closing bracket for the foreach loop
 	}
+
+	
 
 	function form_tambah_hotel()
 	{
@@ -87,6 +83,7 @@ class Hotel extends CI_Controller
 		$this->load->library('upload', $config);
 	
 		$upload_errors = array();
+		$gambar_files = array(); // Simpan nama file gambar
 	
 		// Loop untuk mengupload gambar 1-5
 		for ($i = 1; $i <= 5; $i++) {
@@ -95,37 +92,48 @@ class Hotel extends CI_Controller
 			// Lakukan upload
 			if ($this->upload->do_upload($field_name)) {
 				$data_gambar = $this->upload->data();
-				${'foto_' . $i} = $data_gambar['file_name'];
+				$gambar_files[$field_name] = $data_gambar['file_name'];
 			} else {
 				// Jika terjadi error, simpan pesan error
-				$upload_errors[] = $this->upload->display_errors();
+				$error = $this->upload->display_errors();
+				if ($error != "You did not select a file to upload.") {
+					$upload_errors[] = $error;
+				}
 			}
 		}
 	
-		// Jika tidak ada error, lakukan insert data
-		if (empty($upload_errors)) {
-			$req = [
-				'method' => 'insert',
-				'table'  => 't_hotel',
-				'value'  => [
-					'nama_hotel'    => $this->input->post('nama_hotel'),
-					'foto_1'        => $foto_1,
-					'foto_2'        => $foto_2,
-					'foto_3'        => $foto_3,
-					'foto_4'        => $foto_4,
-					'foto_5'        => $foto_5,
-					'lat'           => $this->input->post('lat'),
-					'longg'          => $this->input->post('longg'),
-					'ket_hotel'     => $this->input->post('ket_hotel'),
-					'harga'         => $this->input->post('harga'),
-					'no_tlp'        => $this->input->post('no_tlp'),
-					'link_website'  => $this->input->post('link_website')
-				]
-			];
+		// Mengatur nilai default untuk variabel gambar
+		$foto_1 = isset($gambar_files['foto_1']) ? $gambar_files['foto_1'] : 'NULL';
+		$foto_2 = isset($gambar_files['foto_2']) ? $gambar_files['foto_2'] : 'NULL';
+		$foto_3 = isset($gambar_files['foto_3']) ? $gambar_files['foto_3'] : 'NULL';
+		$foto_4 = isset($gambar_files['foto_4']) ? $gambar_files['foto_4'] : 'NULL';
+		$foto_5 = isset($gambar_files['foto_5']) ? $gambar_files['foto_5'] : 'NULL';
 	
-			$this->Modular->queryBuild($req);
-		} else {
-			// Jika terdapat error pada upload, tangani error sesuai kebutuhan aplikasi
+		// Insert data tanpa memeriksa keberadaan file gambar
+		$req = [
+			'method' => 'insert',
+			'table'  => 't_hotel',
+			'value'  => [
+				'nama_hotel'    => $this->input->post('nama_hotel'),
+				'foto_1'        => $foto_1,
+				'foto_2'        => $foto_2,
+				'foto_3'        => $foto_3,
+				'foto_4'        => $foto_4,
+				'foto_5'        => $foto_5,
+				'lat'           => $this->input->post('lat'),
+				'longg'         => $this->input->post('longg'),
+				'ket_hotel'     => $this->input->post('ket_hotel'),
+				'harga'         => $this->input->post('harga'),
+				'no_tlp'        => $this->input->post('no_tlp'),
+				'link_website'  => $this->input->post('link_website')
+			]
+		];
+	
+		$this->Modular->queryBuild($req);
+	
+		// Tangani error jika ada
+		if (!empty($upload_errors)) {
+			// Handle error pada upload (misalnya, log error, tampilkan pesan kepada pengguna, dll.)
 			foreach ($upload_errors as $error) {
 				// Handle error (misalnya, log error, tampilkan pesan kepada pengguna, dll.)
 			}
@@ -149,6 +157,7 @@ class Hotel extends CI_Controller
 		$data['judul'] 			= 'Update Hotel ';
 		$data['url'] 			= base_url('Hotel/update_hotel');
 		$data['id'] 			= $id;
+		
 		$data['nama_hotel'] 	= $row->nama_hotel;
 		$data['foto_1']			= $row->foto_1;
 		$data['foto_2'] 	 	= $row->foto_2;
@@ -174,7 +183,7 @@ class Hotel extends CI_Controller
 		$config['max_size']      = 6048;
 		$this->load->library('upload', $config);
 	
-		$upload_errors = array();
+		$gambar_files = array(); // Simpan nama file gambar
 	
 		// Loop untuk mengupload gambar 1-5
 		for ($i = 1; $i <= 5; $i++) {
@@ -183,41 +192,44 @@ class Hotel extends CI_Controller
 			// Lakukan upload
 			if ($this->upload->do_upload($field_name)) {
 				$data_gambar = $this->upload->data();
-				${'foto_' . $i} = $data_gambar['file_name'];
+				$gambar_files[$field_name] = $data_gambar['file_name'];
 			} else {
 				// Jika terjadi error, simpan pesan error
-				$upload_errors[] = $this->upload->display_errors();
+				$error = $this->upload->display_errors();
+				if ($error != "You did not select a file to upload.") {
+					$upload_errors[] = $error;
+				}
 			}
 		}
 	
-		// Jika tidak ada error, lakukan insert data
-		if (empty($upload_errors)) {
-			$req = [
-				'method' => 'update',
-				'table'  => 't_hotel',
-				'value'  => [
-					'nama_hotel'    => $this->input->post('nama_hotel'),
-					'foto_1'        => $foto_1,
-					'foto_2'        => $foto_2,
-					'foto_3'        => $foto_3,
-					'foto_4'        => $foto_4,
-					'foto_5'        => $foto_5,
-					'lat'           => $this->input->post('lat'),
-					'longg'          => $this->input->post('longg'),
-					'ket_hotel'     => $this->input->post('ket_hotel'),
-					'harga'         => $this->input->post('harga'),
-					'no_tlp'        => $this->input->post('no_tlp'),
-					'link_website'  => $this->input->post('link_website')
-				],
-				'where' => ['kd_hotel' => $this->input->post('id')]
-			];
+		// Mengatur nilai default untuk variabel gambar
+		$foto_1 = isset($gambar_files['foto_1']) ? $gambar_files['foto_1'] : 'NULL';
+		$foto_2 = isset($gambar_files['foto_2']) ? $gambar_files['foto_2'] : 'NULL';
+		$foto_3 = isset($gambar_files['foto_3']) ? $gambar_files['foto_3'] : 'NULL';
+		$foto_4 = isset($gambar_files['foto_4']) ? $gambar_files['foto_4'] : 'NULL';
+		$foto_5 = isset($gambar_files['foto_5']) ? $gambar_files['foto_5'] : 'NULL';
 	
-			$this->Modular->queryBuild($req);
-		} else {
-			// Jika terdapat error pada upload, tangani error sesuai kebutuhan aplikasi
-			foreach ($upload_errors as $error) {
-				// Handle error (misalnya, log error, tampilkan pesan kepada pengguna, dll.)
-			}
-		}
+		// Insert data tanpa memeriksa keberadaan file gambar
+		$req = [
+			'method' => 'update',
+			'table'  => 't_hotel',
+			'value'  => [
+				'nama_hotel'    => $this->input->post('nama_hotel'),
+				'foto_1'        => $foto_1,
+				'foto_2'        => $foto_2,
+				'foto_3'        => $foto_3,
+				'foto_4'        => $foto_4,
+				'foto_5'        => $foto_5,
+				'lat'           => $this->input->post('lat'),
+				'longg'         => $this->input->post('longg'),
+				'ket_hotel'     => $this->input->post('ket_hotel'),
+				'harga'         => $this->input->post('harga'),
+				'no_tlp'        => $this->input->post('no_tlp'),
+				'link_website'  => $this->input->post('link_website')
+			],
+			'where' => ['kd_hotel' => $this->input->post('id')]
+		];
+	
+		$this->Modular->queryBuild($req);
 	}
 }

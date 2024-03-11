@@ -39,8 +39,7 @@ class Lokasi_Venue extends CI_Controller {
 				'ids' 			=> $iddata,
 				'nama_venue' 	=> $value->nama_venue,
 				'foto_venue' 	=> base_url().'./assets/upload_Lokasi_Vanue/'.$value->foto_venue,
-				'lat'		    => $value->lat,
-				'longg'		    => $value->longg,
+				'titik_lokasi'	=> $value->lat.' '.$value->longg,
 				'ket_venue' 	=> $value->ket_venue,
 				'status'		=> $value->status
 			];

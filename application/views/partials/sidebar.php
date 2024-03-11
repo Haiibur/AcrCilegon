@@ -94,7 +94,7 @@
             <div>
                 <ul>
                     <li>
-                        <a href="<?= base_url('#'); ?>">
+                        <a href="<?= base_url('Informasi'); ?>">
                             <i class="icon-picture"></i>
                             Berita Terbaru
                         </a>
@@ -149,13 +149,13 @@
             <div>
                 <ul>
                     <li>
-                        <a href="<?= base_url('Undangan'); ?>">
+                        <a href="<?= base_url('Produk'); ?>">
                             <i class="fas fa-grip-horizontal"></i>
                             Produk
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('Pendaftaran'); ?>">
+                        <a href="<?= base_url('Transaksi_order'); ?>">
                             <i class="fas fa-grip-horizontal"></i>
                             Transaksi Produk
                         </a>
@@ -170,24 +170,18 @@
             <a href="#"><i class="icon-settings"></i>Pengaturan</a>
             <div>
                 <ul>
-                    <!-- <li>
-                        <a href="<?= base_url('profil'); ?>">
+                    <li>
+                        <a href="<?= base_url('Profil'); ?>">
                             <i class="fa-solid fa-user-tie"></i>
                             Profil Sistem
                         </a>
-                    </li> -->
+                    </li>
                     <li>
                         <a href="<?= base_url('admin'); ?>">
                             <i class="fas fa-grip-horizontal"></i>
                             Administrator
                         </a>
                     </li>
-                    <!-- <li>
-                        <a href="<?= base_url('Level_Peserta'); ?>">
-                            <i class="fa-solid fa-users"></i>
-                            Level Admin
-                        </a>
-                    </li> -->
                 </ul>
             </div>
         </li>
@@ -248,7 +242,7 @@
             <div>
                 <ul>
                     <li>
-                        <a href="<?= base_url('#'); ?>">
+                        <a href="<?= base_url('Informasi'); ?>">
                             <i class="icon-picture"></i>
                             Berita Terbaru
                         </a>
@@ -303,13 +297,13 @@
             <div>
                 <ul>
                     <li>
-                        <a href="<?= base_url('Undangan'); ?>">
+                        <a href="<?= base_url('Produk'); ?>">
                             <i class="fas fa-grip-horizontal"></i>
                             Produk
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url('Pendaftaran'); ?>">
+                        <a href="<?= base_url('Transaksi_order'); ?>">
                             <i class="fas fa-grip-horizontal"></i>
                             Transaksi Produk
                         </a>

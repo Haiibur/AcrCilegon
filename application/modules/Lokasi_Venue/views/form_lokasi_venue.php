@@ -1,3 +1,8 @@
+<style>
+.form-check-label {
+    margin-bottom: 0;
+}
+</style>
 <div class="row">
     <div class="col-12 col-md-12 mt-3">
         <div class="card">
@@ -6,58 +11,60 @@
                     role="<?= base_url(); ?>Lokasi_Venue">
                     <input type="hidden" name="id" value="<?= $id; ?>">
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Nama Venue</label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2 col-form-label">Nama Venue</label>
+                        <div class="col-sm-10">
                             <input class="form-control" type="text" name="nama_venue" value="<?= $nama_venue; ?>"
                                 required>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Foto Venue</label>
-                        <div class="col-sm-9">
-                            <div class="input-group">
-                                <input type="file" name="foto_venue" value="<?=$foto_venue;?>" class="form-control"
-                                    required />
-                            </div>
+                        <label class="col-sm-2 col-form-label">Latitude</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" name="lat" value="<?= $lat; ?>" id="latitude">
+                        </div>
+                        <label class="col-sm-2 col-form-label"
+                            style="display: flex; flex-direction: row-reverse;">Longitude</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text" name="longg" value="<?= $longg; ?>" id="longitude">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Lat</label>
-                        <div class="col-sm-9">
-                            <input class="form-control" type="text" name="lat" value="<?= $lat; ?>">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Long</label>
-                        <div class="col-sm-9">
-                            <input class="form-control" type="text" name="longg" value="<?= $longg; ?>">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-3 ">Keterangan Venue</label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2">Keterangan Venue</label>
+                        <div class="col-sm-10">
                             <textarea class="form-control" type="text" name="ket_venue" id="ket_venue">
                                 <?= $ket_venue; ?>    
                             </textarea>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Status</label>
-                        <div class="col-sm-9">
-                            <div class="form-check">
+                        <label class="col-sm-2 col-form-label">Status</label>
+                        <div class="col-sm-4">
+                            <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="status" value="<?= 1 ?>"
                                     id="flexRadioDefault1">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Aktif
                                 </label>
                             </div>
-                            <div class="form-check">
+                            <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="status" value="<?= 2 ?>"
                                     id="flexRadioDefault2" checked>
                                 <label class="form-check-label" for="flexRadioDefault2">
                                     Non-Aktif
                                 </label>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Upload</label>
+                        <div class="col-sm-3">
+                            <input type="file" class="form-control" name="foto_venue" onchange="pratinjau(event)"
+                                required>
+                            <img id="imgPratinjau" width="50%" height="50%" src="<?php if($foto_venue != '' && file_exists($img = 'assets/upload_Lokasi_Vanue/'.$foto_venue)) {
+                                echo base_url($img);
+                            } else {
+                                echo "assets/img/Upload-pana.png";
+                            } ?>">
                         </div>
                     </div>
                     <div class="row mb-3">

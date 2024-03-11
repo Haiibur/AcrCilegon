@@ -18,8 +18,8 @@ class Transaksi_order extends CI_Controller
 
 	public function index()
 	{
-		$data['title'] = "Transaksi_order :: My Asisten";
-		$data['judul'] = 'Transaksi_order';
+		$data['title'] = "Transaksi Produk :: My Asisten";
+		$data['judul'] = 'Transaksi Produk';
 		$data['linkpage'] = '';
 		$this->template->load('home', 'Transaksi_order', $data);
 	}

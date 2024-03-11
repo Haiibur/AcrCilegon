@@ -4,18 +4,18 @@
             <div class="card-body">
                 <div id="toolbar">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <a href="<?=base_url('form_tambah_hotel');?>" class="btn btn-success" title="Buat Agenda">
-                            <i class="fa fa-plus"></i>
-                            Tambah Galleri
+                        <a href="<?=base_url('form_tambah_hotel');?>" class="btn btn-success" title="Tambah Data">
+                            <i class="fa fa-plus" style="margin-right: 5px;"></i>
+                            Tambah
                         </a>
                         <a href="<?=base_url('form_ubah_hotel/');?>" class="btn btn-warning" id="btnRedir"
-                            title="Ubah Agenda">
-                            <i class="fa fa-edit"></i>
+                            title="Ubah Data">
+                            <i class="fa fa-edit" style="margin-right: 5px;"></i>
                             Edit
                         </a>
                         <a href="<?=base_url('home/hapusData'); ?>" class="btn btn-danger" id="btnDestroy"
                             title="Hapus Data">
-                            <i class="far fa-trash-alt"></i>
+                            <i class="far fa-trash-alt" style="margin-right: 5px;"></i>
                             Hapus
                         </a>
                     </div>
@@ -27,12 +27,13 @@
                         <thead>
                             <tr style="text-align:center;">
                                 <th data-field="state" data-checkbox="true"></th>
-                                <th data-formatter="operateFormatter2" data-width="100">Foto Hotel</th>
-                                <th data-field="nama_hotel" data-sortable="true">Nama Hotel</th>
+                                <th data-formatter="operateFormatter1" data-width="100">Foto</th>
+                                <th data-field="nama_hotel" data-sortable="true">Nama</th>
+                                <th data-field="no_tlp">Telphone</th>
+                                <th data-formatter="operateFormatter2" data-width="100">Link Website</th>
                                 <th data-field="titik_lokasi">Titik Lokasi</th>
-                                <th data-field="ket_hotel">Keterangan</th>
                                 <th data-field="harga">Harga</th>
-                                <th data-field="no_tlp">Nomer Telphone</th>
+                                <th data-field="ket_hotel">Keterangan</th>
                             </tr>
                         </thead>
                     </table>
@@ -89,34 +90,18 @@
 <script type="text/javascript">
 var $table = $('#table')
 
-function operateFormatter2(value, row, index) {
+function operateFormatter1(value, row, index) {
     return [
-        '<img src="' + row.foto_1 +
+        '<img src="' + row.foto +
         '" alt="" style="display: block; width: 100px; margin-left: auto; margin-right: auto; height: 50%;">',
     ].join('')
-}
+};
 
-// function operateFormatter3(value, row, index) {
-//     return [
-//         '<a href="' + row.foto_galleri_3 + '" class="btn btn-primary">',
-//         'Lihat',
-//         '</a'
-//     ].join('')
-// }
-
-// function operateFormatter4(value, row, index) {
-//     return [
-//         '<a href="' + row.foto_galleri_4 + '" class="btn btn-primary">',
-//         'Lihat',
-//         '</a'
-//     ].join('')
-// }
-
-// function operateFormatter5(value, row, index) {
-//     return [
-//         '<a href="' + row.foto_galleri_5 + '" class="btn btn-primary">',
-//         'Lihat',
-//         '</a'
-//     ].join('')
-// }
+function operateFormatter2(value, row, index) {
+    return [
+        '<a href="' + row.link_website + '">',
+        row.link_website,
+        '</a'
+    ].join('')
+};
 </script>

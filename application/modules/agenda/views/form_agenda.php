@@ -14,7 +14,7 @@
 
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Tanggal</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <div class="input-group date" id="dates" data-target-input="nearest">
                                 <input type="text" name="tgl_agenda" id="date" value="<?= $tgl_agenda; ?>"
                                     class="form-control datetimepicker-input" required data-target="#dates" />
@@ -23,33 +23,28 @@
                                 </div>
                             </div>
                         </div>
-                        <label class="col-sm-3 col-form-label" style="display: contents;">Jam</label>
-                        <div class="col-sm-2">
-                            <div class="input-group">
-                                <input type="text" name="jam_agenda" value="<?= $jam_agenda; ?>" class="form-control"
-                                    required />
-                            </div>
+                        <label class="col-sm-2 col-form-label"
+                            style="display: flex; flex-direction: row-reverse;">Jam</label>
+                        <div class="col-sm-3">
+                            <input type="text" name="jam_agenda" value="<?= $jam_agenda; ?>" class="form-control"
+                                required />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Lokasi Acara</label>
-                        <div class="col-sm-9">
-                            <div class="input-group">
-                                <select name="kd_venue" class="form-control">
-                                    <option disable selected>--- Pilih Lokasi Venue ---</option>
-                                    <?php
+                        <div class="col-sm-4">
+                            <select name="kd_venue" class="form-control">
+                                <option disable selected>--- Pilih Lokasi Venue ---</option>
+                                <?php
                                         foreach ($kd_venue as $value) { ?>
-                                    <option value=<?= $value->kd_venue ?>><?= $value->nama_venue ?>
-                                    </option>
-                                    <?php } ?>
-                                </select>
-                            </div>
+                                <option value=<?= $value->kd_venue ?>><?= $value->nama_venue ?>
+                                </option>
+                                <?php } ?>
+                            </select>
                         </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Jumlah Peserta</label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2 col-form-label"
+                            style="display: flex; flex-direction: row-reverse;">Jumlah Peserta</label>
+                        <div class="col-sm-3">
                             <input type="number" class="form-control" name="jumlah_peserta"
                                 value="<?= $jumlah_peserta; ?>">
                         </div>

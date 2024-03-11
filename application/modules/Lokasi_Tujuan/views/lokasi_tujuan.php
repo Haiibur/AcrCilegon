@@ -5,16 +5,16 @@
                 <div id="toolbar">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                         <a href="<?=base_url('form_tambah_lokasi_tujuan');?>" class="btn btn-success"
-                            title="Form Lokasi Tujuan">
-                            <i class="fa fa-plus"></i>Tambah Lokasi Tujuan
+                            title="Tambah Data">
+                            <i class="fa fa-plus" style="margin-right: 5px;"></i>Tambah
                         </a>
                         <a href="<?=base_url('form_ubah_lokasi_tujuan/');?>" class="btn btn-warning" id="btnRedir"
-                            title="Ubah lokasi_tujuan">
-                            <i class="fa fa-edit"></i> Edit
+                            title="Ubah Data">
+                            <i class="fa fa-edit" style="margin-right: 5px;"></i> Edit
                         </a>
                         <a href="<?=base_url('home/hapusData'); ?>" class="btn btn-danger" id="btnDestroy"
                             title="Hapus Data">
-                            <i class="far fa-trash-alt"></i> Hapus
+                            <i class="far fa-trash-alt" style="margin-right: 5px;"></i> Hapus
                         </a>
                     </div>
                 </div>
@@ -26,10 +26,10 @@
                         <thead>
                             <tr style="text-align: center;">
                                 <th data-field="state" data-checkbox="true"></th>
-                                <th data-formatter="operateFormatter1" data-width="100">Gambar Lokasi</th>
-                                <th data-field="nama_lokasi" data-sortable="true">Nama Lokasi</th>
-                                <th data-field="ket_lokasi">Keterangan Lokasi</th>
-                                <th data-field="link_vidio">Link Vidio</th>
+                                <th data-formatter="operateFormatter1" data-width="100">Gambar</th>
+                                <th data-field="nama_lokasi" data-sortable="true">Nama</th>
+                                <th data-formatter="operateFormatter2">Link Youtube</th>
+                                <th data-field="ket_lokasi">Keterangan</th>
                             </tr>
                         </thead>
                     </table>
@@ -91,13 +91,13 @@ function operateFormatter1(value, row, index) {
         '<img src="' + row.gambar_lokasi +
         '" alt="" style="display: block; width: 100px; margin-left: auto; margin-right: auto; height: 50%;">',
     ].join('')
-}
+};
 
 function operateFormatter2(value, row, index) {
     return [
-        '<a href="' + row.link_vidio + '" class="btn btn-primary">',
-        'Lihat',
+        '<a href="' + row.link_vidio + '">',
+        row.link_vidio,
         '</a'
     ].join('')
-}
+};
 </script>

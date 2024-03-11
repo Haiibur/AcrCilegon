@@ -6,34 +6,36 @@
                     role="<?= base_url(); ?>Lokasi_Tujuan">
                     <input type="hidden" name="id" value="<?= $id; ?>">
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Nama Lokasi</label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2 col-form-label">Nama Lokasi</label>
+                        <div class="col-sm-10">
                             <input type="text" class="form-control" name="nama_lokasi" value="<?= $nama_lokasi; ?>"
                                 required>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Upload Gambar Lokasi</label>
-                        <div class="col-sm-9">
-                            <input type="file" name="gambar_lokasi" value="<?= $gambar_lokasi; ?>" class="form-control"
-                                required />
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Link Vidio</label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2 col-form-label">Link Youtube</label>
+                        <div class="col-sm-10">
                             <input type="text" name="link_vidio" value="<?= $link_vidio; ?>" class="form-control"
                                 required />
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Keterangan Lokasi</label>
-                        <div class="col-sm-9">
-                            <div class="input-group">
-                                <textarea class="form-control" type="text" name="ket_lokasi"
-                                    value="<?= $ket_lokasi; ?>">
+                        <label class="col-sm-2">Keterangan</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" type="text" name="ket_lokasi" value="<?= $ket_lokasi; ?>">
                             </textarea>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Upload</label>
+                        <div class="col-sm-3">
+                            <input type="file" class="form-control" name="gambar_lokasi" onchange="pratinjau(event)"
+                                required>
+                            <img id="imgPratinjau" width="50%" height="50%" src="<?php if($gambar_lokasi != '' && file_exists($img = 'assets/upload_Lokasi_Tujuan/'.$gambar_lokasi)) {
+                                echo base_url($img);
+                            } else {
+                                echo "assets/img/Upload-pana.png";
+                            } ?>">
                         </div>
                     </div>
                     <div class="row mb-3">
