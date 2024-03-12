@@ -27,10 +27,10 @@
                         <thead>
                             <tr style="text-align:center;">
                                 <th data-field="state" data-checkbox="true"></th>
-                                <th data-formatter="operateFormatter1" data-width="100">Foto Galleri</th>
-                                <th data-field="tgl_post">Tanggal Posting</th>
+                                <th data-formatter="operateFormatter1" data-width="100">Foto</th>
                                 <th data-field="nama_galleri">Nama Galleri</th>
-                                <th data-formatter="operateFormatter2">Link Vidio</th>
+                                <th data-field="tgl_post">Tanggal Posting</th>
+                                <th data-formatter="operateFormatter2">Link Youtube</th>
                                 <th data-field="ket_galleri">Keterangan</th>
                             </tr>
                         </thead>
@@ -90,7 +90,7 @@ var $table = $('#table')
 
 function operateFormatter1(value, row, index) {
     return [
-        '<img src="' + row.foto_galleri_1 +
+        '<img src="' + row.foto +
         '" alt="" style="display: block; width: 100px; margin-left: auto; margin-right: auto; height: 50%;">',
     ].join('')
 }

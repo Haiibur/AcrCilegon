@@ -38,6 +38,21 @@ class Informasi extends CI_Controller
 		
 		foreach ($res as $key => $value) {
 			$iddata = $value->kd_informasi . '=t_informasi=kd_informasi=Informasi=0.jpg';
+
+			$detail = 
+			'<div class="btn-group dropup" style="display: flex;">
+				<a class="btn btn-sm btn-primary" style="color: white;">' . ($value->status_informasi == 1 ? '<small>Aktif</small>' : '<small>Non-Aktif</small>') . '</a>
+				<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+				<div class="dropdown-menu">' .
+					($value->status_informasi == 1 
+						? '<a href="' . base_url() . 'Informasi/update_status/' . $value->kd_informasi . '/2" class="dropdown-item" style="text-align: center;">
+								Non-Aktif
+						   </a>' 
+						: '<a href="' . base_url() . 'Informasi/update_status/' . $value->kd_informasi . '/1" class="dropdown-item" style="text-align: center;">
+								Aktif
+						   </a>') .
+				'</div>
+			</div>';
 			
 			$data = [
 				'id' 					 => $value->kd_informasi,
@@ -47,7 +62,7 @@ class Informasi extends CI_Controller
 				'judul_informasi'		 => $value->judul_informasi,
 				'gambar_informasi' 		 => base_url().'./assets/upload_informasi/'.$value->gambar_informasi,
 				'link_youtube' 			 => $value->link_youtube,
-				'status_informasi'		 => $value->status_informasi,
+				'status_informasi'		 => $detail,
 				'ket_informasi'			 => $value->ket_informasi,
 			];
 			array_push($output, $data);
@@ -170,4 +185,20 @@ class Informasi extends CI_Controller
 			// Handle kesalahan upload foto gambar 2
 		}
 	}
+
+	public function update_status($id, $status_informasi) {
+        $req = [
+            'method' => 'update',
+            'table' => 't_informasi',
+            'value' => [
+                'status_informasi' => $status_informasi,
+            ],
+            'where' => ['kd_informasi' => $id]
+        ];
+
+        // Panggil fungsi untuk menjalankan query pembaruan status
+        $this->Modular->queryBuild($req);
+
+		redirect('Informasi');
+    }
 }

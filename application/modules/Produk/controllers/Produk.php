@@ -31,6 +31,23 @@ class Produk extends CI_Controller
 		
 		foreach ($res as $key => $value) {
 			$iddata = $value->kd_produk . '=t_produk=kd_produk=Produk=0.jpg';
+
+			$detail = 
+			'<div class="btn-group dropup" style="display: flex;">
+				<a class="btn btn-sm btn-primary" style="color: white;">' . ($value->status_produk == 1 ? '<small>Aktif</small>' : '<small>Non-Aktif</small>') . '</a>
+				<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+				<div class="dropdown-menu">' .
+					($value->status_produk == 1 
+						? '<a href="' . base_url() . 'Produk/update_status/' . $value->kd_produk . '/2" class="dropdown-item" style="text-align: center;">
+								Non-Aktif
+						   </a>' 
+						: '<a href="' . base_url() . 'Produk/update_status/' . $value->kd_produk . '/1" class="dropdown-item" style="text-align: center;">
+								Aktif
+						   </a>') .
+				'</div>
+			</div>';
+
+
 			$data = [
 				'id' => $value->kd_produk,
 				'ids' => $iddata,
@@ -39,8 +56,8 @@ class Produk extends CI_Controller
 				'nama_produk'		 => $value->nama_produk,
 				'harga'		 		 => $value->harga,
 				'satuan_produk'		 => $value->satuan_produk,
-				'status_produk'		 => $value->status_produk,
 				'ket_produk'		 => $value->ket_produk,
+				'status_produk'		 => $detail,
 			];
 			array_push($output, $data);
 		}
@@ -73,70 +90,66 @@ class Produk extends CI_Controller
 		// Konfigurasi untuk upload gambar lokasi
 		$config['upload_path']   = './assets/upload_produk';
 		$config['allowed_types'] = 'mp4|mp3|jpg|jpeg|png|gif';
-		$config['max_size']      = 200000;
+		$config['max_size']      = 6048;
 		$this->load->library('upload', $config);
-
-		// Upload Produk 1
-		if ($this->upload->do_upload('gambar_1')) {
-			$data_file_produk1 = $this->upload->data();
-			$file_produk1 = $data_file_produk1['file_name'];
-			
-			// Upload Produk 2
-			if ($this->upload->do_upload('gambar_2')) {
-				$data_file_produk2 = $this->upload->data();
-				$file_produk2 = $data_file_produk2['file_name'];
-
-				// Upload Produk 2
-				if ($this->upload->do_upload('gambar_3')) {
-					$data_file_produk3 = $this->upload->data();
-					$file_produk3 = $data_file_produk3['file_name'];
-
-					// Upload Produk 3
-					if ($this->upload->do_upload('gambar_4')) {
-						$data_file_produk4 = $this->upload->data();
-						$file_produk4= $data_file_produk4['file_name'];
-
-						// Upload Produk 4
-						if ($this->upload->do_upload('gambar_5')) {
-							$data_file_produk5 = $this->upload->data();
-							$file_produk5 = $data_file_produk5['file_name'];
-
-							date_default_timezone_set('Asia/Jakarta');
-
-							$req = [
-								'method' => 'insert',
-								'table' => 't_produk',
-								'value' => [
-									'katagori_produk'	 => $this->input->post('katagori_produk'),
-									'nama_produk'		 => $this->input->post('nama_produk'),
-									'harga'		 		 => $this->input->post('harga'),
-									'satuan_produk'		 => $this->input->post('satuan_produk'),
-									'gambar_1'		 	 => $file_produk1,
-									'gambar_2'		 	 => $file_produk2,
-									'gambar_3'		 	 => $file_produk3,
-									'gambar_4'		 	 => $file_produk4,
-									'gambar_5'		 	 => $file_produk5,
-									'status_produk'		 => $this->input->post('status_produk'),
-									'tgl_buat'			 => date("Y-m-d H:i:s"),
-									'ket_produk'		 => $this->input->post('ket_produk'),
-								]
-							];
-							
-							$this->Modular->queryBuild($req);
-						} else {
-							$error = $this->upload->display_errors();
-						}		
-					} else {
-						$error = $this->upload->display_errors();
-					}
-				} else {
-					$error = $this->upload->display_errors();
-				}
+	
+		$upload_errors = array();
+		$gambar_files = array(); // Simpan nama file gambar
+	
+		// Loop untuk mengupload gambar 1-5
+		for ($i = 1; $i <= 5; $i++) {
+			$field_name = 'gambar_' . $i;
+	
+			// Lakukan upload
+			if ($this->upload->do_upload($field_name)) {
+				$data_gambar = $this->upload->data();
+				$gambar_files[$field_name] = $data_gambar['file_name'];
 			} else {
+				// Jika terjadi error, simpan pesan error
 				$error = $this->upload->display_errors();
+				if ($error != "You did not select a file to upload.") {
+					$upload_errors[] = $error;
+				}
 			}
-		} else {
-			$error = $this->upload->display_errors();
+		}
+	
+		// Mengatur nilai default untuk variabel gambar
+		$gambar_1 = isset($gambar_files['gambar_1']) ? $gambar_files['gambar_1'] : 'NULL';
+		$gambar_2 = isset($gambar_files['gambar_2']) ? $gambar_files['gambar_2'] : 'NULL';
+		$gambar_3 = isset($gambar_files['gambar_3']) ? $gambar_files['gambar_3'] : 'NULL';
+		$gambar_4 = isset($gambar_files['gambar_4']) ? $gambar_files['gambar_4'] : 'NULL';
+		$gambar_5 = isset($gambar_files['gambar_5']) ? $gambar_files['gambar_5'] : 'NULL';
+	
+		date_default_timezone_set('Asia/Jakarta');
+
+		$req = [
+			'method' => 'insert',
+			'table' => 't_produk',
+			'value' => [
+				'katagori_produk'	 => $this->input->post('katagori_produk'),
+				'nama_produk'		 => $this->input->post('nama_produk'),
+				'harga'		 		 => $this->input->post('harga'),
+				'satuan_produk'		 => $this->input->post('satuan_produk'),
+				'gambar_1'		 	 => $gambar_1,
+				'gambar_2'		 	 => $gambar_2,
+				'gambar_3'		 	 => $gambar_3,
+				'gambar_4'		 	 => $gambar_4,
+				'gambar_5'		 	 => $gambar_5,
+				'status_produk'		 => $this->input->post('status_produk'),
+				'tgl_buat'			 => date("Y-m-d H:i:s"),
+				'ket_produk'		 => $this->input->post('ket_produk'),
+			]
+		];
+		
+		$this->Modular->queryBuild($req);
+	
+	
+		// Tangani error jika ada
+		if (!empty($upload_errors)) {
+			// Handle error pada upload (misalnya, log error, tampilkan pesan kepada pengguna, dll.)
+			foreach ($upload_errors as $error) {
+				// Handle error (misalnya, log error, tampilkan pesan kepada pengguna, dll.)
+			}
 		}
 	}
 
@@ -175,70 +188,89 @@ class Produk extends CI_Controller
 		// Konfigurasi untuk upload gambar lokasi
 		$config['upload_path']   = './assets/upload_produk';
 		$config['allowed_types'] = 'mp4|mp3|jpg|jpeg|png|gif';
-		$config['max_size']      = 200000;
+		$config['max_size']      = 6048;
 		$this->load->library('upload', $config);
-
-		// Upload Produk 1
-		if ($this->upload->do_upload('gambar_1')) {
-			$data_file_produk1 = $this->upload->data();
-			$file_produk1 = $data_file_produk1['file_name'];
-			
-			// Upload Produk 2
-			if ($this->upload->do_upload('gambar_2')) {
-				$data_file_produk2 = $this->upload->data();
-				$file_produk2 = $data_file_produk2['file_name'];
-
-				// Upload Produk 2
-				if ($this->upload->do_upload('gambar_3')) {
-					$data_file_produk3 = $this->upload->data();
-					$file_produk3 = $data_file_produk3['file_name'];
-
-					// Upload Produk 3
-					if ($this->upload->do_upload('gambar_4')) {
-						$data_file_produk4 = $this->upload->data();
-						$file_produk4= $data_file_produk4['file_name'];
-
-						// Upload Produk 4
-						if ($this->upload->do_upload('gambar_5')) {
-							$data_file_produk5 = $this->upload->data();
-							$file_produk5 = $data_file_produk5['file_name'];
-
-							date_default_timezone_set('Asia/Jakarta');
-
-							$req = [
-								'method' => 'update',
-								'table' => 't_produk',
-								'value' => [
-									'katagori_produk'	 => $this->input->post('katagori_produk'),
-									'nama_produk'		 => $this->input->post('nama_produk'),
-									'harga'		 		 => $this->input->post('harga'),
-									'satuan_produk'		 => $this->input->post('satuan_produk'),
-									'gambar_1'		 	 => $file_produk1,
-									'gambar_2'		 	 => $file_produk2,
-									'gambar_3'		 	 => $file_produk3,
-									'gambar_4'		 	 => $file_produk4,
-									'gambar_5'		 	 => $file_produk5,
-									'status_produk'		 => $this->input->post('status_produk'),
-									'tgl_buat'			 => date("Y-m-d H:i:s"),
-									'ket_produk'		 => $this->input->post('ket_produk'),
-								]
-							];
-							
-							$this->Modular->queryBuild($req);
-						} else {
-							$error = $this->upload->display_errors();
-						}		
-					} else {
-						$error = $this->upload->display_errors();
-					}
-				} else {
-					$error = $this->upload->display_errors();
-				}
+	
+		$upload_errors = array();
+		$gambar_files = array(); // Simpan nama file gambar
+	
+		// Loop untuk mengupload gambar 1-5
+		for ($i = 1; $i <= 5; $i++) {
+			$field_name = 'gambar_' . $i;
+	
+			// Lakukan upload
+			if ($this->upload->do_upload($field_name)) {
+				$data_gambar = $this->upload->data();
+				$gambar_files[$field_name] = $data_gambar['file_name'];
 			} else {
+				// Jika terjadi error, simpan pesan error
 				$error = $this->upload->display_errors();
+				if ($error != "You did not select a file to upload.") {
+					$upload_errors[] = $error;
+				}
 			}
-		} else {
-			$error = $this->upload->display_errors();
+		}
+	
+		// Mengatur nilai default untuk variabel gambar
+		$gambar_1 = isset($gambar_files['gambar_1']) ? $gambar_files['gambar_1'] : 'NULL';
+		$gambar_2 = isset($gambar_files['gambar_2']) ? $gambar_files['gambar_2'] : 'NULL';
+		$gambar_3 = isset($gambar_files['gambar_3']) ? $gambar_files['gambar_3'] : 'NULL';
+		$gambar_4 = isset($gambar_files['gambar_4']) ? $gambar_files['gambar_4'] : 'NULL';
+		$gambar_5 = isset($gambar_files['gambar_5']) ? $gambar_files['gambar_5'] : 'NULL';
+	
+		date_default_timezone_set('Asia/Jakarta');
+
+		$req = [
+			'method' => 'update',
+			'table' => 't_produk',
+			'value' => [
+				'katagori_produk'	 => $this->input->post('katagori_produk'),
+				'nama_produk'		 => $this->input->post('nama_produk'),
+				'harga'		 		 => $this->input->post('harga'),
+				'satuan_produk'		 => $this->input->post('satuan_produk'),
+				'gambar_1'		 	 => $gambar_1,
+				'gambar_2'		 	 => $gambar_2,
+				'gambar_3'		 	 => $gambar_3,
+				'gambar_4'		 	 => $gambar_4,
+				'gambar_5'		 	 => $gambar_5,
+				'status_produk'		 => $this->input->post('status_produk'),
+				'tgl_buat'			 => date("Y-m-d H:i:s"),
+				'ket_produk'		 => $this->input->post('ket_produk'),
+			],
+			'where' => ['kd_produk' => $this->input->post('id')]
+		];
+		
+		$this->Modular->queryBuild($req);
+	
+		// Tangani error jika ada
+		if (!empty($upload_errors)) {
+			// Handle error pada upload (misalnya, log error, tampilkan pesan kepada pengguna, dll.)
+			foreach ($upload_errors as $error) {
+				// Handle error (misalnya, log error, tampilkan pesan kepada pengguna, dll.)
+			}
 		}
 	}
+
+	public function update_status($id, $status) {
+        $req = [
+            'method' => 'update',
+            'table' => 't_produk',
+            'value' => [
+                'status_produk' => $status,
+            ],
+            'where' => ['kd_produk' => $id]
+        ];
+
+        // Panggil fungsi untuk menjalankan query pembaruan status
+        $this->Modular->queryBuild($req);
+
+		redirect('Produk');
+    }
+
+	function Get_harga()
+    {
+        $kd_produk = $this->input->post('kd_produk', TRUE);
+        $data = $this->Modular->Produk_get($kd_produk)->result();
+        echo json_encode($data);
+    }
 }

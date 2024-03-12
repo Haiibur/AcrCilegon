@@ -5,15 +5,14 @@
                 <form id="formData" action="<?= $url; ?>" method="POST" role="<?= base_url(); ?>Agenda">
                     <input type="hidden" name="id" value="<?= $id; ?>">
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Nama Agenda</label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2 col-form-label">Nama Agenda</label>
+                        <div class="col-sm-10">
                             <input type="text" class="form-control" name="nama_agenda" value="<?= $nama_agenda; ?>"
                                 required>
                         </div>
                     </div>
-
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Tanggal</label>
+                        <label class="col-sm-2 col-form-label">Tanggal</label>
                         <div class="col-sm-4">
                             <div class="input-group date" id="dates" data-target-input="nearest">
                                 <input type="text" name="tgl_agenda" id="date" value="<?= $tgl_agenda; ?>"
@@ -23,15 +22,14 @@
                                 </div>
                             </div>
                         </div>
-                        <label class="col-sm-2 col-form-label"
-                            style="display: flex; flex-direction: row-reverse;">Jam</label>
-                        <div class="col-sm-3">
+                        <label class="col-sm-2 col-form-label">Jam</label>
+                        <div class="col-sm-4">
                             <input type="text" name="jam_agenda" value="<?= $jam_agenda; ?>" class="form-control"
                                 required />
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Lokasi Acara</label>
+                        <label class="col-sm-2 col-form-label">Lokasi Acara</label>
                         <div class="col-sm-4">
                             <select name="kd_venue" class="form-control">
                                 <option disable selected>--- Pilih Lokasi Venue ---</option>
@@ -42,16 +40,15 @@
                                 <?php } ?>
                             </select>
                         </div>
-                        <label class="col-sm-2 col-form-label"
-                            style="display: flex; flex-direction: row-reverse;">Jumlah Peserta</label>
-                        <div class="col-sm-3">
+                        <label class="col-sm-2 col-form-label">Jumlah Peserta</label>
+                        <div class="col-sm-4">
                             <input type="number" class="form-control" name="jumlah_peserta"
                                 value="<?= $jumlah_peserta; ?>">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Keterangan</label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2 col-form-label">Keterangan</label>
+                        <div class="col-sm-10">
                             <textarea class="form-control" name="keterangan" rows="4"><?= $keterangan; ?></textarea>
                         </div>
                     </div>
@@ -62,7 +59,7 @@
                                 <button class="btn btn-outline-primary" type="submit">
                                     Simpan <span id="loading2"></span>
                                 </button>
-                                <a href="<?= base_url(); ?>agenda" class="btn btn-danger">
+                                <a href="<?= base_url(); ?>Agenda" class="btn btn-danger">
                                     Batal
                                 </a>
                             </div>

@@ -21,7 +21,7 @@
 <!-- START: APP JS-->
 <script src="<?=base_url();?>assets/dist/js/app.js"></script>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+<!-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
 <script src="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.umd.js"></script>
@@ -51,4 +51,4 @@ map.on('click', (event) => {
     document.getElementById('longitude').value = event.latlng.lng;
 
 })
-</script>
+</script> -->

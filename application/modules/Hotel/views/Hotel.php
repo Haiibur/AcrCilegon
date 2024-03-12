@@ -28,7 +28,7 @@
                             <tr style="text-align:center;">
                                 <th data-field="state" data-checkbox="true"></th>
                                 <th data-formatter="operateFormatter1" data-width="100">Foto</th>
-                                <th data-field="nama_hotel" data-sortable="true">Nama</th>
+                                <th data-field="nama_hotel" data-sortable="true">Nama Hotel</th>
                                 <th data-field="no_tlp">Telphone</th>
                                 <th data-formatter="operateFormatter2" data-width="100">Link Website</th>
                                 <th data-field="titik_lokasi">Titik Lokasi</th>

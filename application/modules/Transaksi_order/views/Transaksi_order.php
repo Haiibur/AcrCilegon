@@ -4,13 +4,18 @@
             <div class="card-body">
                 <div id="toolbar">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <a href="<?=base_url('form_tambah_transaksi_order');?>" class="btn btn-success"
-                            title="Lihat Detail">
+                        <!-- <a href="<?=base_url('form_tambah_transaksi_order');?>" class="btn btn-success"
+                            title="Tambah Data">
                             <i class="fa fa-plus"></i>
+                            Tambah
+                        </a> -->
+                        <a href="<?=base_url('detail_order/');?>" class="btn btn-success" id="btnRedir"
+                            title="Lihat Detail">
+                            <i class="fa fa-eye"></i>
                             Lihat Detail
                         </a>
-                        <a href="<?=base_url('form_ubah_transaksi_order/');?>" class="btn btn-warning" id="btnRedir"
-                            title="Ubah Agenda">
+                        <a href="<?=base_url('ubah_transaksi_order/');?>" class="btn btn-warning" id="btnRedir2"
+                            title="Ubah Data">
                             <i class="fa fa-edit"></i>
                             Edit
                         </a>
@@ -29,15 +34,15 @@
                         <thead>
                             <tr>
                                 <th data-field="state" data-checkbox="true"></th>
-                                <th data-field="tgl_order">Nomer </th>
-                                <th data-formatter="nama_produk">Tanggal</th>
-                                <th data-formatter="satuan_produk">Nama Custumer</th>
-                                <th data-field="nama_level_peserta">Nomer Telphone</th>
-                                <th data-formatter="nama_kabupaten">Total Item</th>
-                                <th data-field="nama_peserta">Total Harga </th>
-                                <th data-formatter="alamat_kirim">Status Bayar</th>
-                                <th data-field="jumlah_bayar"> Status Order </th>
-                                <th data-formatter="status_bayar">Alamat Kirim</th>
+                                <th data-field="kd_order">Nomer</th>
+                                <th data-field="tgl_order">Tanggal</th>
+                                <th data-field="nama_peserta">Nama Customer</th>
+                                <th data-field="tlp_peserta">Telphone</th>
+                                <th data-field="qty_order">Total Item</th>
+                                <th data-field="harga_order" id="harga_order">Total Harga</th>
+                                <th data-field="alamat_kirim">Alamat Kirim</th>
+                                <th data-field="status_kirim" data-width="130"> Status Order </th>
+                                <th data-field="status_bayar" data-width="130">Status Bayar</th>
                             </tr>
                         </thead>
                     </table>
@@ -90,15 +95,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-var $table = $('#table')
-
-function operateFormatter(value, row, index) {
-    return [
-        '<a href="' + row.file_materi + '" class="btn btn-primary">',
-        'Lihat',
-        '</a'
-    ].join('')
-}
-</script>

@@ -27,10 +27,10 @@
                             <tr style="text-align: center;">
                                 <th data-field="state" data-checkbox="true"></th>
                                 <th data-formatter="operateFormatter" data-width="100">Foto</th>
-                                <th data-field="nama_venue" data-sortable="true">Nama</th>
+                                <th data-field="nama_venue" data-sortable="true">Nama Venue</th>
                                 <th data-field="titik_lokasi">Titik lokasi</th>
-                                <th data-formatter="operateFormatter1">Status</th>
                                 <th data-field="ket_venue">Keterangan</th>
+                                <th data-field="status" data-width="130">Status</th>
                             </tr>
                         </thead>
                     </table>
@@ -84,18 +84,12 @@
 </div>
 
 <script type="text/javascript">
-var $table = $('#table')
+var $table = $('#table');
 
 function operateFormatter(value, row, index) {
     return [
         '<img src="' + row.foto_venue +
         '" alt="" style="display: block; width: 80px; margin-left: auto; margin-right: auto; height: 80%;">',
-    ].join('')
-}
-
-function operateFormatter1(value, row, index) {
-    return [
-        (row.status == 1) ? 'Aktif' : 'Non-Aktif',
     ].join('');
 }
 </script>

@@ -66,7 +66,7 @@
             </div>
         </a>
     </div>
-    <div class="col-12 col-sm-6 col-xl-4 mt-3">
+    <!-- <div class="col-12 col-sm-6 col-xl-4 mt-3">
         <a href="<?= base_url(); ?>Wisata" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
@@ -77,7 +77,7 @@
                 </div>
             </div>
         </a>
-    </div>
+    </div> -->
     <div class="col-12 col-sm-6 col-xl-4 mt-3">
         <a href="<?= base_url(); ?>Galleri" style="text-decoration: none">
             <div class="card">
@@ -278,7 +278,7 @@
             </div>
         </a>
     </div>
-    <div class="col-12 col-sm-6 col-xl-4 mt-3">
+    <!-- <div class="col-12 col-sm-6 col-xl-4 mt-3">
         <a href="<?= base_url(); ?>Wisata" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
@@ -289,7 +289,7 @@
                 </div>
             </div>
         </a>
-    </div>
+    </div> -->
     <div class="col-12 col-sm-6 col-xl-4 mt-3">
         <a href="<?= base_url(); ?>Galleri" style="text-decoration: none">
             <div class="card">
@@ -451,7 +451,7 @@
             </div>
         </a>
     </div>
-    <div class="col-12 col-sm-6 col-xl-4 mt-3">
+    <!-- <div class="col-12 col-sm-6 col-xl-4 mt-3">
         <a href="<?= base_url(); ?>Wisata" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
@@ -462,7 +462,7 @@
                 </div>
             </div>
         </a>
-    </div>
+    </div> -->
     <div class="col-12 col-sm-6 col-xl-4 mt-3">
         <a href="<?= base_url(); ?>Galleri" style="text-decoration: none">
             <div class="card">
@@ -535,7 +535,7 @@
     <!-- End Hotel -->
 
     <!-- Wisata -->
-    <div class="col-12 col-sm-6 col-xl-4 mt-3">
+    <!-- <div class="col-12 col-sm-6 col-xl-4 mt-3">
         <a href="<?= base_url(); ?>Wisata" style="text-decoration: none">
             <div class="card">
                 <div class="card-body">
@@ -546,7 +546,7 @@
                 </div>
             </div>
         </a>
-    </div>
+    </div> -->
     <!-- End Wisata -->
 
     <?php }elseif ($userdata->nama_level=="Koperasi") {?>

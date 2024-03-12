@@ -4,12 +4,12 @@
             <div class="card-body">
                 <div id="toolbar">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <a href="<?=base_url('form_tambah_pendaftaran');?>" class="btn btn-success" title="Buat Agenda">
+                        <a href="<?=base_url('form_tambah_pendaftaran');?>" class="btn btn-success" title="Tambah Data">
                             <i class="fa fa-plus"></i>
-                            Tambah Undangan
+                            Tambah
                         </a>
                         <a href="<?=base_url('form_ubah_pendaftaran/');?>" class="btn btn-warning" id="btnRedir"
-                            title="Ubah Agenda">
+                            title="Ubah Data">
                             <i class="fa fa-edit"></i>
                             Edit
                         </a>
@@ -38,7 +38,7 @@
                                 <th data-field="level_peserta">Level Peserta</th>
                                 <th data-field="username">Username</th>
                                 <th data-field="password">Password</th>
-                                <th data-formatter="operateFormatter1">Status Peserta</th>
+                                <th data-field="status_peserta">Status</th>
                             </tr>
                         </thead>
                     </table>
@@ -47,13 +47,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-var $table = $('#table')
-
-function operateFormatter1(value, row, index) {
-    return [
-        (row.status_produk === 1) ? 'Aktif' : 'Non-Aktif',
-    ].join('');
-}
-</script>

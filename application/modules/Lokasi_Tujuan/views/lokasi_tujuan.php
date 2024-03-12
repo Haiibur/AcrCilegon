@@ -27,7 +27,7 @@
                             <tr style="text-align: center;">
                                 <th data-field="state" data-checkbox="true"></th>
                                 <th data-formatter="operateFormatter1" data-width="100">Gambar</th>
-                                <th data-field="nama_lokasi" data-sortable="true">Nama</th>
+                                <th data-field="nama_lokasi" data-sortable="true">Nama Tujuan</th>
                                 <th data-formatter="operateFormatter2">Link Youtube</th>
                                 <th data-field="ket_lokasi">Keterangan</th>
                             </tr>

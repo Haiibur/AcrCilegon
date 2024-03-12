@@ -26,14 +26,7 @@ class Galleri extends CI_Controller
 
 	function load_Galleri()
 	{
-		$req = [
-			'method' => 'get',
-			'select' => '*',
-			'table' => 't_galleri',
-			'order' => 'kd_galleri DESC'
-		];
-
-		$res = $this->Modular->queryBuild($req)->result();
+		$res = $this->Modular->Seleksi_foto_galleri()->result();
 		$output = array();
 		foreach ($res as $key => $value) {
 			$iddata = $value->kd_galleri . '=t_galleri=kd_galleri=Galleri=0.jpg';			
@@ -42,7 +35,7 @@ class Galleri extends CI_Controller
 				'ids' => $iddata,
 
 				'nama_galleri'	 => $value->nama_galleri,
-				'foto_1' 		 => base_url().'./assets/upload_galleri/'.$value->foto_1,
+				'foto' 		 	 => base_url().'./assets/upload_galleri/'.$value->foto_ke,
 				'tgl_post'		 => date("d M Y H:i:s", strtotime($value->tgl_post)),
 				'link_vidio'	 => $value->link_vidio,
 				'ket_galleri'	 => $value->ket_galleri

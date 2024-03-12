@@ -10,8 +10,7 @@
                             <input type="text" name="nama_wisata" value="<?= $nama_wisata; ?>" class="form-control"
                                 required />
                         </div>
-                        <label class="col-sm-2 col-form-label"
-                            style="display: flex; flex-direction: row-reverse;">Telphone</label>
+                        <label class="col-sm-2 col-form-label">Telphone</label>
                         <div class="col-sm-4">
                             <input type="number" name="no_tlp" value="<?= $no_tlp; ?>" class="form-control" required />
                         </div>
@@ -76,7 +75,7 @@
                                 <button class="btn btn-outline-primary" type="submit">
                                     Simpan <span id="loading2"></span>
                                 </button>
-                                <a href="<?= base_url(); ?>wisata" class="btn btn-danger">
+                                <a href="<?= base_url(); ?>Wisata" class="btn btn-danger">
                                     Batal
                                 </a>
                             </div>

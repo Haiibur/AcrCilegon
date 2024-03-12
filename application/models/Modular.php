@@ -49,6 +49,12 @@
     return $this->db->query($query);
   }
 
+  function Produk_get($kd_produk)
+  {
+    $query = "SELECT * FROM t_produk where kd_produk='$kd_produk'";
+    return $this->db->query($query);
+  }
+
   function Agenda()
   {
     $query = "SELECT * FROM t_agenda";
@@ -111,7 +117,7 @@
         NULLIF(foto_5, 'NULL') 
       ) 
     ) AS foto_ke 
-    FROM t_hotel WHERE foto_1 IS NOT NULL OR foto_2 IS NOT NULL OR foto_3 IS NOT NULL OR foto_4 IS NOT NULL OR foto_5 IS NOT NULL";
+    FROM t_galleri WHERE foto_1 IS NOT NULL OR foto_2 IS NOT NULL OR foto_3 IS NOT NULL OR foto_4 IS NOT NULL OR foto_5 IS NOT NULL";
     return $this->db->query($query);
   }
 
@@ -147,15 +153,20 @@
 
   function Transaksi_order()
   {
-    $query = "SELECT po.tgl_order, pr.nama_produk, pod.qty_order, pod.satuan_order, pl.nama_level_peserta, tk.nama_kabupaten, tp.nama_peserta, po.alamat_kirim, po.jumlah_bayar, po.status_bayar
-    FROM t_kabupaten tk 
-    INNER JOIN t_undangan tu ON tu.kab_kd = tk.kd_kabupaten 
-    INNER JOIN t_pendaftaran tp ON tp.undangan_kd = tu.id_undangan 
-    INNER JOIN t_peserta_level pl ON pl.kd_level_peserta = tp.level_peserta 
-    INNER JOIN produk_order po ON po.pendaftar_kd = tp.kd_daftar 
-    INNER JOIN produk_order_detail pod ON pod.order_kd=po.kd_order 
-    INNER JOIN t_produk pr ON pr.kd_produk = pod.produk_id 
-    INNER JOIN t_produk_kat pk ON pk.kd_kat=pr.katagori_produk";
+    $query = "SELECT * FROM produk_order po 
+    INNER JOIN produk_order_detail pod ON pod.order_kd = po.kd_order 
+    INNER JOIN t_produk tp ON tp.kd_produk= pod.produk_id
+    INNER JOIN t_pendaftaran tpen ON tpen.kd_daftar=po.pendaftar_kd";
+    return $this->db->query($query);
+  }
+
+  function Transaksi_order_detail($id)
+  {
+    $query = "SELECT * FROM produk_order po 
+    INNER JOIN produk_order_detail pod ON pod.order_kd = po.kd_order 
+    INNER JOIN t_produk tp ON tp.kd_produk= pod.produk_id
+    INNER JOIN t_pendaftaran tpen ON tpen.kd_daftar=po.pendaftar_kd
+    where po.kd_order='$id'";
     return $this->db->query($query);
   }
 

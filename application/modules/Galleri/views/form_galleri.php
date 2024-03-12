@@ -12,10 +12,10 @@
                                     required />
                             </div>
                         </div>
-                        <label class="col-sm-2 col-form-label" style="display: flex; flex-direction: row-reverse;">
+                        <label class="col-sm-2 col-form-label">
                             Link Youtube
                         </label>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <input type="text" name="link_vidio" value="<?=$link_vidio;?>" class="form-control "
                                 required />
                         </div>

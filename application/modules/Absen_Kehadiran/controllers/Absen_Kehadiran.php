@@ -18,8 +18,8 @@ class Absen_Kehadiran extends CI_Controller
 
 	public function index()
 	{
-		$data['title'] = "Absen_Kehadiran :: My Asisten";
-		$data['judul'] = 'Absen_Kehadiran';
+		$data['title'] = "Absen Kehadiran :: My Asisten";
+		$data['judul'] = 'Absen Kehadiran';
 		$data['linkpage'] = '';
 		$this->template->load('home', 'Absen_Kehadiran', $data);
 	}
@@ -57,8 +57,8 @@ class Absen_Kehadiran extends CI_Controller
 
 	function form_tambah_absen_kehadiran()
 	{
-		$data['title'] 			= "Absen_Kehadiran :: My Asisten";
-		$data['judul'] 			= 'Form Absen_Kehadiran';
+		$data['title'] 			= "Absen Kehadiran :: My Asisten";
+		$data['judul'] 			= 'Form Absen Kehadiran';
 		$data['url'] 			= base_url('Absen_Kehadiran/Insert_absen_kehadiran');
 		$data['id'] 			= rand(0, 99) . date('mdh');
 

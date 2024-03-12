@@ -22,8 +22,7 @@
                         <div class="col-sm-4">
                             <input class="form-control" type="text" name="lat" value="<?= $lat; ?>" id="latitude">
                         </div>
-                        <label class="col-sm-2 col-form-label"
-                            style="display: flex; flex-direction: row-reverse;">Longitude</label>
+                        <label class="col-sm-2 col-form-label">Longitude</label>
                         <div class="col-sm-4">
                             <input class="form-control" type="text" name="longg" value="<?= $longg; ?>" id="longitude">
                         </div>
@@ -58,9 +57,9 @@
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Upload</label>
                         <div class="col-sm-3">
-                            <input type="file" class="form-control" name="foto_venue" onchange="pratinjau(event)"
+                            <input type="file" class="form-control" name="foto_venue" onchange="pratinjau1(event)"
                                 required>
-                            <img id="imgPratinjau" width="50%" height="50%" src="<?php if($foto_venue != '' && file_exists($img = 'assets/upload_Lokasi_Vanue/'.$foto_venue)) {
+                            <img id="imgPratinjau1" width="50%" height="50%" src="<?php if($foto_venue != '' && file_exists($img = 'assets/upload_Lokasi_Vanue/'.$foto_venue)) {
                                 echo base_url($img);
                             } else {
                                 echo "assets/img/Upload-pana.png";
@@ -73,7 +72,7 @@
                                 <button class="btn btn-outline-primary" type="submit">
                                     Simpan <span id="loading2"></span>
                                 </button>
-                                <a href="<?= base_url(); ?>agenda" class="btn btn-danger">
+                                <a href="<?= base_url(); ?>Lokasi_Venue" class="btn btn-danger">
                                     Batal
                                 </a>
                             </div>

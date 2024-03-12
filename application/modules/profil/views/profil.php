@@ -2,94 +2,43 @@
     <div class="col-12 col-md-12 mt-3">
         <div class="card">
             <div class="card-body">
-                <form id="formData" action="<?= base_url(); ?>Profil/update_prf" method="POST"
-                    role="<?= base_url(); ?>Profil">
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Nama Sistem</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nama" value="<?= $nama; ?>">
-                        </div>
+                <div id="toolbar">
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                        <a href="<?=base_url('form_tambah_profil');?>" class="btn btn-success" title="Tambah Data">
+                            <i class="fa fa-plus" style="margin-right: 5px;"></i>Tambah
+                        </a>
+                        <a href="<?=base_url('form_ubah_profil/');?>" class="btn btn-warning" id="btnRedir"
+                            title="Ubah Data">
+                            <i class="fa fa-edit" style="margin-right: 5px;"></i> Edit
+                        </a>
+                        <a href="<?=base_url('home/hapusData'); ?>" class="btn btn-danger" id="btnDestroy"
+                            title="Hapus Data">
+                            <i class="far fa-trash-alt" style="margin-right: 5px;"></i> Hapus
+                        </a>
                     </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Tanggal Pelaksana</label>
-                        <div class="col-sm-4">
-                            <div class="input-group date" id="dates" data-target-input="nearest">
-                                <input type="text" name="tgl_agenda" id="date" value="<?= $nama; ?>"
-                                    class="form-control datetimepicker-input" required data-target="#dates" />
-                                <div class="input-group-append" data-target="#dates" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <label class="col-sm-2 col-form-label" style="display: flex; flex-direction: row-reverse;">Kode
-                            Undangan</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" name="nama" value="<?= $nama; ?>">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" name="nama" value="<?= $nama; ?>">
-                        </div>
-                        <label class="col-sm-2 col-form-label" style="display: flex; flex-direction: row-reverse;">No
-                            Telphone</label>
-                        <div class="col-sm-4">
-                            <input type="text" class="form-control" name="nama" value="<?= $nama; ?>">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Alamat</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nama" value="<?= $nama; ?>">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Tentang CSS</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" type="text" name="ket_tentang_css" id="ket_tentang_css">
-                                <?= $ket_tentang_css; ?>    
-                            </textarea>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Keterangan Profil</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" type="text" name="ket_profil" id="ket_profil">
-                                <?= $ket_profil; ?>    
-                            </textarea>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Logo</label>
-                        <div class="col-sm-3">
-                            <input type="file" class="form-control" name="logo" onchange="pratinjau(event)">
-                            <img id="imgPratinjau" width="100%" src="<?php if($logo != '' && file_exists($img = 'assets/img/profil/logo/'.$logo)) {
-                                echo base_url($img);
-                            } else {
-                                echo "assets/img/logoutama.png";
-                            } ?>">
-                        </div>
-                        <label class="col-sm-3 col-form-label" style="display: flex; flex-direction: row-reverse;">Foto
-                            Profil</label>
-                        <div class="col-sm-3">
-                            <input type="file" class="form-control" name="logo" onchange="pratinjau(event)">
-                            <img id="imgPratinjau" width="100%" src="<?php if($logo != '' && file_exists($img = 'assets/img/profil/logo/'.$logo)) {
-                                echo base_url($img);
-                            } else {
-                                echo "assets/img/Upload-pana.png";
-                            } ?>">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-sm text-right">
-                            <div class="btn-group" role="group">
-                                <button type="submit" class="btn btn-outline-primary">Simpan <span
-                                        id="loading2"></span></button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                </div>
+                <div class="table-responsive">
+                    <table id="table" class="table table-striped" data-toggle="table" data-toolbar="#toolbar"
+                        data-pagination="true" data-search="true" data-sort-order="desc" data-id-field="id"
+                        data-page-list="[10, 25, 50, 100, all]" data-url="<?=base_url('Profil/load_profil');?>">
+                        <thead>
+                            <tr style="text-align: center;">
+                                <th data-field="state" data-checkbox="true"></th>
+                                <th data-formatter="operateFormatter1" data-width="100">Logo Sistem</th>
+                                <th data-formatter="operateFormatter2" data-width="100">Foto Profil</th>
+                                <th data-field="kode_undangan" data-sortable="true">Kode Undangan</th>
+                                <th data-field="tgl_pelaksanaan">Tanggal Pelaksanaan</th>
+                                <th data-field="kordinat_lokasi_utama">Lokasi</th>
+                                <th data-field="nama_profil_sistem">Nama</th>
+                                <th data-field="email">Email</th>
+                                <th data-field="no_tlp">Telphone</th>
+                                <th data-field="alamat">Alamat</th>
+                                <th data-field="ket_tentang_css">Tentang CSS</th>
+                                <th data-field="ket_profil">Keterangan</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -100,7 +49,6 @@
         <div class="modal-content">
             <div class="modal-header backmodal">
                 <h4 class="modal-title">
-
                 </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -138,20 +86,21 @@
         </div>
     </div>
 </div>
-<script>
-$(document).ready(function() {
-    $(document).ready(function() {
-        CKEDITOR.replace('ket_profil', {
-            defaultLanguage: 'en',
-            language: 'en'
-        }).setData('<?php echo str_replace(array("\r", "\n"), '', $ket_profil); ?>');
-    });
 
-    $(document).ready(function() {
-        CKEDITOR.replace('ket_tentang_css', {
-            defaultLanguage: 'en',
-            language: 'en'
-        }).setData('<?php echo str_replace(array("\r", "\n"), '', $ket_tentang_css); ?>');
-    });
-});
+<script type="text/javascript">
+var $table = $('#table');
+
+function operateFormatter1(value, row, index) {
+    return [
+        '<img src="' + row.logo +
+        '" alt="" style="display: block; width: 80px; margin-left: auto; margin-right: auto; height: 80%;">',
+    ].join('');
+}
+
+function operateFormatter2(value, row, index) {
+    return [
+        '<img src="' + row.foto_walikota +
+        '" alt="" style="display: block; width: 80px; margin-left: auto; margin-right: auto; height: 80%;">',
+    ].join('');
+}
 </script>

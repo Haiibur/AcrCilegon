@@ -31,6 +31,22 @@ class Pendaftaran extends CI_Controller
 		
 		foreach ($res as $key => $value) {
 			$iddata = $value->kd_daftar.'=t_pendaftaran=kd_daftar=Pendaftaran=0.jpg';
+
+			$detail = 
+			'<div class="btn-group dropup" style="display: flex;">
+				<a class="btn btn-sm btn-primary" style="color: white;">' . ($value->status_peserta == 1 ? '<small>Aktif</small>' : '<small>Non-Aktif</small>') . '</a>
+				<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+				<div class="dropdown-menu">' .
+					($value->status_peserta == 1 
+						? '<a href="' . base_url() . 'Pendaftaran/update_status/' . $value->kd_daftar . '/2" class="dropdown-item" style="text-align: center;">
+								Non-Aktif
+						   </a>' 
+						: '<a href="' . base_url() . 'Pendaftaran/update_status/' . $value->kd_daftar . '/1" class="dropdown-item" style="text-align: center;">
+								Aktif
+						   </a>') .
+				'</div>
+			</div>';
+
 			$data = [
 				'id' 				 => $value->kd_daftar,
 				'ids'				 => $iddata,
@@ -44,7 +60,7 @@ class Pendaftaran extends CI_Controller
 				'password'			 => $value->password,
 				'tgl_daftar'		 => date("d M Y H:i:s", strtotime($value->tgl_daftar)),
 				'tgl_verifikasi'	 => $value->tgl_verifikasi,
-				'status_peserta'	 => $value->status_peserta,
+				'status_peserta'	 => $detail,
 			];
 			array_push($output, $data);
 		}
@@ -177,4 +193,20 @@ class Pendaftaran extends CI_Controller
 		
 		$this->Modular->queryBuild($req);
 	}
+
+	public function update_status($id, $status) {
+        $req = [
+            'method' => 'update',
+            'table' => 't_pendaftaran',
+            'value' => [
+                'status_peserta' => $status,
+            ],
+            'where' => ['kd_daftar' => $id]
+        ];
+
+        // Panggil fungsi untuk menjalankan query pembaruan status
+        $this->Modular->queryBuild($req);
+
+		redirect('Pendaftaran');
+    }
 }

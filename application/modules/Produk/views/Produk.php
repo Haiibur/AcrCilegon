@@ -4,18 +4,18 @@
             <div class="card-body">
                 <div id="toolbar">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <a href="<?=base_url('form_tambah_produk');?>" class="btn btn-success">
-                            <i class="fa fa-plus"></i>
-                            Tambah Produk
+                        <a href="<?=base_url('form_tambah_produk');?>" class="btn btn-success" title="Tambah Data">
+                            <i class="fa fa-plus" style="margin-right: 5px;"></i>
+                            Tambah
                         </a>
                         <a href="<?=base_url('form_ubah_produk/');?>" class="btn btn-warning" id="btnRedir"
-                            title="Ubah Agenda">
-                            <i class="fa fa-edit"></i>
+                            title="Ubah Data">
+                            <i class="fa fa-edit" style="margin-right: 5px;"></i>
                             Edit
                         </a>
                         <a href="<?=base_url('home/hapusData'); ?>" class="btn btn-danger" id="btnDestroy"
                             title="Hapus Data">
-                            <i class="far fa-trash-alt"></i>
+                            <i class="far fa-trash-alt" style="margin-right: 5px;"></i>
                             Hapus
                         </a>
                     </div>
@@ -25,15 +25,15 @@
                         data-pagination="true" data-search="true" data-sort-order="desc" data-id-field="id"
                         data-page-list="[10, 25, 50, 100, all]" data-url="<?=base_url('Produk/load_produk');?>">
                         <thead>
-                            <tr>
+                            <tr style="text-align: center;">
                                 <th data-field="state" data-checkbox="true"></th>
-                                <th data-formatter="operateFormatter2" data-width="100">Gambar Produk</th>
-                                <th data-field="katagori_produk">Katagori Produk</th>
+                                <th data-formatter="operateFormatter2" data-width="100">Foto</th>
+                                <th data-field="katagori_produk">Katagori</th>
                                 <th data-field="nama_produk">Nama Produk</th>
-                                <th data-field="satuan_produk">Satuan Produk</th>
-                                <th data-field="harga">Harga Produk</th>
-                                <th data-formatter="operateFormatter1">Status Produk</th>
-                                <th data-field="ket_produk">Keterangan Produk</th>
+                                <th data-field="harga">Harga</th>
+                                <th data-field="satuan_produk">Satuan</th>
+                                <th data-field="ket_produk">Keterangan</th>
+                                <th data-field="status_produk" data-width="130">Status</th>
                             </tr>
                         </thead>
                     </table>
@@ -95,11 +95,5 @@ function operateFormatter2(value, row, index) {
         '<img src="' + row.gambar_1 +
         '" alt="" style="display: block; width: 100px; margin-left: auto; margin-right: auto; height: 50%;">',
     ].join('')
-}
-
-function operateFormatter1(value, row, index) {
-    return [
-        (row.status_produk == 1) ? 'tersedia' : 'habis',
-    ].join('');
 }
 </script>

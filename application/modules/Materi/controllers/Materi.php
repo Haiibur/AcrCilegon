@@ -44,9 +44,6 @@ class Materi extends CI_Controller
 				<a href="' . base_url() . './assets/upload_materi/' . $value->file_materi . '" class="btn btn-primary">
 					<i class="fa-solid fa-eye"></i>
 				</a>
-				<a href="'. base_url().'Materi/downloadFile/'. $value->kd_materi. '/' .$value->file_materi . '" class="btn btn-primary">
-					<i class="fa-solid fa-download"></i>
-				</a>
 			</div>';
 					
 			$data = [

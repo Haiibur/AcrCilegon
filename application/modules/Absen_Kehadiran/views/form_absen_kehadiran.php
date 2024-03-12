@@ -5,11 +5,11 @@
                 <form id="formData" action="<?= $url; ?>" method="POST" role="<?= base_url(); ?>Absen_Kehadiran">
                     <input type="hidden" name="id" value="<?= $id; ?>">
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Agenda Acara</label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2 col-form-label">Agenda</label>
+                        <div class="col-sm-10">
                             <div class="input-group">
                                 <select name="agenda_kd" class="form-control" style="text-align: center;">
-                                    <option disable selected>--- Pilih Agenda Acara ---</option>
+                                    <option disable selected>--- Pilih Agenda ---</option>
                                     <?php
                                         foreach ($agenda_kd as $value) { ?>
                                     <option value=<?= $value->kd_agenda ?>><?= $value->nama_agenda ?></option>
@@ -19,11 +19,11 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Jabatan Peserta</label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2 col-form-label">Level Peserta</label>
+                        <div class="col-sm-10">
                             <div class="input-group">
                                 <select name="peserta_kd" class="form-control" style="text-align: center;">
-                                    <option disable selected>--- Pilih Jabatan Peserta ---</option>
+                                    <option disable selected>--- Pilih Level Peserta ---</option>
                                     <?php
                                         foreach ($peserta_kd as $value) { ?>
                                     <option value=<?= $value->kd_level_peserta ?>><?= $value->nama_level_peserta ?>
@@ -34,8 +34,8 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Provinsi</label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2 col-form-label">Provinsi</label>
+                        <div class="col-sm-10">
                             <div class="input-group">
                                 <select name="kd_provinsi" id="kd_provinsi" class="form-control"
                                     style="text-align: center;">
@@ -49,8 +49,8 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label class="col-sm-3 col-form-label">Kabupaten</label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2 col-form-label">Kabupaten</label>
+                        <div class="col-sm-10">
                             <div class="input-group">
                                 <select name="kd_kabupaten" id="kd_kabupaten" class="form-control">
 

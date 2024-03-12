@@ -44,7 +44,7 @@
                                 <button class="btn btn-outline-primary" type="submit">
                                     Simpan <span id="loading2"></span>
                                 </button>
-                                <a href="<?= base_url(); ?>agenda" class="btn btn-danger">
+                                <a href="<?= base_url(); ?>Lokasi_Tujuan" class="btn btn-danger">
                                     Batal
                                 </a>
                             </div>

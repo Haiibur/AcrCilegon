@@ -34,6 +34,22 @@ class Lokasi_Venue extends CI_Controller {
 		
 		foreach ($res as $key => $value) {
 			$iddata = $value->kd_venue.'=t_lokasi_venue=kd_venue=Lokasi_Venue=0.jpg';
+
+			$detail = 
+			'<div class="btn-group dropup" style="display: flex;">
+				<a class="btn btn-sm btn-primary" style="color: white;">' . ($value->status == 1 ? '<small>Aktif</small>' : '<small>Non-Aktif</small>') . '</a>
+				<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+				<div class="dropdown-menu">' .
+					($value->status == 1 
+						? '<a href="' . base_url() . 'Lokasi__Venue/update_status/' . $value->kd_venue . '/2" class="dropdown-item" style="text-align: center;">
+								Non-Aktif
+						   </a>' 
+						: '<a href="' . base_url() . 'Lokasi_Venue/update_status/' . $value->kd_venue . '/1" class="dropdown-item" style="text-align: center;">
+								Aktif
+						   </a>') .
+				'</div>
+			</div>';
+
 			$data = [
 				'id' 			=> $value->kd_venue,
 				'ids' 			=> $iddata,
@@ -41,7 +57,7 @@ class Lokasi_Venue extends CI_Controller {
 				'foto_venue' 	=> base_url().'./assets/upload_Lokasi_Vanue/'.$value->foto_venue,
 				'titik_lokasi'	=> $value->lat.' '.$value->longg,
 				'ket_venue' 	=> $value->ket_venue,
-				'status'		=> $value->status
+				'status'		=> $detail
 			];
 			array_push($output, $data);
 		}
@@ -157,4 +173,20 @@ class Lokasi_Venue extends CI_Controller {
 			$error = $this->upload->display_errors();
 		}
 	}
+
+	public function update_status($id, $status) {
+        $req = [
+            'method' => 'update',
+            'table' => 't_lokasi_venue',
+            'value' => [
+                'status' => $status,
+            ],
+            'where' => ['kd_venue' => $id]
+        ];
+
+        // Panggil fungsi untuk menjalankan query pembaruan status
+        $this->Modular->queryBuild($req);
+
+		redirect('Lokasi_Venue');
+    }
 }

@@ -4,18 +4,18 @@
             <div class="card-body">
                 <div id="toolbar">
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <a href="<?=base_url('form_tambah_materi');?>" class="btn btn-success" title="Buat Agenda">
-                            <i class="fa fa-plus"></i>
-                            Tambah Materi
+                        <a href="<?=base_url('form_tambah_materi');?>" class="btn btn-success" title="Tambah Data">
+                            <i class="fa fa-plus" style="margin-right: 5px;"></i>
+                            Tambah
                         </a>
                         <a href="<?=base_url('form_ubah_materi/');?>" class="btn btn-warning" id="btnRedir"
-                            title="Ubah Agenda">
-                            <i class="fa fa-edit"></i>
+                            title="Ubah Data">
+                            <i class="fa fa-edit" style="margin-right: 5px;"></i>
                             Edit
                         </a>
                         <a href="<?=base_url('home/hapusData'); ?>" class="btn btn-danger" id="btnDestroy"
                             title="Hapus Data">
-                            <i class="far fa-trash-alt"></i>
+                            <i class="far fa-trash-alt" style="margin-right: 5px;"></i>
                             Hapus
                         </a>
                     </div>
@@ -28,9 +28,8 @@
                             <tr>
                                 <th data-field="state" data-checkbox="true"></th>
                                 <th data-field="nama_materi">Nama Materi</th>
-                                <th data-field="file_materi">File Materi</th>
                                 <th data-field="jumlah_download">Jumlah Download</th>
-                                <!-- <th data-formatter="operateFormatter">File Materi</th> -->
+                                <th data-field="file_materi">File Materi</th>
                             </tr>
                         </thead>
                     </table>
@@ -83,15 +82,3 @@
         </div>
     </div>
 </div>
-
-<!-- <script type="text/javascript">
-var $table = $('#table')
-
-function operateFormatter(value, row, index) {
-    return [
-        '<a href="' + row.file_materi + '" class="btn btn-primary">',
-        '<i class="fa-solid fa-download"></i>',
-        '</a'
-    ].join('')
-}
-</script> -->

@@ -421,6 +421,11 @@ $(function () {
 		const $ids = $.map($table.bootstrapTable("getSelections"), (row) => {
 			return row.ids;
 		});
+
+		const $ids2 = $.map($table.bootstrapTable("getSelections"), (row) => {
+			return row.ids2;
+		});
+
 		if ($ids != "") {
 			Swal.fire({
 				title: "Anda Yakin?",
@@ -464,6 +469,30 @@ $(function () {
 	});
 
 	$("#btnRedir").click(function (event) {
+		// Edit Data Redirect Page
+		const $id = $.map($table.bootstrapTable("getSelections"), (row) => {
+			return row.id;
+		});
+		let count = Object.keys($id).length;
+		if ($id != "") {
+			if (count > 1) {
+				Toast.fire({
+					icon: "info",
+					title: "Anda memilih lebih dari satu data!",
+				});
+			} else {
+				window.location.href = $(this).attr("href") + $id;
+			}
+		} else {
+			Toast.fire({
+				icon: "warning",
+				title: "Anda belum memilih data",
+			});
+		}
+		event.preventDefault();
+	});
+
+	$("#btnRedir2").click(function (event) {
 		// Edit Data Redirect Page
 		const $id = $.map($table.bootstrapTable("getSelections"), (row) => {
 			return row.id;

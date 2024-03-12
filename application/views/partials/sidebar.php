@@ -65,12 +65,12 @@
                             Hotel
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="<?= base_url('Wisata'); ?>">
                             <i class="icon-plane"></i>
                             Wisata
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="<?= base_url('Galleri'); ?>">
                             <i class="icon-picture"></i>
@@ -79,7 +79,7 @@
                     </li>
                     <li>
                         <a href="<?= base_url('FAQ'); ?>">
-                            <i class="icon-picture"></i>
+                            <i class="fa-regular fa-circle-question"></i>
                             FAQ
                         </a>
                     </li>
@@ -95,8 +95,8 @@
                 <ul>
                     <li>
                         <a href="<?= base_url('Informasi'); ?>">
-                            <i class="icon-picture"></i>
-                            Berita Terbaru
+                            <i class="fa-solid fa-circle-info"></i>
+                            Informasi
                         </a>
                     </li>
                     <li>
@@ -219,12 +219,12 @@
                             Hotel
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="<?= base_url('Wisata'); ?>">
                             <i class="icon-plane"></i>
                             Wisata
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="<?= base_url('Galleri'); ?>">
                             <i class="icon-picture"></i>
@@ -345,12 +345,12 @@
                             Hotel
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="<?= base_url('Wisata'); ?>">
                             <i class="icon-plane"></i>
                             Wisata
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="<?= base_url('Galleri'); ?>">
                             <i class="icon-picture"></i>

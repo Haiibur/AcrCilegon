@@ -10,8 +10,7 @@
                             <input type="text" name="nama_hotel" value="<?= $nama_hotel; ?>" class="form-control"
                                 required />
                         </div>
-                        <label class="col-sm-2 col-form-label"
-                            style="display: flex; flex-direction: row-reverse;">Telphone</label>
+                        <label class="col-sm-2 col-form-label">Telphone</label>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <input type="number" name="no_tlp" value="<?= $no_tlp; ?>" class="form-control"
@@ -24,8 +23,7 @@
                         <div class="col-sm-4">
                             <input class="form-control" type="text" name="lat" value="<?= $lat; ?>" id="latitude">
                         </div>
-                        <label class="col-sm-2 col-form-label"
-                            style="display: flex; flex-direction: row-reverse;">Longitude</label>
+                        <label class="col-sm-2 col-form-label">Longitude</label>
                         <div class="col-sm-4">
                             <input class="form-control" type="text" name="longg" value="<?= $longg; ?>" id="longitude">
                         </div>
@@ -38,8 +36,7 @@
                                     class="form-control" required />
                             </div>
                         </div>
-                        <label class="col-sm-2 col-form-label"
-                            style="display: flex; flex-direction: row-reverse;">Harga</label>
+                        <label class="col-sm-2 col-form-label">Harga</label>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <input type="number" name="harga" value="<?= $harga; ?>" class="form-control"

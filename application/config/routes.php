@@ -16,6 +16,8 @@ $route['admin'] = 'admin';
 
 // Menu Profil
 $route['profil']= 'Profil';
+$route['form_tambah_profil']      = 'Profil/form_tambah_profil';
+$route['form_ubah_profil/(:any)'] = 'Profil/edit_profil/$1';
 
 // Menu Agenda
 $route['agenda']                = 'Agenda';
@@ -93,7 +95,8 @@ $route['form_ubah_produk/(:any)'] = 'Produk/edit_produk/$1';
 // Menu Transaksi Order
 $route['Transaksi_order']= 'Transaksi_order';
 $route['form_tambah_transaksi_order']      = 'Transaksi_order/form_tambah_transaksi_order';
-$route['form_ubah_transaksi_order/(:any)'] = 'Transaksi_order/edit_transaksi_order/$1';
+$route['detail_order/(:any)']              = 'Transaksi_order/detail_order/$1';
+$route['ubah_transaksi_order/(:any)']      = 'Transaksi_order/edit_transaksi_order/$1';
 
 // Menu FAQ
 $route['FAQ']= 'FAQ';
